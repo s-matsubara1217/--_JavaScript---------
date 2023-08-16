@@ -120,6 +120,52 @@
   /*********************************************
     14.関数に任意の数の引数を渡したい
   **********************************************/
+ // 利用シーン: 引数の数が決まっていない関数を定義したい時
+ /**
+  * 引数の合計値を返す関数
+  * @param prices
+  * @return {number}
+  */
+ /***
+ function calcSum(...prices) {
+  let result = 0;
+  for(const value of prices) {
+    result += value;
+  }
+  return result;
+ }
+ const result1 = calcSum(10,20);
+ console.log(result1);
+ const result2 = calcSum(5,10,15);
+ console.log(result2);
+ ***/
+
+
+ /*********************************************
+    15.条件に応じて処理を分けたい（if文）
+  **********************************************/
+ // 利用シーン: 特定の条件の場合のみ処理を行いたい時
+ /***
+ const myPrice = 1;
+ if(myPrice >= 50) {
+  alert('50以上です');
+ } else if (myPrice >= 10) {
+  alert('10以上50未満です');
+ } else {
+  alert('10未満です');
+ }
+
+ if(true) {
+  alert('Hello');
+ }
+
+ const randomNum = Math.random()*10;
+ if(randomNum >= 5){
+  alert('5以上');
+ } else {
+  alert('5未満');
+ }
+ ***/
 
 
   </script>
