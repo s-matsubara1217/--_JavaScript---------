@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Chapter1.JavaScriptの基礎</title>
 </head>
 <body>
   <script>
@@ -217,6 +217,28 @@
   **********************************************/
   // 利用シーン: 繰り返し処理で、特定の条件下のみ処理をスキップしたい時
   //           forループ内のコードを浅くしたい時
+  /***
+  for(let index=0; index<10; index++) {
+    if(index%2===0) {
+      continue;
+    }
+    console.log(index);
+  }
+  console.log('ループ終了');
+
+  function myFnction(flgA) {
+    for(let index=0; index<10; index++) {
+      if(flgA===false) {
+        continue;
+      }
+      if(index%2===0) {
+        continue;
+      }
+      console.log(index);
+    }
+  }
+  ***/
+
 
 
   </script>
