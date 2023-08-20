@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter2.真偽値や数値や文字の取り扱い</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <button class="button">カラー変更</button>
+  <div class="rectangle"></div>
+
   <script>
 
   /*********************************************
@@ -39,6 +44,31 @@
     21.数値を取り扱いたい
   **********************************************/
   // 利用シーン: JavaScriptで数値計算をしたい時
+
+
+  /*********************************************
+    22.四捨五入、切り捨て、切り上げをしたい
+  **********************************************/
+  // 利用シーン: 税込金額の計算時、小数点を切り捨てる時
+  //           要素の幅や高さをJavaScriptから指定する時、整数扱いにしたい時
+  /***
+  console.log(Math.round(6.24));
+  console.log(Math.floor(6.24));
+  console.log(Math.ceil(6.24));
+  console.log(Math.trunc(6.24));
+  ***/
+
+
+  /*********************************************
+    23.ランダムな数を使いたい
+  **********************************************/
+  // 利用シーン: ランダムな確率で処理を行いたい時
+  //           アニメーションにランダム性を加えたい時
+  console.log(Math.random());
+  console.log(Math.floor(Math.random()*100));
+  console.log(10 + Math.floor(Math.random()*10));
+
+
 
 
 
