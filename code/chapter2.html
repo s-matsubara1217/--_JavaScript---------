@@ -8,8 +8,8 @@
 </head>
 <body>
 
-  <button class="button">カラー変更</button>
-  <div class="rectangle"></div>
+  <!-- <button class="button">カラー変更</button>
+  <div class="rectangle"></div> -->
 
   <script>
 
@@ -64,6 +64,7 @@
   **********************************************/
   // 利用シーン: ランダムな確率で処理を行いたい時
   //           アニメーションにランダム性を加えたい時
+  /***
   console.log(Math.random());
   console.log(Math.floor(Math.random()*100));
   console.log(10 + Math.floor(Math.random()*10));
@@ -78,6 +79,38 @@
     rectangle.style.setProperty('--start', randomColorStart)
     rectangle.style.setProperty('--end', randomColorEnd)
   }
+  ***/
+
+  // 安全な乱数を使いたいならcrypto.getRandomValues()を使う
+  /***
+  const randomArray1 = crypto.getRandomValues(new Uint16Array(10));
+  console.log(randomArray1);
+  randomArray1.join('');
+  console.log(randomArray1.join(''));
+  crypto.getRandomValues(new Uint32Array(10).join(''));
+  ***/
+
+
+  /*********************************************
+    24.数学的な計算を行いたい
+  **********************************************/
+  // 利用シーン: 数値の絶対値を扱いたい時
+  //           数値のべき乗を扱いたい時
+  //           数値の対数を扱いたい時
+  console.log(Math.abs(-10));
+  console.log(Math.pow(2,10));
+  console.log(Math.sign(2));
+  console.log(Math.sign(-2));
+  console.log(Math.sqrt(16));
+  console.log(Math.log(Math.E));
+
+
+  /*********************************************
+    25.三角関数を使いたい
+  **********************************************/
+  // 利用シーン: 三角関数で数値計算したい時
+  //           座標から角度を求めたい時
+  //           円弧に沿って要素をアニメーションさせたい時
 
 
 
