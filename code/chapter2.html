@@ -11,6 +11,8 @@
   <!-- <button class="button">カラー変更</button>
   <div class="rectangle"></div> -->
 
+  <div class="charactor"></div>
+
   <script>
 
   /*********************************************
@@ -97,12 +99,14 @@
   // 利用シーン: 数値の絶対値を扱いたい時
   //           数値のべき乗を扱いたい時
   //           数値の対数を扱いたい時
+  /***
   console.log(Math.abs(-10));
   console.log(Math.pow(2,10));
   console.log(Math.sign(2));
   console.log(Math.sign(-2));
   console.log(Math.sqrt(16));
   console.log(Math.log(Math.E));
+  ***/
 
 
   /*********************************************
@@ -111,6 +115,28 @@
   // 利用シーン: 三角関数で数値計算したい時
   //           座標から角度を求めたい時
   //           円弧に沿って要素をアニメーションさせたい時
+  /***
+  console.log(Math.PI);
+
+  let degree = 0;
+  const rotation = (degree * Math.PI) / 180;
+  const targetX = 100 * Math.cos(rotation);
+  const targetY = 100 * Math.sin(rotation);
+  ***/
+
+  const character = document.querySelector('.character');
+  let degree = 0;
+  loop();
+
+  function loop() {
+    const rotation = (degree * Math.PI) / 180;
+    const targetX = window.innerWidth / 2 + 100 * Math.cos(rotation) - 50;
+    const targetY = window.innerHeight / 2 + 100 * Math.sin(rotation) - 50;
+    character.style.left = `${targetX}px`;
+    character.style.top = `${targetY}px`;
+    degree += 1;
+    requestAnimationFrame(loop);
+  }
 
 
 
