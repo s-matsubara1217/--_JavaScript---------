@@ -13,6 +13,9 @@
 
   <!-- <div class="character"></div> -->
 
+  <!-- <textarea class="textarea"></textarea>
+  <p>現在<span class="string_num">0</span>文字入力中です。</p> -->
+
   <script>
 
   /*********************************************
@@ -154,6 +157,33 @@
     27.文字列の長さを取得したい
   **********************************************/
   // 利用シーン: 入力フォームで文字数をカウントしたい時
+  /***
+  let textarea = document.querySelector(".textarea");
+  let string_num = document.querySelector('.string_num');
+
+  textarea.addEventListener('keyup',onKeyUp);
+
+  function onKeyUp() {
+    const inputText = textarea.value;
+    string_num.innerText = inputText.length
+  }
+  ***/
+
+
+  /*********************************************
+    28.文字列の両端の空白を取り除きたい
+  **********************************************/
+  // 利用シーン: 文字列両端の空白を取り除きたい時
+  const targetString1 = ' こんにちは ';
+  const trimmedString1 = targetString1.trim();
+  console.log(targetString1);
+  console.log(trimmedString1);
+
+
+  /*********************************************
+    29.文字列を検索したい①（インデックスを調べる）
+  **********************************************/
+  // 利用シーン: 文字列がどの位置にあるか調べたい時
 
 
 
