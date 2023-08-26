@@ -174,16 +174,55 @@
     28.文字列の両端の空白を取り除きたい
   **********************************************/
   // 利用シーン: 文字列両端の空白を取り除きたい時
+  /***
   const targetString1 = ' こんにちは ';
   const trimmedString1 = targetString1.trim();
   console.log(targetString1);
   console.log(trimmedString1);
+  ***/
 
 
   /*********************************************
     29.文字列を検索したい①（インデックスを調べる）
   **********************************************/
   // 利用シーン: 文字列がどの位置にあるか調べたい時
+  /***
+  const myString = 'JavaScriptを覚えよう';
+
+  const a1 = myString.indexOf('JavaScript');
+  console.log(a1);
+
+  const a2 = myString.indexOf('覚えよう');
+  console.log(a2);
+
+  const a3 = myString.lastIndexOf('a');
+  console.log(a3);
+
+  const myString = 'JavaScriptを覚えよう';
+
+  const s1 = myString.search(/JavaScript/);
+  console.log(s1);
+
+  const s2 = myString.search(/HTML/);
+  console.log(s2);
+  ***/
+
+
+  /*********************************************
+    30.文字列を検索したい②（含まれているかを調べる）
+  **********************************************/
+  // 利用シーン: 文字列が含まれているか調べたい時
+  //           入力フォームで不適切な語が含まれていないか調べる時
+  const myString = 'JavaScriptを覚えよう';
+
+  const a1 = myString.includes('JavaScript');
+  console.log(a1);
+
+  const a2 = myString.startsWith('覚えよう');
+  console.log(a2);
+
+  const a3 = myString.endsWith('覚えよう');
+  console.log(a3);
 
 
 
