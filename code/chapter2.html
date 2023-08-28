@@ -281,14 +281,13 @@
 
 
   /*********************************************
-    30.文字列を取り出したい
+    31.文字列を取り出したい
   **********************************************/
   // 利用シーン: 指定した場所の文字列を取り出す時
   // charAt()
   /***
   console.log('JavaScript'.charAt(3));
   console.log('JavaScript'.charAt());
-  ***/
 
   const searchWordText = document.querySelector('#search-word-input');
   const prefectureList = document.querySelectorAll('#prefecture-list button');
@@ -315,10 +314,26 @@
       if (
         searchWord.charAt(0) === prefectureName.charAt(0) ||
         searchWord.charAt(0) === phonetic.charAt(0)
-      )
+      ) {
+        // 検索語の最初の一文字が一致する場合、「hide」クラスを除去
+        element.classList.remove('hide');
+      } else {
+        // 検索語の最初の一文字が一致しない場合、「hide」クラスを追加
+        element.classList.add('hide');
+      }
+    });
+  });
+  ***/
 
-    })
-  })
+
+  /*********************************************
+    32.○文字目〜○文字目までの文字列を取り出したい
+  **********************************************/
+  // 利用シーン: ○文字目〜○文字目までの文字列を取り出したい時
+  //           ○文字目以降をすべて取り出したい時
+  // slice();
+  // substring();
+
 
 
   </script>
