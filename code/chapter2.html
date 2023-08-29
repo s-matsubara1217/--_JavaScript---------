@@ -16,7 +16,7 @@
   <!-- <textarea class="textarea"></textarea>
   <p>現在<span class="string_num">0</span>文字入力中です。</p> -->
 
-  <header>
+  <!-- <header>
     <label>県名の最初の一文字を入力してください <input id="search-word-input" maxlength="1" type="text"></label>
   </header>
   <div id="prefecture-list">
@@ -67,7 +67,7 @@
     <button data-name="宮崎" data-phonetic="みやぎ">宮崎</button>
     <button data-name="鹿児島" data-phonetic="かごしま">鹿児島</button>
     <button data-name="沖縄" data-phonetic="おきなわ">沖縄</button>
-  </div>
+  </div> -->
 
   <script>
 
@@ -333,6 +333,34 @@
   //           ○文字目以降をすべて取り出したい時
   // slice();
   // substring();
+  /***
+  console.log('JavaScript'.slice(0,4));
+  console.log('JavaScript'.slice(0));
+  console.log('JavaScript'.substring(0,4));
+  console.log('JavaScript'.substring(0));
+  console.log('まつばらしょうまつばらしょう'.slice(3,-4));
+  console.log('まつばらしょうまつばらしょう'.substring(3,-4));
+  ***/
+
+
+  /*********************************************
+    33.○文字目から○文字目だけ取り出したい
+  **********************************************/
+  // 利用シーン: ○文字目から○文字目だけ取り出したいとき
+  // substr();
+  // 4を開始インデックスにして6文字取り出す
+  /***
+  console.log('JavaScript'.substr(4,6));
+  ***/
+
+
+  /*********************************************
+    34.文字列を別の文字列に置き換えたい
+  **********************************************/
+  // 利用シーン: 文字列を別の文字列に置換したい時
+  //           文字列内の不要な改行コードをbrに置き換えたい時
+  //           スペースを削除したい時
+  // replace();
 
 
 
