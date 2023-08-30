@@ -69,6 +69,10 @@
     <button data-name="沖縄" data-phonetic="おきなわ">沖縄</button>
   </div> -->
 
+  <input type="tel" id="phoneNumberText" placeholder="電話番号">
+  <p class="caption"><small>実際にデータは送信されません</small></p>
+  <button id="submitButton" type="submit">送信する</button>
+
   <script>
 
   /*********************************************
@@ -361,6 +365,31 @@
   //           文字列内の不要な改行コードをbrに置き換えたい時
   //           スペースを削除したい時
   // replace();
+  /***
+  const imageName = 'image1.png';
+  const imageName2 = imageName.replace('1.png','2.png');
+  console.log(imageName2);
+
+  let phoneNumber = '090-1234-5678';
+  console.log(phoneNumber.replace(/-/g, ''));
+
+  document.querySelector('#submitButton').addEventListener('click', (event) => {
+    const phoneNumber = document.querySelector('#phoneNumberText').value;
+    const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+    alert(`電話番号は${trimmedPhoneNumber}です`);
+
+    event.preventDefault();
+  })
+  ***/
+
+
+  /*********************************************
+    35.文字列を分割したい
+  **********************************************/
+  // 利用シーン: URLのハッシュ値から値を取り出す時
+  //           スペースごとに文字列を分割する時
+  // split();
+
 
 
 
