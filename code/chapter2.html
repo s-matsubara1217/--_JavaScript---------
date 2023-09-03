@@ -81,11 +81,15 @@
   </table> -->
 
   <!-- 36.文字列を結合したい  -->
-  <div class="name_container">
+  <!-- <div class="name_container">
     <label>姓<input type="text" class="text" id="familyNameText"></label>
     <label>名<input type="text" class="text" id="firstNameText"></label>
   </div>
-  <p id="fullName"></p>
+  <p id="fullName"></p> -->
+
+  <!-- 37.文字列を大文字・小文字に変換したい -->
+  <input type="text" class="name-input">
+  <p class="warning-message"></p>
 
 
 
@@ -449,7 +453,6 @@
   const country = 'アメリカ';
   const states = '合衆国';
   console.log(country + states);
-  ***/
 
   const familyNameText = document.querySelector('#familyNameText');
   const firstNameText = document.querySelector('#firstNameText');
@@ -463,6 +466,45 @@
     const firstName = firstNameText.value;
     fullName.innerHTML = familyName + ' ' + firstName;
   }
+  ***/
+
+
+  /*********************************************
+    37.文字列を大文字・小文字に変換したい
+  **********************************************/
+  // 利用シーン: 小文字のアルファベット表記を大文字表記に変更する時
+  //           サーバーから大文字のあたいが帰ってきた場合、小文字に変換する時
+  // toLowerCase();
+  // toUpperCase();
+  /***
+  console.log('TEST'.toLowerCase());
+  console.log('sho matsubara'.toUpperCase());
+
+  const nameInput = document.querySelector('.name-input');
+  const warningMessage = document.querySelector('.warning-message');
+
+  // .name-inputに文字を入力するたびに処理をする
+  nameInput.addEventListener('input', () => {
+    // 入力された文字を取得する
+    const inputStr = nameInput.value;
+    const normalStr = inputStr.toLowerCase();
+    // 文字に「test」が含まれていれば警告を表示する
+    if(normalStr.includes('test')===true) {
+      warningMessage.textContent = '「test」が含まれています';
+    } else {
+      warningMessage.textContent = '';
+    }
+  })
+  ***/
+
+
+  /*********************************************
+    37.複数行の文字列や文字列内の式を簡易に使いたい
+  **********************************************/
+  // 利用シーン: 複数行の文字列を扱いたい時
+  //           文字列内で変数を扱いたい時
+
+
 
 
 
