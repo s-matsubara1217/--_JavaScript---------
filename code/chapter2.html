@@ -88,8 +88,13 @@
   <p id="fullName"></p> -->
 
   <!-- 37.文字列を大文字・小文字に変換したい -->
-  <input type="text" class="name-input">
-  <p class="warning-message"></p>
+  <!-- <input type="text" class="name-input">
+  <p class="warning-message"></p> -->
+
+  <!-- 40.特定の文字が含まれているか、正規表現で調べたい -->
+  <!-- <h2>電話番号を入力してください</h2>
+  <input type="tel" id="phoneNumberText" placeholder="電話番号">
+  <p id="warningMessage"></p> -->
 
 
 
@@ -499,10 +504,61 @@
 
 
   /*********************************************
-    37.複数行の文字列や文字列内の式を簡易に使いたい
+    38.複数行の文字列や文字列内の式を簡易に使いたい
   **********************************************/
   // 利用シーン: 複数行の文字列を扱いたい時
   //           文字列内で変数を扱いたい時
+
+
+  /*********************************************
+    39.正規表現を使いたい
+  **********************************************/
+  // 利用シーン: 条件にマッチする文字列を検索する時
+  //           大量の文字列をパターンに沿って一括置換する時
+  /***
+  if(/iPhone|iPod|iPad/.test(navigator.userAgent)) {
+    alert('アクセスしているブラウザはiOS端末です');
+  } else if (/Mac/.test(navigator.userAgent)) {
+    alert('アクセスしているブラウザはMacです');
+  }
+  ***/
+
+
+  /*********************************************
+    40.特定の文字が含まれているか、正規表現で調べたい
+  **********************************************/
+  // 利用シーン: 条件にマッチする文字列を検索する時
+  // 【構文】
+  // メソッド：/パターン/.test(文字列);
+  // 意味：文字列がパターンにマッチするかどうか
+  // 戻り値：真偽値
+
+  /***
+  const phoneNumberText = document.querySelector('#phoneNumberText');
+  const warningMessage = document.querySelector('#warningMessage');
+
+  // 文字が入力されるたびに内容のチェックを行う
+  phoneNumberText.addEventListener('keyup', () => {
+    const phoneNumber = phoneNumberText.value;
+    const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+
+    // 0から始まる10桁か11桁の数字かどうかをチェック
+    if(/^[0][0-9]{9,10}$/.test(trimmedPhoneNumber) === false) {
+      warningMessage.innerText = '電話番号を正しく入力してください';
+    } else {
+      warningMessage.innerText = '';
+    }
+  });
+  ***/
+
+
+  /*********************************************
+    41.数値の桁数を指定して小数点表示したい
+  **********************************************/
+  // 利用シーン: 数値3.145159265を'3.14'という文字列にする時
+  //           数値10を'10.00'という文字列に変換する時
+  // 【構文①】
+
 
 
 
