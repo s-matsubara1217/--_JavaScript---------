@@ -96,6 +96,12 @@
   <input type="tel" id="phoneNumberText" placeholder="電話番号">
   <p id="warningMessage"></p> -->
 
+  <!-- 41.数値の桁数を指定して小数点表示したい -->
+  <div class="timer">
+    <div class="second"></div>
+  </div>
+
+
 
 
   <script>
@@ -558,6 +564,34 @@
   // 利用シーン: 数値3.145159265を'3.14'という文字列にする時
   //           数値10を'10.00'という文字列に変換する時
   // 【構文①】
+  // メソッド： 数値.toFixed([桁数])
+  // 意味： 小数点以下を指定桁数にする
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： 数値.toPrecision([桁数])
+  // 意味： 指定桁数の精度にする
+  // 戻り値： 文字列
+
+  /***
+  console.log(0.33333333.toFixed(2));
+  ***/
+
+  const secondElement = document.querySelector('.second');
+  const goalTime = new Date().getTime() + 15 * 1000;
+  update();
+
+  function update() {
+    // 現在時刻
+    const currentTime = new Date().getTime();
+    // 目標時刻までの残り時間
+    const leftTime = goalTime - currentTime;
+    // 残り時間が0秒未満だったら、タイマーを停止する
+    if(leftTime <= 0) {
+      secondElement.innerText = '15秒経ちました';
+      return;
+    }
+
+  }
 
 
 
