@@ -97,10 +97,14 @@
   <p id="warningMessage"></p> -->
 
   <!-- 41.数値の桁数を指定して小数点表示したい -->
-  <div class="timer">
+  <!-- <div class="timer">
     <div class="second"></div>
-  </div>
+  </div> -->
 
+  <!-- 42.文字列を指定の長さになるよう繰り返したい -->
+  <span class="hour"></span>
+  : <span class="minute"></span>
+  : <span class="second"></span>
 
 
 
@@ -574,7 +578,6 @@
 
   /***
   console.log(0.33333333.toFixed(2));
-  ***/
 
   const secondElement = document.querySelector('.second');
   const goalTime = new Date().getTime() + 15 * 1000;
@@ -590,8 +593,36 @@
       secondElement.innerText = '15秒経ちました';
       return;
     }
-
+    // 秒の表示
+    secondElement.innerText = (leftTime / 1000).toFixed(2);
+    // 次のフレームで再度update()を実行する
+    requestAnimationFrame(update);
   }
+  ***/
+
+
+  /*********************************************
+    42.文字列を指定の長さになるよう繰り返したい
+  **********************************************/
+  // 利用シーン: 10未満の数値を表示する際、頭に0を付与したいとき
+  // 【構文①】
+  // メソッド： 文字列.padStart(繰り返しの長さ,[追加する文字列]);
+  // 意味： 文字列の冒頭に指定の数だけ文字列を追加する
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： 文字列.padEnd(繰り返しの長さ,[追加する文字列]);
+  // 意味： 文字列の末尾に指定の数だけ文字列を追加する
+  // 戻り値： 文字列
+
+  /***
+  console.log('5'.padStart(2,'0'));
+  console.log('ff'.padEnd(6,'0'));
+  ***/
+
+  const hourElement = document.querySelector('.hour');
+  const minuteElement = document.querySelector('.minute');
+  const secondElement = document.querySelector('.second');
+
 
 
 
