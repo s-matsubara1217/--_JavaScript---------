@@ -102,9 +102,14 @@
   </div> -->
 
   <!-- 42.文字列を指定の長さになるよう繰り返したい -->
-  <span class="hour"></span>
+  <!-- <span class="hour"></span>
   : <span class="minute"></span>
-  : <span class="second"></span>
+  : <span class="second"></span> -->
+
+  <!-- 43.文字列をURIエスケープしたい -->
+  <h1>つぶやきたい文字列を入力してください</h1>
+  <textarea id="tweetTextArea"></textarea>
+  <button id="tweetButton">ツイートする</button>
 
 
 
@@ -662,7 +667,39 @@
   // 意味： 文字列をエンコードする
   // 戻り値： 文字列
 
-  encodeURI('http://example.com')
+  /***
+  console.log(encodeURI('http://example.com/可愛い猫の ページ.html'));
+  console.log(encodeURIComponent('http://example.com/可愛い猫の ページ.html'));
+
+  document.querySelector('#tweetButton').addEventListener('click', () => {
+    // ツイートの内容を表示
+    let tweetText = document.querySelector('#tweetTextArea').value;
+    // 半角スペースと#JavaScriptをツイート文言に追加する
+    tweetText += ' #JavaScript';
+    // エンコードする
+    const encodedText = encodeURIComponent(tweetText);
+    // ツイート用リンクを作成する
+    const tweetURL = `https://twitter.com/intent/tweet?text=${encodedText}`;
+    // ツイート用リンクを開く
+    window.open(tweetURL);
+  })
+  ***/
+
+
+  /*********************************************
+    44.文字列をURLデコードしたい
+  **********************************************/
+  // 利用シーン: エンコードされたURI文字列をデコードしたい時
+  //           SNSで日本語の文言をシェアする際、エンコードしてURLを発行する時
+  // 【構文①】
+  // メソッド： encodeURI(文字列);
+  // 意味： 文字列をエンコードする
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： encodeURIComponent(文字列);
+  // 意味： 文字列をエンコードする
+  // 戻り値： 文字列
+
 
 
 
