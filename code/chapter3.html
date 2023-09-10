@@ -8,6 +8,9 @@
 </head>
 <body>
 
+  <!-- 47.配列の各要素に対して処理を行いたい① -->
+  <h1>ユーザー一覧</h1>
+  <div class="container"></div>
 
 
   <script>
@@ -47,6 +50,27 @@
   **********************************************/
   // 利用シーン: 配列の各要素について処理をする時
   // 【構文①】
+  // 配列.forEach(コールバック関数)
+  // 意味： 配列の各要素についてコールバックを行う
+  // ▼ コールバック関数
+  // ([要素],[インデックス],[元配列]) => {}
+  // 意味： 要素、インデックス、元配列を用いて処理する
+
+  /***
+  const array = ['いちご','みかん','りんご'];
+  array.forEach((value,index) => {
+    console.log(index,value);
+  })
+
+  const array2 = [1,2,3,4,5,6,7,8];
+  array2calculated = array2.filter((value) => value%2 === 0);
+  array2calculated.forEach((value) => {
+    console.log(value);
+  })
+  ***/
+
+
+
 
 
 
