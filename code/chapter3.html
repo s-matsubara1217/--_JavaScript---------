@@ -67,7 +67,57 @@
   array2calculated.forEach((value) => {
     console.log(value);
   })
+
+  // APIなどから出力するユーザーデータの配列
+  const userList = [
+    {id:1, name:'田中', address:'東京'},
+    {id:2, name:'鈴木', address:'宮城'},
+    {id:3, name:'高橋', address:'福岡'},
+  ];
+
+  // コンテナー
+  const container = document.querySelector('.container');
+
+  // userListの配列の各要素についてループ
+  userList.forEach((userData) => {
+    // 各要素を書き出す
+    container.innerHTML += `
+      <div class = "card">
+        <h2>${userData.name}</h2>
+        <p>出身地：${userData.address}<p>
+      </div>
+    `;
+  });
   ***/
+
+
+  /*********************************************
+    48.配列の各要素に対して処理を行いたい②
+  **********************************************/
+  // 利用シーン: 配列の各要素について処理をしたい時
+  //           配列のループ処理で、要素のインデックスが不要な時
+  // 【構文①】
+  // for(const 要素 of 配列){}
+  // 意味： for...ofでループ
+
+  /***
+  const array = ['いちご','みかん','りんご'];
+  // 配列の各要素についてループ
+  for(const value of array) {
+    console.log(value);
+  }
+  ***/
+
+
+  /*********************************************
+    49.配列の各要素に対して処理を行いたい③
+  **********************************************/
+  // 利用シーン: 配列の各要素について処理をしたい時
+  //           配列のループ処理で、要素のインデックスが不要な時
+  // 【構文①】
+  // for(let i=0; i<配列の長さ; i++)
+  // 意味： for...ofでループ
+
 
 
 
