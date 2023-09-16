@@ -9,8 +9,14 @@
 <body>
 
   <!-- 47.配列の各要素に対して処理を行いたい① -->
-  <h1>ユーザー一覧</h1>
-  <div class="container"></div>
+  <!-- <h1>ユーザー一覧</h1>
+  <div class="container"></div> -->
+
+  <!-- 56.配列から条件を満たす要素を取得したい -->
+  <div class="search-word-wrapper">
+    <label>ユーザーID<input id="search-id-input" type="text"></label>
+  </div>
+  <p id="search-result">該当者なし</p>
 
 
   <script>
@@ -281,8 +287,36 @@
   // ([要素],[インデックス],[元配列]) => 真偽値
   // 意味： 要素を受け取って真偽値を返す
 
-  const myArray = ['鈴木','田中']
+  /***
+  const myArray = ['鈴木','田中','高橋','後藤'];
+  const targetUser = myArray.find((element)=> element === '田中');
+  console.log(targetUser);
+  ***/
 
+  // idキーとnameキーを持つユーザーデータの配列
+  const userDataList = [
+    { id: 123, name: '高橋' },
+    { id: 1021, name: '鈴木' },
+    { id: 6021, name: '後藤' },
+  ]
+
+  // 検索IDを入力するinput要素
+  const searchIdInput = document.querySelector('#search-id-input');
+  // 検索結果を表示する要素
+  const searchResult = document.querySelector('#search-result');
+
+  // 文字が入力される度に内容のチェックを行う
+  searchIdInput.addEventListener('keyup', () => {
+    // 検索IDを取得する
+    const searchId = Number(event.target.value);
+    findUser(searchId);
+  });
+
+  // ユーザーを検索する
+  function findUser(searchId) {
+    // 該当データを取得する
+    const targetData = userDataList.find((data)=> )
+  }
 
 
 
