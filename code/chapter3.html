@@ -394,6 +394,8 @@
   **********************************************/
   // 利用シーン: 配列の要素の順番を昇順・降順に並び替えたい時
 
+
+  /***
   // データ
   const userDataList = [
     {id:2, name:'鈴木'},
@@ -431,7 +433,28 @@
   }
 
   // 昇順ボタンをクリックした時の処理
-  document.querySelector('.ascending').addEventListener('click', (event))
+  document.querySelector('.ascending').addEventListener('click', (event) => {
+    sortByAscending();
+  })
+
+  // 降順ボタンをクリックした時の処理
+  document.querySelector('.descending').addEventListener('click', () => {
+    sortByDescending();
+  });
+
+  // 最初に昇順に並べる
+  sortByAscending();
+  ***/
+
+
+  /*********************************************
+    60.
+  **********************************************/
+  // 利用シーン: 配列の要素の順番を昇順・降順に並び替えたい時
+  // 【構文①】
+  // メソッド： 配列.sort([比較関数])
+  // 意味： 配列を比較関数にしたがってソートする
+  // 戻り値： 配列
 
 
 
