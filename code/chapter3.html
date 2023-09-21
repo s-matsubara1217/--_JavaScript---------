@@ -477,8 +477,43 @@
   // ([要素],[インデックス],[元配列]) => 変更後の要素
   // 意味： 要素を受け取って、変更後の要素を返す
 
+  /***
   const idList = [4,10,20];
-  const userIdList = idList.map((value) =>)
+  const userIdList = idList.map((value) => `userid_${value}`);
+  console.log(userIdList);
+
+  const idList = [3,8,12];
+  const userIdList = idList.map((value,index) => `userid_${index + 1}_${value}`);
+  console.log(userIdList);
+
+  const apiResponseData = [
+    {id: 10, name: '鈴木'},
+    {id: 21, name: '田中'},
+    {id: 31, name: '高橋'},
+  ]
+  const idList = apiResponseData.map((value) => value.id);
+  console.log(idList);
+  const nameList = apiResponseData.map((value) => value.name);
+  console.log(nameList);
+  ***/
+
+
+  /*********************************************
+    62.ある配列から条件を満たす別の配列を作りたい
+  **********************************************/
+  // 利用シーン: ユーザー情報の配列から、年齢が18歳以上のユーザーだけの配列を生成する時
+  // 【構文①】
+  // メソッド： 配列.filter(コールバック関数)
+  // 意味： コールバック関数に合格した配列を生成する
+  // 戻り値： 配列
+  // 【コールバック関数】
+  // ([要素],[インデックス],[元配列]) => 真偽値
+  // 意味： 要素を受け取って、真偽値を返す
+
+  const array = [10,20,30,40];
+  const newArray = array.filter((value) => value>= 30);
+  console.log(newArray);
+
 
 
 
