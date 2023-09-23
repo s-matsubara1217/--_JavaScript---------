@@ -25,6 +25,14 @@
   </div>
   <ul class="user_list"></ul> -->
 
+  <!-- 62.ある配列から条件を満たす別の配列を作りたい -->
+  <div class="button-wrapper">
+    <button class="button" data-age="20">20歳以上</button>
+    <button class="button" data-age="30">30歳以上</button>
+    <button class="button" data-age="40">40歳以上</button>
+  </div>
+  <ul class="user_list"></ul>
+
   <script>
 
   /*********************************************
@@ -510,9 +518,36 @@
   // ([要素],[インデックス],[元配列]) => 真偽値
   // 意味： 要素を受け取って、真偽値を返す
 
+  /***
   const array = [10,20,30,40];
   const newArray = array.filter((value) => value>= 30);
   console.log(newArray);
+  ***/
+
+  const userDataList = [
+    {name: '鈴木', age: 18},
+    {name: '田中', age: 27},
+    {name: '佐藤', age: 32},
+    {name: '高橋', age: 41},
+    {name: '小笠原', age: 56},
+  ];
+
+  // .button要素についてイベント設定
+  document.querySelectorAll('.button').forEach((element) => {
+    element.addEventListener('click', (event) => {
+      onClickButton(event);
+      console.log(event.target);
+    });
+  });
+
+  // ボタンがクリックされた時の処理
+  function onClickButton(event) {
+    const button = event.target;
+    const targetAge = button.dataset.age;
+    const filterdList = userDataList.filter((data) => data.age >= targetAge);
+    updateList()
+  }
+
 
 
 
