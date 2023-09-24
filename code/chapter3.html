@@ -522,7 +522,6 @@
   const array = [10,20,30,40];
   const newArray = array.filter((value) => value>= 30);
   console.log(newArray);
-  ***/
 
   const userDataList = [
     {name: '鈴木', age: 18},
@@ -536,7 +535,6 @@
   document.querySelectorAll('.button').forEach((element) => {
     element.addEventListener('click', (event) => {
       onClickButton(event);
-      console.log(event.target);
     });
   });
 
@@ -545,8 +543,47 @@
     const button = event.target;
     const targetAge = button.dataset.age;
     const filterdList = userDataList.filter((data) => data.age >= targetAge);
-    updateList()
+    updateList(filterdList);
   }
+
+  // ユーザー配列を出力する
+  function updateList(filterdList) {
+    let listHtml = '';
+
+    for(const data of filterdList) {
+      listHtml += `<li>${data.name}：${data.age}歳</li>`
+    }
+
+    document.querySelector('.user_list').innerHTML = listHtml;
+  }
+  ***/
+
+
+  /*********************************************
+    63.各要素から単一の値を作りたい
+  **********************************************/
+  // 利用シーン: ユーザー情報の配列から、年齢が18歳以上のユーザーだけの配列を生成する時
+  // 【構文①】
+  // メソッド： 配列.reduce(コールバック関数, [初期値])
+  // 意味： 各要素を左から右に処理して単一の値を生成する
+  // 戻り値： 任意
+  // 【構文②】
+  // メソッド： 配列.reduceRight(コールバック関数, [初期値])
+  // 意味： 各要素を右から左に処理して単一の値を生成する
+  // 戻り値： 任意
+  // 【コールバック関数】
+  // ((前の要素,現在の要素,インデックス,元の配列) => {/*処理*/})
+  // 意味：任意の処理
+
+  /***
+  const priceList = [100,500,900];
+  const sum = priceList.reduce((previous,current) => {
+    return previous + current;
+  });
+  console.log(sum);
+  ***/
+
+  const array = [['バナナ','りんご']]
 
 
 
