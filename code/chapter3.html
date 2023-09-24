@@ -581,9 +581,37 @@
     return previous + current;
   });
   console.log(sum);
+
+  const array = [['バナナ','りんご','いちご'],['みかん','ブドウ']];
+
+  const flattenedArray = array.reduce((previousValue,currentValue) => {
+    return previousValue.concat(currentValue);
+  });
+  console.log(flattenedArray);
+
+  const array = ['鈴木','田中','後藤'];
+  const members1 = array.reduce((previous,current) => {
+    return `${previous}と${current}`;
+  })
+  console.log(members1);
+  const members2 = array.reduceRight((previous,current) => {
+    return `${previous}と${current}`;
+  })
+  console.log(members2);
   ***/
 
-  const array = [['バナナ','りんご']]
+
+  /*********************************************
+    64.配列に似たオブジェクトを配列に変換したい
+  **********************************************/
+  // 利用シーン: 文字列や配列のようなオブジェクト（ArrayLike）を配列に変換する
+  //           反復可能（Iterable）なオブジェクトを配列に変換する
+  // 【構文①】
+  // メソッド： [...変換対象]
+  // 意味： 配列に変換する
+
+  const myString = 'こんにちは';
+  console.log([...myString]);
 
 
 
