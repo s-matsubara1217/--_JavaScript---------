@@ -610,8 +610,48 @@
   // メソッド： [...変換対象]
   // 意味： 配列に変換する
 
+  /***
   const myString = 'こんにちは';
-  console.log([...myString]);
+  // console.log([...myString]);
+  const newArray = [...myString].map((character) => `${character}!`);
+  console.log(newArray);
+  ***/
+
+
+  /*********************************************
+    65.複数の値をまとめて代入したい（分割代入）
+  **********************************************/
+  // 利用シーン: 配列内の要素を入れ替える時
+  // 【構文①】
+  // [変数1,変数2,変数3] = [値1,値2,値3]
+  // 意味： 各変数に値を代入する
+
+  /***
+  let a;
+  let b;
+  let c;
+  [a,b,c] = [1,2,3];
+  console.log(a,b,c);
+
+  const array = ['鈴木','田中'];
+  [array[0],array[1]] = [array[1],array[0]];
+  console.log(array);
+  ***/
+
+
+  /*********************************************
+    66.配列をシャッフルしたい
+  **********************************************/
+  // 利用シーン: ゲームで複数の要素をシャッフルする
+
+  const array = [1,2,3,4,5];
+  const arrayLength = array.length;
+
+  // Fisher-Yatesのアルゴリズム
+  for(let i=arrayLength-1; i>=0; i--) {
+    const randomIndex = Math.floor(Math.random()*(i+1))
+    [array[i],array[randomIndex]]
+  }
 
 
 
