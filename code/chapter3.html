@@ -26,12 +26,12 @@
   <ul class="user_list"></ul> -->
 
   <!-- 62.ある配列から条件を満たす別の配列を作りたい -->
-  <div class="button-wrapper">
+  <!-- <div class="button-wrapper">
     <button class="button" data-age="20">20歳以上</button>
     <button class="button" data-age="30">30歳以上</button>
     <button class="button" data-age="40">40歳以上</button>
   </div>
-  <ul class="user_list"></ul>
+  <ul class="user_list"></ul> -->
 
   <script>
 
@@ -644,14 +644,21 @@
   **********************************************/
   // 利用シーン: ゲームで複数の要素をシャッフルする
 
+  /***
   const array = [1,2,3,4,5];
   const arrayLength = array.length;
 
   // Fisher-Yatesのアルゴリズム
   for(let i=arrayLength-1; i>=0; i--) {
-    const randomIndex = Math.floor(Math.random()*(i+1))
-    [array[i],array[randomIndex]]
+    const randomIndex = Math.floor(Math.random()*(i+1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
   }
+  console.log(array);
+  ***/
+
+  const array1 = [1,2,3,4,5,6,7,8,9,10];
+  const shuffled1 = shuffleArray(array1);
+
 
 
 
