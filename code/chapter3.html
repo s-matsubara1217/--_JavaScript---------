@@ -707,6 +707,7 @@
   // 意味：オブジェクトをコピーする
   // 戻り値：オブジェクト
 
+  /***
   const object1 = {
     result: true,
     members: [
@@ -720,6 +721,58 @@
   const copiedObject1 = Object.assign({},object1);
   console.log(copiedObject1);
 
+  const object2 = {
+    result: true,
+    members: [
+      {id:1, name:'鈴木'},
+      {id:1, name:'田中'},
+      {id:1, name:'高橋'},
+    ]
+  };
+
+  // オブジェクトのコピー
+  const copiedObject2 = {...object2};
+  console.log(copiedObject2);
+
+  // コピー元のオブジェクト
+  const object3 = {
+    id: 1,
+    members: ['鈴木','田中','高橋']
+  };
+
+  // オブジェクトのコピー
+  const copiedObject3 = {...object3};
+
+  // 元オブジェクトのmembersプロパティー内の配列を更新
+  object3.members[0] = 'John';
+
+  console.log(copiedObject3.members[0]);
+  ***/
+
+
+  /*********************************************
+    70.オブジェクトのプロパティがあるかどうかを調べたい
+  **********************************************/
+  // 利用シーン： APIのレスポンス内に特定のデータが入っているかを調べる時
+  //            オブジェクトの指定の値が存在しないときは処理をキャンセルするとき
+  // 【構文①】
+  // メソッド： オブジェクト.hasOwnProperty(キー名)
+  // 意味： 値があるかどうか
+  // 戻り値： 真偽値
+  // 【構文②】
+  // キー名 in オブジェクト
+  // 意味： 値があるかどうかを返す
+
+  const userData = {
+    id: 1,
+    name: '田中',
+    age:26
+  };
+
+  console.log(userData.hasOwnProperty("id"));
+  console.log(userData.hasOwnProperty("address"));
+  console.log("id" in userData);
+  console.log(userData.id != null);
 
 
 
