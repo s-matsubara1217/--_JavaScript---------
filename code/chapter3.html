@@ -849,6 +849,26 @@
   // メソッド： Object.freeze(オブジェクト)
   // 意味： オブジェクトを変更不可能にする
   // 戻り値： オブジェクト
+  // 【構文①】
+  // メソッド： Object.isFrozen(オブジェクト)
+  // 意味： オブジェクトを変更不可能かどうか
+  // 戻り値： 真偽値
+
+  /***
+  const object1 = { id: 10, name: '田中'};
+  object1.id = 12;
+  object1.address = '東京';
+  console.log(object1);
+
+  'use strict';
+
+  const object2 = {id:10, name:'田中'};
+  Object.freeze(object2);
+
+  console.log(Object.isFrozen(object2));
+  ***/
+
+
 
 
 
