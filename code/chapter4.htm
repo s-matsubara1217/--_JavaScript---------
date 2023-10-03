@@ -58,10 +58,86 @@
     // 値 instanceof オブジェクト
     // 意味： 値がオブジェクトのインスタンスかどうか
 
+    /***
     const today = new Date();
 
     console.log(today instanceof Date);
     console.log(today instanceof Array);
+
+    function showCurrentDate(argument) {
+      if(argument instanceof Date) {
+        console.log(`現在は${argument.toLocaleDateString()}です`);
+      } else {
+        console.log(`不正なデータです`);
+      }
+    }
+
+    const today = new Date();
+    const myArray = [1,2,3];
+
+    showCurrentDate(today);
+    showCurrentDate(myArray)
+    ***/
+
+
+    /*********************************************
+      78.値渡しと参照渡しを使い分けたい
+    **********************************************/
+    // 利用シーン: オブジェクト型とプリミティブ型の挙動を理解したい
+    // 【構文①】
+    // データ型： プリミティブ型
+    // データの渡し方： 値渡し
+    // 【構文②】
+    // データ型： オブジェクト型
+    // データの渡し方： 参照渡し
+
+    /***
+    let a = [1,2,3];
+    let b = a;
+    a[0] = 100;
+    console.log(b);
+
+    function myFunction(x) {
+      x = x + 2;
+    }
+    let a = 10;
+    myFunction(a);
+    console.log(a);
+
+    function myFunction(x) {
+      x[0] = 100;
+    }
+    let a = [1,2,3];
+    myFunction(a);
+    console.log(a);
+    ***/
+
+
+    /*********************************************
+      79.型を変換したい
+    **********************************************/
+    // 利用シーン: 数値を文字列に変換したいとき
+    //           文字列を数値に変換したいとき
+    // 【構文①】
+    // メソッド： Boolean(値)
+    // 意味： 値を真偽値型に変換する
+    // 戻り値： 真偽値
+    // 【構文②】
+    // メソッド： String(値)
+    // 意味： 値を文字列型に変換する
+    // 戻り値： 文字列
+    // 【構文③】
+    // メソッド： Number(値)
+    // 意味： 値を数値型に変換する
+    // 戻り値： 数値
+    // 【構文④】
+    // メソッド： parseInt(文字列)
+    // 意味： 文字列を数値型（整数）に変換する
+    // 戻り値： 数値
+    // 【構文⑤】
+    // メソッド： parseFloat(文字列)
+    // 意味： 文字列を数値型（浮動小数点）に変換する
+    // 戻り値： 数値
 
 
   </script>
