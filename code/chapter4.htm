@@ -153,7 +153,29 @@
     // 【構文①】
     // プリミティブ型： Undefined
     // 意味： 値が未定であることを示す型
-    // 戻り値： undefined
+    // データの例： undefined
+
+
+    /*********************************************
+      81.データの値がない場合の取り扱いについて知りたい（null）
+    **********************************************/
+    // 利用シーン: 値が存在しないことを明示したいとき
+    // 【構文①】
+    // プリミティブ型： Null
+    // 意味： 値が存在しないことを示す型
+    // データの例： null
+
+    function searchUser(targetId) {
+      const userList = [
+        {id:1, name:'鈴木'},
+        {id:2, name:'田中'},
+        {id:3, name:'太郎'},
+      ];
+      const targetUser = userList.find((user)=>user.id===targetId);
+      console.log(targetUser.name);
+    }
+    searchUser(1);
+    searchUser(4);
 
 
   </script>
