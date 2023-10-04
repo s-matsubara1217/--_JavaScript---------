@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter5.日付や時間の取り扱い</title>
+</head>
+<body>
+
+
+  <script>
+
+    /*********************************************
+      82.西暦を取得したい
+    **********************************************/
+    // 利用シーン: 西暦を取得したいとき
+    //           年号に関するデータを扱うとき
+    // 【構文①】
+    // メソッド： getFullYear()
+    // 意味： 西暦を取得する
+    // 戻り値： 数値
+
+    /***
+    const date = new Date();
+    const year = date.getFullYear();
+    console.log(year);
+    ***/
+
+
+    /*********************************************
+      83.日付を取得したい
+    **********************************************/
+    // 利用シーン: 日付を画面に表示するとき
+    //           日付を元に処理を分岐したいとき
+    // 【構文①】
+    // メソッド： getMonth()
+    // 意味： 月を取得する
+    // 戻り値： 数値
+    // 【構文②】
+    // メソッド： getDate()
+    // 意味： 日を取得する
+    // 戻り値： 数値
+
+    /***
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const label = `${month}月${day}日`;
+    console.log(label);
+    ***/
+
+
+
+  </script>
+</body>
+</html>

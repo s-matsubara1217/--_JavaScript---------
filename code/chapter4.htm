@@ -172,10 +172,13 @@
         {id:3, name:'太郎'},
       ];
       const targetUser = userList.find((user)=>user.id===targetId);
-      console.log(targetUser.name);
+      if(targetUser === undefined) {
+        return null;
+      }
+      return targetUser.name;
     }
-    searchUser(1);
-    searchUser(4);
+    console.log(searchUser(1));
+    console.log(searchUser(4));
 
 
   </script>
