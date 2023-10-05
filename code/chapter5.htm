@@ -50,6 +50,66 @@
     ***/
 
 
+    /*********************************************
+      84.時刻を取得したい
+    **********************************************/
+    // 利用シーン: 現在時刻を使いたいとき
+    //           デジタル時計として表示するとき
+    // 【構文①】
+    // メソッド： getHours()
+    // 意味： 時間を取得する
+    // 戻り値： 数値
+    // 【構文②】
+    // メソッド： getMinutes()
+    // 意味： 分数を取得する
+    // 戻り値： 数値
+    // 【構文③】
+    // メソッド： getSeconds()
+    // 意味： 秒数を取得する
+    // 戻り値： 数値
+    // 【構文④】
+    // メソッド： getMilliseconds()
+    // 意味： ミリ秒数を取得する
+    // 戻り値： 数値
+
+    /***
+    const date = new Date();
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const label = `${hour}時${minutes}分${seconds}秒`;
+    console.log(label);
+
+    // 午前と午後を分けたいとき
+    const date = new Date();
+    const hour = date.getHours();
+    let meridiem;
+    let hour2;
+    if(hour<12) {
+      meridiem = '午前';
+      hour2 = hour;
+    } else {
+      meridiem = '午後';
+      hour2 = hour - 12;
+    }
+    const label = `${meridiem}${hour2}時`;
+    console.log(label);
+    ***/
+
+
+    /*********************************************
+      85.曜日を取得したい
+    **********************************************/
+    // 利用シーン: 現在時刻を使いたいとき
+    //           デジタル時計として表示するとき
+    // 【構文①】
+    // メソッド： getHours()
+    // 意味： 時間を取得する
+    // 戻り値： 数値
+
+
+
+
 
   </script>
 </body>
