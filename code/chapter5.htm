@@ -151,6 +151,54 @@
     // 意味： 日付文字列からタイムスタンプ値を取得する
     // 戻り値： 数値
 
+    /***
+    const num1 = Date.parse('2023/10/08');
+    console.log(num1);
+    const num = Date.now();
+    console.log(num);
+    ***/
+
+
+    /*********************************************
+      88. Dateインスタンスに別の日時を設定したい
+    **********************************************/
+    // 利用シーン: 日付や時刻を設定したいとき
+
+    /***
+    const date1 = new Date('2018/06/12 20:01:10');
+    const date2 = new Date('Tue Jun 12 2018 20:01:10');
+    console.log(date1);
+    console.log(date2);
+    ***/
+
+
+    /*********************************************
+      89. 日付・時刻値を加算・減算したい
+    **********************************************/
+    // 利用シーン: 一日後の日付を知りたいとき
+    //           月をまたぐ場合の日付を知りたいとき
+
+    /***
+    const date = new Date('2018/06/01');
+    date.setMonth(date.getMonth() - 1);
+    console.log(date.toLocaleDateString());
+    date.setDate(date.getDate() + 60);
+    console.log(date.toLocaleDateString());
+    ***/
+
+
+    /*********************************************
+      90. 日付・時刻の差分を計算したい
+    **********************************************/
+    // 利用シーン: ふたつの日時の差を求めたい場合
+
+    const dateA = new Date('2018/06/01');
+    const dateB = new Date('2018/05/01');
+    const diffMSec = dateA.getTime() - dateB.getTime();
+    const diffDate = diffMSec / (24*60*60*1000);
+    console.log(diffMSec);
+    console.log(diffDate);
+
 
 
 
