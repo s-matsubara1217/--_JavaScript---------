@@ -192,12 +192,59 @@
     **********************************************/
     // 利用シーン: ふたつの日時の差を求めたい場合
 
+    /***
     const dateA = new Date('2018/06/01');
     const dateB = new Date('2018/05/01');
     const diffMSec = dateA.getTime() - dateB.getTime();
     const diffDate = diffMSec / (24*60*60*1000);
     console.log(diffMSec);
     console.log(diffDate);
+    ***/
+
+
+    /*********************************************
+      91. 経過時間を調べたい
+    **********************************************/
+    // 利用シーン: データ通信の時間を計測したいとき
+    //           JavaScript処理時間を計測したいとき
+    // 【構文①】
+    // メソッド： Date.now()
+    // 意味： 現在の時間を基準時からのm秒数で取得する
+    // 戻り値： 数値
+
+    /***
+    const oldTime = Date.now();
+    setInterval(() => {
+      const currentTime = Date.now();
+      const diff = currentTime - oldTime;
+      const sec = Math.floor(diff/1000);
+      console.log(sec);
+    }, 1000);
+    ***/
+
+
+    /*********************************************
+      92. カウントダウン処理をしたい
+    **********************************************/
+    // 利用シーン: 制限時間のカウントダウンを作りたいとき
+    // 【構文①】
+    // メソッド： setInterval(関数,m秒)
+    // 意味： m秒後に引数の関数を実行する
+
+    const totalTime = 10000;
+    const oldTime = Date.now();
+    const timerId = setInterval(() => {
+      const currentTime = Date.now();
+      const diff = currentTime - oldTime;
+      const remainMSec = totalTime - diff;
+      const remainSec = Math.ceil(remainMSec/1000);
+
+      let label = `残り${remainSec}秒`;
+
+      if(remainMSec <= 0) {
+        clearInterval
+      }
+    }, 1000);
 
 
 
