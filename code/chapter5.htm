@@ -231,6 +231,7 @@
     // メソッド： setInterval(関数,m秒)
     // 意味： m秒後に引数の関数を実行する
 
+    /***
     const totalTime = 10000;
     const oldTime = Date.now();
     const timerId = setInterval(() => {
@@ -242,10 +243,19 @@
       let label = `残り${remainSec}秒`;
 
       if(remainMSec <= 0) {
-        clearInterval
+        clearInterval(timerId);
+        label = '終了'
       }
-    }, 1000);
 
+      console.log(label);
+    }, 1000);
+    ***/
+
+
+    /*********************************************
+      93. アナログ時計を表示したい
+    **********************************************/
+    // 利用シーン: ゲームやアプリでアナログ時計を表示したいとき
 
 
 
