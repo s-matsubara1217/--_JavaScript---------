@@ -23,6 +23,10 @@
     </ul>
   </main> -->
 
+  <!-- 111.全画面表示にしたい -->
+  <button id="btn">フルスクリーン</button>
+  <button id="btnExit">フルスクリーン解除</button>
+
   <script>
 
     /*********************************************
@@ -311,14 +315,53 @@
     // 発生タイミング ： フォーカスがあたったとき
     // 【構文②】
     // イベント名 ： blur
-    // 発生タイミング ： フォーカスが外れた時
+    // 発生focusタイミング ： フォーカスが外れた時
 
+    /***
     window.addEventListener('focus', () => {
       console.log('focus');
     })
     window.addEventListener('focus', () => {
       console.log('focus');
     })
+    ***/
+
+
+    /*********************************************
+      111.全画面表示にしたい
+    **********************************************/
+    // 利用シーン: フルスクリーンでコンテンツを表示させたいとき
+    //           動画を全画面で表示させたいとき
+    //           流れっぱなしのコンテンツを表示したいとき
+    // 【構文①】
+    // メソッド ： element.requestFullscreen()
+    // 意味 ： フルスクリーンで表示する
+    // 戻り値 ： Promise
+    // 【構文②】
+    // メソッド ： document.exitFullscreen()
+    // 意味 ： フルスクリーンを解除する
+    // 戻り値 ： Promise
+
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', (event) => {
+      myRequestFullScreen(document.body);
+    });
+    function myRequestFullScreen(element) {
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
+      }
+    }
+
+    const btnExit = document.querySelector('#btnExit');
+    btnExit.addEventListener('click', (event) => {
+      myCancelFullScreen();
+    });
+    function myCancelFullScreen() {
+      if(document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+
 
   </script>
 </body>
