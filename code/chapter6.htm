@@ -24,8 +24,8 @@
   </main> -->
 
   <!-- 111.全画面表示にしたい -->
-  <button id="btn">フルスクリーン</button>
-  <button id="btnExit">フルスクリーン解除</button>
+  <!-- <button id="btn">フルスクリーン</button>
+  <button id="btnExit">フルスクリーン解除</button> -->
 
   <script>
 
@@ -342,6 +342,7 @@
     // 意味 ： フルスクリーンを解除する
     // 戻り値 ： Promise
 
+    /***
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', (event) => {
       myRequestFullScreen(document.body);
@@ -361,6 +362,21 @@
         document.exitFullscreen();
       }
     }
+    ***/
+
+
+    /*********************************************
+      112.オンライン、オフラインに応じて処理を分けたい
+    **********************************************/
+    // 利用シーン: オフラインの時に、画面上にネットワーク通信ができないことを示す
+    // 【構文①】
+    // プロパティ ： navigator.onLine
+    // 意味 ： ネットワーク状況を取得
+    // 型 ： 真偽値
+
+    /***
+    console.log(navigator.onLine);
+    ***/
 
 
   </script>
