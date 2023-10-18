@@ -32,9 +32,56 @@
     **********************************************/
     // 利用シーン: イベント発生時の関数を指定したい時
     // 【構文①】
-    // メソッド ： イベントターゲット.addEventListener()
-    // 意味 ：
-    // 戻り値 ：
+    // メソッド ： イベントターゲット.addEventListener(イベント名,リスナー,[オプション])
+    // 意味 ： イベントリスナーの設定
+    // 戻り値 ： なし
+
+    /***
+    const button = document.querySelector('.button');
+
+    // アロー関数
+    button.addEventListener('click', () => {
+      console.log('クリック');
+    })
+   // function宣言
+   button.addEventListener('click', function() {
+    console.log('クリック');
+   })
+   // 関数名
+   button.addEventListener('click', onClickButton);
+   function onClickButton() {
+    console.log('クリック');
+   }
+
+    button.addEventListener('click', (event)=> {
+      console.log(event.target);
+    })
+    ***/
+
+
+    /*********************************************
+      115.イベントリスナーを一度だけ呼び出したい
+    **********************************************/
+    // 利用シーン: イベントを一度だけ呼び出したい
+    // 【構文①】
+    // オプション ： capture
+    // 意味 ： キャプチャーフェーズで取得するか
+    // 型 ： 真偽値
+    // オプション ： once
+    // 意味 ： リスナーの呼び出しを1回のみにするか
+    // 型 ： 真偽値
+    // オプション ： passive
+    // 意味 ： パッシブイベントかどうか
+    // 型 ： 真偽値
+
+    const button = document.querySelector('.button');
+    const option = {
+      once: true
+    };
+    button.addEventListener('click', onClickButton, option);
+    function onClickButton() {
+      console.log('クリック');
+    }
 
 
   </script>
