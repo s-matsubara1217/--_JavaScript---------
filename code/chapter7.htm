@@ -7,7 +7,32 @@
 </head>
 <body>
 
-  <button class="button">ボタン</button>
+  <!-- 118.クリック時に処理をしたい -->
+  <!-- <button class="button">ボタン</button> -->
+
+  <!-- 119.マウスを押した時や動かした時に処理をしたい -->
+  <!-- <main class="main">
+    <div id="log2" style="width: 300px; height: 300px; background-color: yellow;"></div>
+  </main> -->
+
+  <!-- 120.マウスオーバー時に処理をしたい -->
+  <!-- <div class="box" style="width: 300px; height: 300px; background-color: yellow;"></div> -->
+
+  <!-- 121.マウスオーバー時に処理をしたい（バブリングあり） -->
+  <!-- <div class="box">
+    <div class="inner" style="width: 300px; height: 300px; background-color: yellow;"></div>
+  </div> -->
+
+  <!-- 122.マウス操作時の座標を取得したい -->
+  <!-- <div class="box">
+    <div class="inner" style="width: 300px; height: 300px; background-color: yellow;"></div>
+  </div> -->
+
+  <!-- 124.テキスト選択時に処理をしたい -->
+  <p class="paragraph">こんにちは</p>
+
+
+
 
   <script>
 
@@ -122,6 +147,149 @@
     // 【構文②】
     // イベント名 ： load
     // 発生タイミング ： 全リソースの読み込み完了時
+
+
+    /*********************************************
+      118.クリック時に処理をしたい
+    **********************************************/
+    // 利用シーン: ボタンをクリックしたら処理を行う時
+    // 【構文①】
+    // イベント名 ： click
+    // 発生タイミング ： 要素のクリック時
+
+    /***
+    document.querySelector('.button').addEventListener('click', () => {
+      alert('アラート');
+    });
+    ***/
+
+
+    /*********************************************
+      119. マウスを押した時や動かした時に処理をしたい
+    **********************************************/
+    // 利用シーン: マウスのドラッグに合わせて画像をアニメーションさせたいとき
+    //           フリック操作を実現したいとき
+    // 【構文①】
+    // イベント名 ： mousedown
+    // 発生タイミング ： マウスボタンを押したとき
+    // 【構文②】
+    // イベント名 ： mouseup
+    // 発生タイミング ： マウスボタンを離したとき
+    // 【構文③】
+    // イベント名 ： mousemove
+    // 発生タイミング ： マウスを動かしたとき
+
+    /***
+    const logArea = document.querySelector('#log2');
+    logArea.addEventListener('mousedown', ()=> {
+      logArea.innerHTML = 'マウスボタンを押した';
+    })
+    logArea.addEventListener('mouseup', ()=> {
+      logArea.innerHTML = 'マウスボタンを離した';
+    })
+    logArea.addEventListener('mousemove', ()=> {
+      logArea.innerHTML = 'マウスを移動した';
+    })
+    ***/
+
+
+    /*********************************************
+      120. マウスオーバー時に処理をしたい
+    **********************************************/
+    // 利用シーン: マウスホバー時にインタラクションを実装したいとき
+    // 【構文①】
+    // イベント名 ： mouseenter
+    // 発生タイミング ： ポインティングデバイスが要素上に乗ったとき
+    // 【構文②】
+    // イベント名 ： mouseleave
+    // 発生タイミング ： ポインティングデバイスが要素上から離れたとき
+
+    /***
+    document.querySelector('.box').addEventListener('mouseenter', ()=> {
+      console.log('上に乗った');
+    })
+    document.querySelector('.box').addEventListener('mouseleave', ()=> {
+      console.log('離れた');
+    })
+    ***/
+
+
+    /*********************************************
+      121. マウスオーバー時に処理をしたい（バブリングあり）
+    **********************************************/
+    // 利用シーン: マウスホバー時にインタラクションを実装したいとき
+    // 【構文①】
+    // イベント名 ： mouseover
+    // 発生タイミング ： ポインティングデバイスが要素上に乗ったとき（バブリングあり）
+    // 【構文②】
+    // イベント名 ： mouseout
+    // 発生タイミング ： ポインティングデバイスが要素上から離れたとき（バブリングあり）
+
+    /***
+    document.querySelector('.box').addEventListener('mouseover', ()=> {
+      console.log('box要素にマウスがのった');
+    })
+    document.querySelector('.inner').addEventListener('mouseover', ()=> {
+      console.log('inner要素にマウスがのった');
+    })
+    ***/
+
+
+    /*********************************************
+      122. マウス操作時の座標を取得したい
+    **********************************************/
+    // 利用シーン: マウスのクリック位置を取得したい
+    //           マウスの動きに合わせて要素を動かしたいとき
+
+    /***
+    const targetBox = document.querySelector('.box');
+    targetBox.addEventListener('mousemove', (event)=> {
+      console.log(event.clientX, event.clientY);
+    })
+    ***/
+
+
+    /*********************************************
+      123. スクロール時に処理をしたい
+    **********************************************/
+    // 利用シーン: スクロール量に応じて要素を遅延表示するとき
+    // 【構文①】
+    // イベント名 ： scroll
+    // 発生タイミング ： 対象の要素がスクロールしたとき
+
+    /***
+    window.addEventListener('scroll', ()=> {
+      console.log('スクロール', window.scrollX, window.scrollY);
+    });
+    ***/
+
+
+    /*********************************************
+      124. テキスト選択時に処理をしたい
+    **********************************************/
+    // 利用シーン: テキストの選択時に処理を行う時
+    //           テキストの選択処理を無効化する時
+    // 【構文①】
+    // イベント名 ： selectstart
+    // 発生タイミング ： テキストが選択された時
+
+    /***
+    document.querySelector('.paragraph').addEventListener('selectstart', () => {
+      console.log(('テキストが選択された'));
+    })
+    ***/
+
+
+    /*********************************************
+      125. タッチ操作時に処理をしたい
+    **********************************************/
+    // 利用シーン: スマートフォンで画面をタップした時に処理を行う時
+    // 【構文①】
+    // イベント名 ： touchstart
+    // 発生タイミング ： タッチを開始した時
+
+
+
 
 
 
