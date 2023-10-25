@@ -32,7 +32,11 @@
   <!-- <p class="paragraph">こんにちは</p> -->
 
   <!-- 126.タッチ操作時のイベントの発生情報を取得したい -->
-  <div class="box" style="width: 300px; height: 300px; background-color: yellow;"></div>
+  <!-- <div class="box" style="width: 300px; height: 300px; background-color: yellow;"></div> -->
+
+  <!-- 127.キーボード入力時に処理をしたい -->
+  <!-- <textarea class="textarea"></textarea>
+  <p>現在<span class="string_num">0</span>文字入力中です。</p> -->
 
 
 
@@ -329,6 +333,44 @@
     // 【構文③】
     // イベント名 ： keypress
     // 発生タイミング ： 文字を生成するキーが押されたとき
+
+    /***
+    document.querySelector('textarea').addEventListener('keydown', () => {
+      console.log('キーが押された');
+    })
+    document.querySelector('textarea').addEventListener('keypress', () => {
+      console.log('文字が入力された');
+    })
+    document.querySelector('textarea').addEventListener('keyup', () => {
+      console.log('キーが離された');
+    })
+
+    const textarea = document.querySelector('.textarea');
+    const string_num = document.querySelector('.string_num');
+    textarea.addEventListener('keyup', onKeyUp);
+    function onKeyUp() {
+      const inputText = textarea.value;
+      string_num.innerText = inputText.length;
+    }
+    ***/
+
+
+    /*********************************************
+      128. 入力されたキーを調べたい
+    **********************************************/
+    // 利用シーン: 入力された文字に応じて処理を行いたいとき
+
+
+    /*********************************************
+      129. タブがバックグラウンドになった時に処理をしたい
+    **********************************************/
+    // 利用シーン: ブラウザーのタブがバックグラウンドになった時、負荷の重い処理を止めたい時
+    //           スマートフォンブラウザでスリープから復帰した時に処理したい時
+    // 【構文①】
+    // イベント名 ： visibilitychange
+    // 発生タイミング ： ブラウザーのタブの表示状態が変わった時
+
+    document.
 
 
 
