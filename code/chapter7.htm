@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter7.ユーザーアクションの取り扱い</title>
+
+  <style>
+
+    /* 133. デフォルトのイベントをキャンセルしたい */
+    /* .scrollable-element {
+      overflow-y: scroll;
+      border: 2px solid #eee;
+      height: 100px;
+    } */
+
+  </style>
 </head>
 <body>
 
@@ -41,6 +52,21 @@
   <!-- 132. イベントを発火させたい -->
   <!-- <div id="myBox">ボックス</div> -->
 
+  <!-- 133. デフォルトのイベントをキャンセルしたい -->
+  <!-- <p><input type="checkbox" id="mouseWheelToggle">マウスホイールを無効化</p>
+  <ul class="scrollable-element">
+    <li>りんご</li>
+    <li>みかん</li>
+    <li>バナナ</li>
+    <li>いちご</li>
+    <li>パイナップル</li>
+    <li>キウイ</li>
+    <li>ぶどう</li>
+    <li>スイカ</li>
+  </ul> -->
+
+  <!-- 134. ドラッグ&ドロップを取り扱いたい -->
+  <div class="characer" draggable="true" style="width: 300px; height: 300px; background-color: aqua;"></div>
 
 
 
@@ -457,7 +483,75 @@
     // 意味 ： イベントのデフォルトの挙動をキャンセルする
     // 戻り値 ： なし
 
+    /***
+    let enableMouseWheel = true;
 
+    // チェックボックスをクリックした時の処理
+    document.querySelector('#mouseWheelToggle').addEventListener('click', (event) => {
+      // チェックボックスに値が入っていたら、マウスホイールを無効化
+      enableMouseWheel = event.target.checked === false;
+    })
+
+    // スクロール可能な要素上でマウスホイールした時の処理
+    document.querySelector('.scrollable-element').addEventListener('wheel', (event) => {
+      // マウスホイールが有効な場合は処理を抜ける
+      if(enableMouseWheel === true) {
+        return;
+      }
+
+      // マウスホイールが無効な場合はevent.preventDefault()を実行
+      event.preventDefault();
+    })
+    ***/
+
+
+    /*********************************************
+      134. ドラッグ&ドロップを取り扱いたい
+    **********************************************/
+    // 利用シーン: ドロップした画像ファイルを受け付けたいとき
+
+    // ▼ ドラッグしている要素で発生するイベント
+    // 【構文①】
+    // イベント名 ： dragstart
+    // 発生タイミング ： 要素のドラッグを開始した時
+    // 【構文②】
+    // イベント名 ： drag
+    // 発生タイミング ： ドラッグしている時
+    // 【構文③】
+    // イベント名 ： dragend
+    // 発生タイミング ： ドラッグを終了した時
+
+    // ▼ ドラッグ要素を受け入れる要素で発生するイベント
+    // 【構文①】
+    // イベント名 ： dragenter
+    // 発生タイミング ： ドラッグ中にマウスポインターが要素上に乗った時
+    // 【構文②】
+    // イベント名 ： dragover
+    // 発生タイミング ： ドラッグ中にマウスポインターが要素に存在する時
+    // 【構文③】
+    // イベント名 ： dragleave
+    // 発生タイミング ： ドラッグ中にマウスポインターが要素上から離れた時
+    // 【構文④】
+    // イベント名 ： drop
+    // 発生タイミング ： 要素をドロップした時
+
+    // ▼ ドラッグにおけるイベント情報
+    // 【構文①】
+    // プロパティ ： event.dataTransfer.files
+    // 意味 ： ドロップされたファイル情報
+    // 型 ： オブジェクト（FileListオブジェクト）
+
+    const character = document.querySelector('.character');
+
+    character.addEventListener('dragstart', () => {
+      console.log('dragstart');
+    })
+    character.addEventListener('drag', () => {
+      console.log('drag');
+    })
+    character.addEventListener('dragend', () => {
+      console.log('dragend');
+    })
 
 
 
