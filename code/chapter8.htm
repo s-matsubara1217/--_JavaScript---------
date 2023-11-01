@@ -25,9 +25,14 @@
   <!-- <div id="foo"></div> -->
 
   <!-- 138.セレクター名に該当する要素をまとめて取得したい -->
-  <div class="box">ボックス1</div>
+  <!-- <div class="box">ボックス1</div>
   <div class="box">ボックス2</div>
-  <div class="box">ボックス3</div>
+  <div class="box">ボックス3</div> -->
+
+  <!-- 139.クラス名に一致する要素をすべて取得したい -->
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
 
 
 
@@ -83,7 +88,39 @@
     // 意味 ： セレクター名に一致する要素をすべて取得する
     // 戻り値 ： 要素の配列（NodeList）
 
-    const nodeList = do
+    /***
+    const nodeList = document.querySelectorAll('.box');
+    nodeList.forEach((targetBox) => {
+      console.log(targetBox);
+    })
+
+    nodeList.forEach((targetBox) => {
+      targetBox.addEventListener('click', () => {
+        alert('クリックされました')
+      })
+    })
+    ***/
+
+
+    /*********************************************
+      139.クラス名に一致する要素をすべて取得したい
+    **********************************************/
+    // 利用シーン: クラス名に一致する要素をすべて取得したい時
+    // 【構文①】
+    // メソッド ： document.getElementsByClassName(クラス名)
+    // 意味 ： クラス名に一致する要素をすべて取得する
+    // 戻り値 ： 要素の配列（HTMLCollection）
+
+    const boxList = document.getElementsByClassName('box');
+    const boxLength = boxList.length;
+
+    for (let index=0; index<boxLength; index++) {
+      console.log(boxList[index]);
+    }
+
+
+
+
 
 
 
