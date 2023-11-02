@@ -30,11 +30,16 @@
   <div class="box">ボックス3</div> -->
 
   <!-- 139.クラス名に一致する要素をすべて取得したい -->
+  <!-- <div class="box"></div>
   <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <div class="box"></div> -->
 
-
+  <!-- 141.子要素・前後要素・親要素を取得したい -->
+  <div id="parent">
+    <div id="child1"></div>
+    <div id="child2"></div>
+    <div id="child3"></div>
+  </div>
 
   <script>
 
@@ -111,12 +116,60 @@
     // 意味 ： クラス名に一致する要素をすべて取得する
     // 戻り値 ： 要素の配列（HTMLCollection）
 
+    /***
     const boxList = document.getElementsByClassName('box');
     const boxLength = boxList.length;
 
     for (let index=0; index<boxLength; index++) {
       console.log(boxList[index]);
     }
+    ***/
+
+
+    /*********************************************
+      140.<html>要素や<body>要素を取得したい
+    **********************************************/
+    // 利用シーン: <html>要素を取得したい時
+    //           <body>要素にクラスを着脱したい時
+    // 【構文①】
+    // プロパティ ： document.documentElement
+    // 意味 ： ルート要素
+    // 型 ： html要素
+    // 【構文②】
+    // プロパティ ： document.head
+    // 意味 ： head要素
+    // 型 ： head要素
+    // 【構文①】
+    // プロパティ ： document.body
+    // 意味 ： body要素
+    // 型 ： body要素
+
+    /***
+    console.dir(document.body)
+
+    const themeChangeButton = document.querySelector('.therme-change-button');
+    themeChangeButton.addEventListener('click', ()=> {
+      document.body.classList.toggle('theme-dark');
+    })
+    ***/
+
+
+    /*********************************************
+      141.子要素・前後要素・親要素を取得したい
+    **********************************************/
+    // 利用シーン: 特定要素の付近の要素を取得したい時
+    // 【構文①】
+    // プロパティ ： document.documentElement
+    // 意味 ： ルート要素
+    // 型 ： html要素
+
+    const parentElement = document.querySelector('#parent');
+    console.log(parentElement.children);
+
+    const firstElementChild = parentElement.firstElementChild;
+    console.log(firstElementChild);
+    console.log(firstElementChild.previousElementSibling);
+    console.log(firstElementChild.parentNode);
 
 
 
