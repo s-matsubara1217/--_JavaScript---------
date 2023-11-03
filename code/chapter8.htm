@@ -35,11 +35,30 @@
   <div class="box"></div> -->
 
   <!-- 141.子要素・前後要素・親要素を取得したい -->
-  <div id="parent">
+  <!-- <div id="parent">
     <div id="child1"></div>
     <div id="child2"></div>
     <div id="child3"></div>
+  </div> -->
+
+  <!-- 142.親要素の末尾に要素を追加したい -->
+  <!-- <div id="myBox"></div>
+
+  <div class="container">
+    <div>子要素1</div>
+    <div>子要素2</div>
+  </div> -->
+
+  <!-- 143.指定要素の直前に要素を追加したい -->
+  <div id="myBox1">#myBox1要素</div>
+  <div id="myBox2">#myBox2要素</div>
+
+  <div class="container">
+    <div>子要素1</div>
+    <div id="box2">子要素2</div>
   </div>
+
+
 
   <script>
 
@@ -163,6 +182,7 @@
     // 意味 ： ルート要素
     // 型 ： html要素
 
+    /***
     const parentElement = document.querySelector('#parent');
     console.log(parentElement.children);
 
@@ -170,6 +190,43 @@
     console.log(firstElementChild);
     console.log(firstElementChild.previousElementSibling);
     console.log(firstElementChild.parentNode);
+    ***/
+
+
+    /*********************************************
+      142.親要素の末尾に要素を追加したい
+    **********************************************/
+    // 利用シーン: 動的に表示要素を増やしたい時
+    //           モーダルウィンドウを画面上に追加したい時
+    // 【構文①】
+    // メソッド ： 親ノード.appendChild(子ノード)
+    // 意味 ： 親ノード内の末尾に子ノードを追加する
+    // 戻り値 ： 要素（Element）
+
+    /***
+    const container = document.querySelector('.container');
+    const myBox = document.querySelector('#myBox');
+
+    setTimeout(() => {
+      container.appendChild(myBox);
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      143.指定要素の直前に要素を追加したい
+    **********************************************/
+    // 利用シーン: 動的に表示要素を増やしたい時
+    //           モーダルウィンドウを画面上に追加したい時
+    // 【構文①】
+    // メソッド ： 親ノード.insertBefore(子ノード,直前のノード)
+    // 意味 ： 親ノード内にノードを追加する
+    // 戻り値 ： 要素（Element）
+
+    const container = document.querySelector('.container');
+    const myBox1 = document.querySelector('#myBox1');
+    const myBox2 = document.querySelector('#myBox2');
+    const box2 = document.querySelector('#box2');
 
 
 
