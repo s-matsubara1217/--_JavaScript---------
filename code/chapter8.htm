@@ -50,13 +50,23 @@
   </div> -->
 
   <!-- 143.指定要素の直前に要素を追加したい -->
-  <div id="myBox1">#myBox1要素</div>
+  <!-- <div id="myBox1">#myBox1要素</div>
   <div id="myBox2">#myBox2要素</div>
 
   <div class="container">
     <div>子要素1</div>
     <div id="box2">子要素2</div>
-  </div>
+  </div> -->
+
+  <!-- 144.要素の前後に別の要素を追加したい -->
+  <!-- <div id="myBox1">#myBox1要素</div>
+  <div id="myBox2">#myBox2要素</div>
+  <div class="container">
+    <div id="targetBox">#targetBox要素</div>
+  </div> -->
+
+  <!-- 145.HTMLコードを要素として挿入したい -->
+
 
 
 
@@ -223,11 +233,67 @@
     // 意味 ： 親ノード内にノードを追加する
     // 戻り値 ： 要素（Element）
 
+    /***
     const container = document.querySelector('.container');
     const myBox1 = document.querySelector('#myBox1');
     const myBox2 = document.querySelector('#myBox2');
     const box2 = document.querySelector('#box2');
 
+    setTimeout(() => {
+      container.insertBefore(myBox1, container.firstElementChild);
+    }, 3000);
+    setTimeout(() => {
+      container.insertBefore(myBox2, box2);
+    }, 4000);
+    ***/
+
+
+    /*********************************************
+      144.要素の前後に別の要素を追加したい
+    **********************************************/
+    // 利用シーン: HTML要素の挿入箇所を細かく指定したい
+    // 【構文①】
+    // メソッド ： ノード1.before(ノード2)
+    // 意味 ： ノード1の前にノード2を追加する
+    // 戻り値 ： なし
+    // 【構文②】
+    // メソッド ： ノード1.after(ノード2)
+    // 意味 ： ノード1の後にノード2を追加する
+    // 戻り値 ： なし
+    // 【構文③】
+    // メソッド ： 親ノード.hasChild(子ノード)
+    // 意味 ： 親ノードに子ノードが存在するかを確認する
+    // 戻り値 ： 真偽値
+
+    /***
+    const myBox1 = document.querySelector('#myBox1');
+    const myBox2 = document.querySelector('#myBox2');
+    const targetBox = document.querySelector('#targetBox');
+
+    setTimeout(() => {
+      targetBox.before(myBox1);
+    }, 3000);
+
+    setTimeout(() => {
+      targetBox.after(myBox2);
+    }, 4000);
+    ***/
+
+
+    /*********************************************
+      145.HTMLコードを要素として挿入したい
+    **********************************************/
+    // 利用シーン: 動的に表示要素を増やしたい時
+    //           モーダルウィンドウを画面上に表示したいとき
+    // 【構文①】
+    // メソッド ： 親要素.insertAdjacentHTML(挿入位置,文字列)
+    // 意味 ： 文字列をHTMLとして挿入する
+    // 戻り値 ： 要素(Element)
+
+    // beforebegin : 親要素の直前
+    // afterbegin : 親要素内の先頭
+    // beforeend : 親要素内の末尾
+    // afterend : 親要素の直後
 
 
 
