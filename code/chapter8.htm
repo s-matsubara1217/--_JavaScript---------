@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter8.HTML要素の操作方法</title>
 
+  <link rel="stylesheet" href="/sample/samples/c08/148/style.css">
+
   <style>
   </style>
 </head>
@@ -72,9 +74,12 @@
   </div> -->
 
   <!-- 146.要素を動的に削除したい -->
-  <div id="parent">
+  <!-- <div id="parent">
     <div id="child">取り除かれる要素</div>
-  </div>
+  </div> -->
+
+  <!-- 148.要素を生成したい -->
+
 
 
 
@@ -359,7 +364,38 @@
     // 意味 ： タグ名の要素を作成する
     // 戻り値 ： 要素
 
-    const divElement = do
+    /***
+    const divElement = document.createElement('div');
+    const anchorElement = document.createElement('a');
+
+    divElement.innerHTML = 'これは動的に生成された要素です。';
+    document.body.appendChild(divElement);
+    ***/
+
+    document.querySelector('#create-modal-button').addEventListener('click', displayModalWindow);
+
+    function displayModalWindow() {
+      const modalElement = document.createElement('div');
+      modalElement.classList.add('modal');
+
+      const innerElement = document.createElement('div');
+      innerElement.classList.add('inner');
+      innerElement.innerHTML = `
+        <p>モーダルウィンドウの中身です</p>
+        <div class="character"></div>
+      `;
+
+      modalElement.appendChild(innerElement);
+      document.body.appendChild(modalElement);
+
+      innerElement.addEventListener('click', ()=> {
+        closeModalWindow(modalElement);
+      })
+    }
+
+    function closeModalWindow(modalElement) {
+      document.body.removeChild(modalElement)
+    }
 
 
 
