@@ -66,6 +66,15 @@
   </div> -->
 
   <!-- 145.HTMLコードを要素として挿入したい -->
+  <!-- <div class="container">
+    <div class="box">子要素1</div>
+    <div class="box">子要素2</div>
+  </div> -->
+
+  <!-- 146.要素を動的に削除したい -->
+  <div id="parent">
+    <div id="child">取り除かれる要素</div>
+  </div>
 
 
 
@@ -294,6 +303,66 @@
     // afterbegin : 親要素内の先頭
     // beforeend : 親要素内の末尾
     // afterend : 親要素の直後
+
+    /***
+    const container = document.querySelector('.container');
+    const newBox = `<div class="new-box box">.new-box要素</div>`;
+    setTimeout(() => {
+      container.insertAdjacentHTML('afterbegin', newBox);
+      container.insertAdjacentHTML('afterend', newBox);
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      146.要素を動的に削除したい
+    **********************************************/
+    // 利用シーン: 要素を動的に削除したい時
+    // 【構文①】
+    // メソッド ： ノード.removeChild(子ノード)
+    // 意味 ： 親要素の子要素を取り除く
+    // 戻り値 ： 取り除かれた要素(Element)
+
+    /***
+    setTimeout(() => {
+      const parentElement = document.querySelector('#parent');
+      const childElement = document.querySelector('#child');
+      parentElement.removeChild(childElement);
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      147.自分自身の要素を削除したい
+    **********************************************/
+    // 利用シーン: 要素を動的に削除したい時
+    // 【構文①】
+    // メソッド ： ノード.remove()
+    // 意味 ： 要素を取り除く
+    // 戻り値 ： なし
+
+    /***
+    setTimeout(() => {
+      const childElement = document.querySelector('#child');
+      childElement.remove();
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      148.要素を生成したい
+    **********************************************/
+    // 利用シーン: HTML要素を動的に生成したい時
+    //           モーダルウィンドウを生成したい時
+    // 【構文①】
+    // メソッド ： document.createElement('タグ名',オプション)
+    // 意味 ： タグ名の要素を作成する
+    // 戻り値 ： 要素
+
+    const divElement = do
+
+
+
 
 
 
