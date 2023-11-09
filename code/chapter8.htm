@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter8.HTML要素の操作方法</title>
 
-  <link rel="stylesheet" href="/sample/samples/c08/148/style.css">
+  <!-- <link rel="stylesheet" href="/sample/samples/c08/148/style.css"> -->
 
   <style>
   </style>
@@ -79,6 +79,17 @@
   </div> -->
 
   <!-- 148.要素を生成したい -->
+
+  <!-- 149.要素を複製したい -->
+  <!-- <div class="container">
+    <div id="myBox">ボックス</div>
+  </div> -->
+
+  <!-- 150.要素を他の要素で置き換えたい -->
+  <div class="container">
+    <div class="old-box box">旧ボックス</div>
+  </div>
+
 
 
 
@@ -372,6 +383,7 @@
     document.body.appendChild(divElement);
     ***/
 
+    /***
     document.querySelector('#create-modal-button').addEventListener('click', displayModalWindow);
 
     function displayModalWindow() {
@@ -396,8 +408,44 @@
     function closeModalWindow(modalElement) {
       document.body.removeChild(modalElement)
     }
+    ***/
 
 
+    /*********************************************
+      149.要素を複製したい
+    **********************************************/
+    // 利用シーン: ユーザーのクリックごとに要素を増やしたい時
+    // 【構文①】
+    // メソッド ： ノード.cloneNode([真偽値])
+    // 意味 ： ノードを複製する
+    // 戻り値 ： ノード(Node)
+
+    /***
+    setTimeout(() => {
+      const clonedBox = document.querySelector('#myBox').cloneNode();
+      document.querySelector('.container').appendChild(clonedBox);
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      150.要素を他の要素で置き換えたい
+    **********************************************/
+    // 利用シーン: 親要素をたどって要素を置き換えたい時
+    // 【構文①】
+    // メソッド ： 親ノード.replaceChild(新ノード,旧ノード)
+    // 意味 ： 新ノードと子ノードを置き換える
+    // 戻り値 ： 置き換えられたノード
+
+    setTimeout(() => {
+
+      const container = document.querySelector('.container');
+      const oldBox = document.querySelector('.old-box');
+      const newBox = document.createElement('div');
+      newBox.textContent = '新ボックス';
+      newBox.classList.add('new-')
+
+    }, 3000);
 
 
 
