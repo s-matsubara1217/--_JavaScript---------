@@ -86,13 +86,14 @@
   </div> -->
 
   <!-- 150.要素を他の要素で置き換えたい -->
-  <div class="container">
+  <!-- <div class="container">
     <div class="old-box box">旧ボックス</div>
-  </div>
+  </div> -->
 
-
-
-
+  <!-- 152.要素内のテキストを取得したり、書き換えたりしたい -->
+  <h1>今日の天気</h1>
+  <p id="weather-information">くもり<span class="temperature">（23℃）</span></p>
+  <div id="weather">明日は晴れるでしょう</div>
 
 
   <script>
@@ -437,15 +438,73 @@
     // 意味 ： 新ノードと子ノードを置き換える
     // 戻り値 ： 置き換えられたノード
 
+    /***
     setTimeout(() => {
 
       const container = document.querySelector('.container');
       const oldBox = document.querySelector('.old-box');
       const newBox = document.createElement('div');
       newBox.textContent = '新ボックス';
-      newBox.classList.add('new-')
+      newBox.classList.add('new-box','box');
+      container.replaceChild(newBox,oldBox);
 
     }, 3000);
+    ***/
+
+
+    /*********************************************
+      151.新ノードと旧ノードを入れ替えたい
+    **********************************************/
+    // 利用シーン: 要素を別の要素に置き換えたい時
+    // 【構文①】
+    // メソッド ： 旧ノード.replaceWith(新ノード)
+    // 意味 ： 旧ノードを新ノードで置き換える
+    // 戻り値 ： なし
+
+    /***
+    setTimeout(() => {
+
+      const oldBox = document.querySelector('.old-box');
+      const newBox = document.createElement('div');
+      newBox.textContent = '新ボックス';
+      newBox.classList.add('new-box', 'box');
+      oldBox.replaceWith(newBox);
+
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      152.要素内のテキストを取得したり、書き換えたりしたい
+    **********************************************/
+    // 利用シーン: HTMLのテキストを書き換えたい時
+    // 【構文①】
+    // プロパティ ： ノード.textContent
+    // 意味 ： ノード内のテキスト
+    // 型 ： 文字列
+
+    /***
+    const weatherInformation = document.querySelector('#weather-information');
+    console.log(weatherInformation.textContent);
+
+    const weatherElement = document.querySelector('#weather');
+
+    setTimeout(() => {
+      weatherElement.textContent = '気温は24度の予想です。';
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      153.要素内のHTMLを取得したり、書き換えたりしたい
+    **********************************************/
+    // 利用シーン: HTMLのテキストや画像をタグごと書き換えたい時
+    // 【構文①】
+    // プロパティ ： 要素.innerHTML
+    // 意味 ： 要素内のHTML文字列
+    // 型 ： 文字列
+
+
 
 
 
