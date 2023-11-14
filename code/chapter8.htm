@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter8.HTML要素の操作方法</title>
 
-  <!-- <link rel="stylesheet" href="/sample/samples/c08/148/style.css"> -->
+  <link rel="stylesheet" href="/sample/samples/c08/160/style.css">
 
   <style>
   </style>
@@ -91,9 +91,97 @@
   </div> -->
 
   <!-- 152.要素内のテキストを取得したり、書き換えたりしたい -->
-  <h1>今日の天気</h1>
+  <!-- <h1>今日の天気</h1>
   <p id="weather-information">くもり<span class="temperature">（23℃）</span></p>
-  <div id="weather">明日は晴れるでしょう</div>
+  <div id="weather">明日は晴れるでしょう</div> -->
+
+  <!-- 153.要素内のHTMLを取得したり、書き換えたりしたい -->
+  <!-- <h1>今日の天気</h1>
+  <div id="weather-information">雨<span id="weather-information">（16℃）</span></div> -->
+  <!-- <p id="weather">明日は雪が降るでしょう</p> -->
+
+  <!-- 154.要素（自分自身を含む）のHTMLを取得したり、書き換えたりしたい -->
+  <!-- <h1>今日の天気</h1>
+  <div id="weather-information">雨<span id="temperature">（16℃）</span></div> -->
+
+  <!-- 155.要素の属性を取得したり、書き換えたりしたい -->
+  <!-- <a href="example.com" id="anchor">リンク</a>
+  <img src="foo.png" alt="" id="image"> -->
+
+  <!-- 156.ページ内のaタグで_blankになっているものに「rel="noopener"」を付与したい -->
+  <!-- <ul>
+    <li><a href="dummypage1.html" target="_blank">リンク1</a></li>
+    <li><a href="dummypage2.html">リンク2</a></li>
+    <li><a href="dummypage3.html" target="_self">リンク3</a></li>
+    <li><a href="dummypage4.html" target="_blank">リンク4</a></li>
+  </ul>
+  <p><a href="dummypage5.html">リンク5</a></p> -->
+
+  <!-- 157.要素のクラス属性の追加や削除をしたい -->
+  <!-- <div id="box" class="red"></div> -->
+  <!-- <div id="box1" class="red"></div>
+  <div id="box2" class="blue"></div> -->
+
+  <!-- 158.要素のクラスの有無を切り替えたい -->
+  <!-- <h1>ウェブページで使う技術</h1>
+  <div class="section-wrapper">
+    <section>
+      <button class="button">HTML</button>
+      <div class="content">
+        <p>HyperText Markup Languageの略称。ウェブページで使うマークアップ言語。</p>
+        <dl class="">
+          <dt>コード例</dt>
+          <dd>
+            <code class="block">
+              <pre>&lt;h1&gt;文章&lt;/h1&gt;&lt;p&gt;タイトル&lt;/p&gt;</pre>
+            </code>
+          </dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <button class="button">CSS</button>
+      <div class="content">
+        <p>Cascading Style Sheetsの略称。HTMLやXMLの文書の体裁を設定するための文書。</p>
+        <dl>
+          <dt>コード例</dt>
+          <dd>
+            <code class="block">
+              <pre>
+                h1 {
+                  font-color: red;
+                  margin-bottom: 10px;
+                }
+              </pre>
+            </code>
+          </dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <button class="button">JavaScript</button>
+      <div class="content">
+        <p>ウェブブラウザ・サーバーサイドで動作するプログラミング言語。</p>
+        <dl>
+          <dt>コード例</dt>
+          <dd>
+            <code class="block">
+              <pre>alert("Hello world");</pre>
+            </code>
+          </dd>
+        </dl>
+        </div>
+    </section>
+  </div> -->
+
+  <!-- 159.スタイルを変更したい -->
+  <!-- <p id="information">Tokyo Gate Bridge</p> -->
+
+  <!-- 160.スタイルを取得したい -->
+  <!-- <div id="box" class="red"></div> -->
+
+
+
 
 
   <script>
@@ -504,6 +592,157 @@
     // 意味 ： 要素内のHTML文字列
     // 型 ： 文字列
 
+    /***
+    const weatherInformation = document.querySelector('#weather-information');
+    console.log(weatherInformation.innerHTML);
+
+    const weatherElement = document.querySelector('#weather');
+    setTimeout(() => {
+      weatherElement.innerHTML = '気温は-3℃の予想です。'
+    }, 3000);
+    ***/
+
+
+    /*********************************************
+      154.要素（自分自身を含む）のHTMLを取得したり、書き換えたりしたい
+    **********************************************/
+    // 利用シーン: 自分自身を含む、HTMLのテキストや画像をタグごと書き換えたい時
+    // 【構文①】
+    // プロパティ ： 要素.outerHTML
+    // 意味 ： 要素のHTML
+    // 型 ： 文字列
+
+    /***
+    const weatherInformation = document.querySelector('#weather-information');
+    console.log(weatherInformation.outerHTML);
+
+    weatherInformation.outerHTML = '<img src="sample-image.png">';
+    ***/
+
+
+    /*********************************************
+      155.要素の属性を取得したり、書き換えたりしたい
+    **********************************************/
+    // 利用シーン: 属性値を書き換えたい時
+    // 【構文①】
+    // メソッド ： 要素.setAttribute(属性名,値)
+    // 意味 ： 要素の属性を設定する
+    // 戻り値 ： なし
+    // 【構文②】
+    // メソッド ： 要素.getAttribute(属性名)
+    // 意味 ： 要素の属性を取得する
+    // 戻り値 ： なし
+    // 【構文①】
+    // メソッド ： 要素.hasAttribute(属性名)
+    // 意味 ： 要素の属性があるかどうか
+    // 戻り値 ： 真偽値
+
+    /***
+    const anchorElement = document.querySelector('#anchor');
+    console.log(anchorElement.getAttribute('href'));
+    const imageElement = document.querySelector('#image');
+    imageElement.setAttribute('src','bar.png');
+    ***/
+
+
+    /*********************************************
+      156.ページ内のaタグで_blankになっているものに「rel="noopener"」を付与したい
+    **********************************************/
+    // 利用シーン: 安全に_blank属性を使いたい時
+
+    /***
+    const aElementList = document.querySelectorAll('a');
+    aElementList.forEach((element) => {
+      if(element.hasAttribute('target')===false) {
+        return;
+      }
+      if(element.getAttribute('target') !== '_blank') {
+        return;
+      }
+      element.setAttribute('rel','noopener');
+    })
+    ***/
+
+
+    /*********************************************
+      157.要素のクラス属性の追加や削除をしたい
+    **********************************************/
+    // 利用シーン: クラスを追加したい時
+    //           クラスをはずしたい時
+    //           クラスが含まれるか調べたい時
+    // 【構文①】
+    // メソッド ： 要素.classList.add(クラス1,クラス2,....)
+    // 意味 ： クラスを追加する
+    // 戻り値 ： なし
+    // 【構文②】
+    // メソッド ： 要素.classList.remove(クラス1,クラス2,...)
+    // 意味 ： クラスを削除する
+    // 戻り値 ： なし
+    // 【構文③】
+    // メソッド ： 要素.classList.contains(クラス)
+    // 意味 ： クラスが存在するかどうか
+    // 戻り値 ： 真偽値
+
+    /***
+    const boxElement = document.querySelector('#box');
+    console.log(boxElement);
+    boxElement.classList.add('blue');
+    boxElement.classList.remove('red');
+    boxElement.classList.add('pink','yellow','green');
+
+    const box1 = document.querySelector('#box1');
+    const box2 = document.querySelector('#box2');
+    console.log(box1.classList.contains('red'));
+    console.log(box2.classList.contains('red'));
+    ***/
+
+
+    /*********************************************
+      158.要素のクラスの有無を切り替えたい
+    **********************************************/
+    // 利用シーン: クラスを動的につけたりはずしたりしたい時
+    // 【構文①】
+    // メソッド ： 要素.classList.toggle(クラス)
+    // 意味 ： クラスを切り替える
+    // 戻り値 ： なし
+
+    /***
+    document.querySelectorAll('.button').forEach((button) => {
+      button.addEventListener('click', ()=> {
+        button.nextElementSibling.classList.toggle('show');
+      })
+    })
+    ***/
+
+
+    /*********************************************
+      159.スタイルを変更したい
+    **********************************************/
+    // 利用シーン: JavaScriptの処理の結果に応じてスタイルを変更したい時
+    // 【構文①】
+    // メソッド ： 要素.style.プロパティ名
+    // 意味 ： スタイルの値
+    // 戻り値 ： 文字列
+
+    /***
+    const information = document.querySelector('#information');
+    information.style.color = 'red';
+    ***/
+
+
+    /*********************************************
+      160.スタイルを取得したい
+    **********************************************/
+    // 利用シーン: 要素に適用されているスタイルを調べたい時
+    // 【構文①】
+    // メソッド ： getComputedStyle(要素).プロパティ名
+    // 意味 ： スタイルの値を取得する
+    // 戻り値 ： 文字列
+
+    /***
+    const box = document.querySelector('#box');
+    console.log(getComputedStyle(box).backgroundColor);
+    ***/
 
 
 
