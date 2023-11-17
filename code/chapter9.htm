@@ -12,17 +12,163 @@
 </head>
 <body>
 
+  <!-- 161.テキストボックスの情報を取得したい -->
+  <!-- <input type="text" id="myText" value="こんにちは、世界" /> -->
+
+  <!-- 162.テキストボックスの変更を検知したい -->
+  <!-- <input type="text" id="myText" />
+  <p class="log"></p> -->
+
+  <!-- 163.テキストエリアの情報を取得したい -->
+  <!-- <textArea id="myText">
+    今日の天気は、
+    曇りです。
+  </textArea> -->
+
+  <!-- 164.テキストエリアの変更を検知したい -->
+  <!-- <textarea name="" id="myText"></textarea>
+  <p class="log"></p> -->
+
+  <!-- 165.チェックボックスの情報を取得したい -->
+  <!-- <label>
+    <input type="checkbox" id="cbA" value="A" />
+  </label>
+  <label>
+    <input type="checkbox" id="cbB" value="B" checked/>
+  </label>
+  <label>
+    <input type="checkbox" id="cbC" value="C" />
+  </label> -->
+
+  <!-- 166.チェックボックスの変更を検知したい -->
+  <label>
+    <input type="checkbox" id="cbA" value="A" />
+    チェックボックスA
+  </label>
+  <p class="log"></p>
 
 
   <script>
 
-    /*** 161.セレクター名に一致する要素をひとつ取得したい
+    /*** 161.テキストボックスの情報を取得したい
     **********************************************/
-    // 利用シーン: セレクターから要素を取得したい時
+    // 利用シーン: HTMLフォームの値を取得したいとき
+    //           テキスト入力欄の値を書き換えたい時
     // 【構文①】
-    // メソッド ： document.querySelector(セレクター名)
-    // 意味 ： セレクター名に一致する要素を取得する
-    // 戻り値 ： 要素（Element）
+    // プロパティ ： インプット要素.value
+    // 意味 ： 入力欄の文字列
+    // 型 ： 文字列
+
+    /***
+    const element = document.querySelector('#myText');
+    element.value = 'Hello, World';
+    ***/
+
+
+    /*** 162.テキストボックスの変更を検知したい
+    **********************************************/
+    // 利用シーン: テキスト入力欄の変更を検知したいとき
+    // 【構文①】
+    // イベント名 ： change
+    // 意味 ： input要素の変更時のイベント
+    // 【構文②】
+    // イベント名 ： input
+    // 意味 ： input要素のキー入力時のイベント
+
+    /***
+    const element = document.querySelector('#myText');
+    element.addEventListener('input',handleChange);
+
+    function handleChange(event) {
+      const value = event.target.value;
+      document.querySelector('.log').innerHTML = value;
+    }
+    ***/
+
+
+    /*** 163.テキストエリアの情報を取得したい
+    **********************************************/
+    // 利用シーン: テキストエリアの文字列を取得したい時
+    //           テキストエリアの文字列を書き換えたい時
+    // 【構文①】
+    // プロパティ ： テキストエリア要素.value
+    // 意味 ： 入力欄の文字列
+    // 型 ： 文字列
+
+    /***
+    const element = document.querySelector('#myText');
+    element.value = 'Hello,World';
+    ***/
+
+
+    /*** 164.テキストエリアの変更を検知したい
+    **********************************************/
+    // 利用シーン: テキストエリアの変更時に処理したい時
+    // 【構文①】
+    // イベント名 ： change
+    // 意味 ： textarea要素の変更時のイベント
+    // 【構文②】
+    // イベント名 ： input
+    // 意味 ： textarea要素のキー入力時のイベント
+
+    /***
+    const element = document.querySelector('#myText');
+    element.addEventListener('input',handleChange);
+
+    function handleChange(event) {
+      const value = event.target.value;
+      const htmlStr = value.split('\n').join('<br />');
+      document.querySelector('.log').innerHTML = htmlStr;
+    }
+    ***/
+
+
+    /*** 165.チェックボックスの情報を取得したい
+    **********************************************/
+    // 利用シーン: チェックボックスの選択状態を調べたいとき
+    //           チェックボックスの選択状態を変更したい時
+    // 【構文①】
+    // プロパティ ： インプット要素.checked
+    // 意味 ： 選択された状態であるか
+    // 型 ： 真偽値
+
+    /***
+    const cbA = document.querySelector('#cbA');
+    const checkedA = cbA.checked;
+    console.log(checkedA);
+    const cbB = document.querySelector('#cbB');
+    const checkedB = cbB.checked;
+    console.log(checkedB);
+    const cbC = document.querySelector('#cbC');
+    const checkedC = cbC.checked;
+    console.log(checkedC);
+    ***/
+
+
+    /*** 166.チェックボックスの変更を検知したい
+    **********************************************/
+    // 利用シーン: チェックボックスの変更時に処理したいとき
+    // 【構文①】
+    // イベント名 ： change
+    // 意味 ： input要素の変更時のイベント
+
+    /***
+    const cb = document.querySelector('#cbA');
+    cb.addEventListener('change', (event) => {
+      const value = event.target.checked;
+      const log = `チェックボックスAは${value}になりました`;
+      document.querySelector('.log').innerHTML = log;
+    })
+    ***/
+
+
+    /*** 167.ローカルファイルの情報を取得したい
+    **********************************************/
+    // 利用シーン: ファイル選択ダイアログを表示したい時
+    // 【構文①】
+    // プロパティ ： インプット要素.files
+    // 意味 ： 選択されたファイルの配列
+    // 型 ： 配列
 
 
 
