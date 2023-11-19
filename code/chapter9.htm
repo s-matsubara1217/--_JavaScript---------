@@ -41,11 +41,50 @@
   </label> -->
 
   <!-- 166.チェックボックスの変更を検知したい -->
-  <label>
+  <!-- <label>
     <input type="checkbox" id="cbA" value="A" />
     チェックボックスA
   </label>
+  <p class="log"></p> -->
+
+  <!-- 167.ローカルファイルの情報を取得したい -->
+  <!-- <input type="file" id="myFile" accept=".txt">
+  <p class="log"></p> -->
+
+  <!-- 169.ローカルファイルのファイルをDataURLデータとして読み込みたい -->
+  <!-- <input type="file" id="myFile" accept=".png, .jpg">
+  <p class="log"><img /></p> -->
+
+  <!-- 170.ラジオボタンの情報を取得したい -->
+  <!-- <form id="radioGroup">
+    <label><input type="radio" name="fruit" value="apple" checked/>Apple</label>
+    <label><input type="radio" name="fruit" value="orange"/>Orange</label>
+    <label><input type="radio" name="fruit" value="grape"/>Grape</label>
+
+    <label><input type="radio" name="drink" value="coke" checked/>coke</label>
+    <label><input type="radio" name="drink" value="wine"/>wine</label>
+    <label><input type="radio" name="drink" value="tea"/>tea</label>
+  </form> -->
+
+  <!-- 172.ドロップダウンメニューの情報を取得したい -->
+  <!-- <select id="mySelect">
+    <option value="apple">apple</option>
+    <option value="orange">orange</option>
+    <option value="grape">grape</option>
+  </select>
+  <p class="log"></p> -->
+
+  <!-- 174.スライダーの情報を取得したい -->
+  <!-- <input type="range" id="myRange" min="0" max="100" value="50">
+  <p class="log"></p> -->
+
+  <!-- 176.カラーピッカーの情報を取得したい -->
+  <!-- <input type="color" id="myColor" value0="#ff0000"> -->
+
+  <!-- 178.都道府県のプルダウンをJavaScriptから作りたい -->
+  <select id="pref"></select>
   <p class="log"></p>
+
 
 
   <script>
@@ -169,6 +208,286 @@
     // プロパティ ： インプット要素.files
     // 意味 ： 選択されたファイルの配列
     // 型 ： 配列
+
+    /***
+    const element = document.querySelector('#myFile');
+
+    element.addEventListener('change', (event) => {
+      const target = event.target;
+      const files = target.files;
+      const file = files[0];
+      alert(`${file.name}が選択されました。`);
+    })
+    ***/
+
+
+    /*** 168.ローカルファイルのファイルをテキストとして読み込みたい
+    **********************************************/
+    // 利用シーン: ユーザーが選択したローカルファイルをテキスト情報として取得したい時
+    // 【構文①】
+    // メソッド ： readAsText(ファイル)
+    // 意味 ： テキストとして読み込む
+    // 戻り値 ： なし
+
+    /***
+    const element = document.querySelector('#myFile');
+    const pEl = document.querySelector('.log');
+
+    element.addEventListener('input', (event) => {
+      const target = event.target;
+      const files = target.files;
+      const file = files[0];
+
+      const reader = new FileReader();
+      reader.addEventListener('load', ()=> {
+        pEl.textContent = reader.result;
+      })
+
+      reader.readAsText(file);
+    })
+    ***/
+
+
+    /*** 169.ローカルファイルのファイルをDataURLデータとして読み込みたい
+    **********************************************/
+    // 利用シーン: DataURLをデータ送信用に取得したい時
+    // 【構文①】
+    // メソッド ： readAsDataURL(ファイル)
+    // 意味 ： DataURLとして読み込む
+    // 戻り値 ： なし
+
+    /***
+    const element = document.querySelector('#myFile');
+    const imgEl = document.querySelector('.log img');
+
+    element.addEventListener('input', (event) => {
+      const target = event.target;
+      const files = target.files;
+      const file = files[0];
+
+      const reader = new FileReader();
+      reader.addEventListener('load', ()=> {
+        imgEl.src = reader.result;
+      })
+
+      reader.readAsDataURL(file);
+    })
+    ***/
+
+
+    /*** 170.ラジオボタンの情報を取得したい
+    **********************************************/
+    // 利用シーン: ラジオボタンの選択状態を調べたい時
+    // 【構文①】
+    // プロパティ ： フォーム要素[キー名]
+    // 意味 ： ラジオボタンの値
+    // 型 ： 文字列
+
+    /***
+    const element = document.querySelector('form#radioGroup');
+
+    const drinkValue = element.drink.value;
+    const fruitValue = element.fruit.value;
+
+    console.log(`drinkの値は${drinkValue}です`);
+    console.log(`fruitの値は${fruitValue}です`);
+    ***/
+
+
+    /*** 171.ラジオボタンの変更を検知したい
+    **********************************************/
+    // 利用シーン: ラジオボタンの変更時に処理したい時
+    // 【構文①】
+    // イベント名 ： change
+    // 意味 ： form要素の変更時のイベント
+
+    /***
+    const element = document.querySelector('#radioGroup');
+    element.addEventListener('change', handleChange);
+
+    function handleChange(event) {
+      const drinkValue = element.drink.value;
+      const fruitValue = element.fruit.value;
+
+      console.log(`drinkの値は${drinkValue}です`);
+      console.log(`fruitの値は${fruitValue}です`);
+    }
+    ***/
+
+
+    /*** 172.ドロップダウンメニューの情報を取得したい
+    **********************************************/
+    // 利用シーン: ドロップダウンメニューの選択されている項目を調べたい時
+    // 【構文①】
+    // プロパティ ： セレクト要素.value
+    // 意味 ： 選択された項目の値
+    // 型 ： 文字列
+
+    /***
+    const element = document.querySelector('#mySelect');
+
+    const value = element.value;
+
+    const log = `選択されているのは${value}です`;
+    document.querySelector('.log').innerHTML = log;
+    ***/
+
+
+    /*** 173.ドロップダウンメニューの変更を検知したい
+    **********************************************/
+    // 利用シーン: ドロップダウンメニューの変更時に処理したい時
+    // 【構文①】
+    // イベント名 ： change
+    // 意味 ： select要素の変更時のイベント
+
+    /***
+    const element = document.querySelector('#mySelect');
+    element.addEventListener('change', handleChange);
+
+    function handleChange(event) {
+      const value = element.value;
+      const log = `選択されているのは${value}です`;
+      document.querySelector('.log').innerHTML = log;
+    }
+    ***/
+
+
+    /*** 174.スライダーの情報を取得したい
+    **********************************************/
+    // 利用シーン: スライダーの値を調べたい時
+    //           スライダーの値を変更したい時
+    // 【構文①】
+    // プロパティ ： インプット要素.value
+    // 意味 ： スライダーの現在値
+    // 型 ： 文字列
+
+    /***
+    const element = document.querySelector('#myRange');
+    const value = element.value;
+
+    document.querySelector('.log').innerHTML = `現在の値は${value}です`;
+    ***/
+
+
+    /*** 174.スライダーの変更を検知したい
+    **********************************************/
+    // 利用シーン: スライダーの変更時に処理したい時
+    // 【構文①】
+    // イベント名 ： input
+    // 意味 ： input要素の変更時のイベント（動かしている最中もイベント発生）
+    // 【構文②】
+    // イベント名 ： change
+    // 意味 ： input要素の変更時のイベント（動かし終わったタイミングのみイベント発生）
+
+    /***
+    const element = document.querySelector('#myRange');
+    element.addEventListener('change', handleChange);
+
+    function handleChange(event) {
+      const value = event.target.value;
+      document.querySelector('.log').innerHTML = `現在の値は${value}です`;
+    }
+    ***/
+
+
+    /*** 176.カラーピッカーの情報を取得したい
+    **********************************************/
+    // 利用シーン: カラーピッカーの選択されている色を調べたいとき
+    //           カラーピッカーの色を変更したい時
+    // 【構文①】
+    // プロパティ ： インプット要素.value
+    // 意味 ： カラーピッカーで選択された色
+    // 型 ： 文字列
+
+
+    /*** 177.カラーピッカーの変更を検知したい
+    **********************************************/
+    // 利用シーン: カラーピッカーの変更時に処理したい時
+
+
+    /*** 178.都道府県のプルダウンをJavaScriptから作りたい
+    **********************************************/
+    // 利用シーン: 都道府県の入力フォームを作りたい時
+    //           プルダウンを動的に制御したい時
+
+    // JISコードに対応した都道府県の連想配列
+    const PREF_LIST = [
+      { value: 1, name: '北海道' },
+      { value: 2, name: '青森県' },
+      { value: 3, name: '岩手県' },
+      { value: 4, name: '宮城県' },
+      { value: 5, name: '秋田県' },
+      { value: 6, name: '山形県' },
+      { value: 7, name: '福島県' },
+      { value: 8, name: '茨城県' },
+      { value: 9, name: '栃木県' },
+      { value: 10, name: '群馬県' },
+      { value: 11, name: '埼玉県' },
+      { value: 12, name: '千葉県' },
+      { value: 13, name: '東京都' },
+      { value: 14, name: '神奈川県' },
+      { value: 15, name: '新潟県' },
+      { value: 16, name: '富山県' },
+      { value: 17, name: '石川県' },
+      { value: 18, name: '福井県' },
+      { value: 19, name: '山梨県' },
+      { value: 20, name: '長野県' },
+      { value: 21, name: '岐阜県' },
+      { value: 22, name: '静岡県' },
+      { value: 23, name: '愛知県' },
+      { value: 24, name: '三重県' },
+      { value: 25, name: '滋賀県' },
+      { value: 26, name: '京都府' },
+      { value: 27, name: '大阪府' },
+      { value: 28, name: '兵庫県' },
+      { value: 29, name: '奈良県' },
+      { value: 30, name: '和歌山県' },
+      { value: 31, name: '鳥取県' },
+      { value: 32, name: '島根県' },
+      { value: 33, name: '岡山県' },
+      { value: 34, name: '広島県' },
+      { value: 35, name: '山口県' },
+      { value: 36, name: '徳島県' },
+      { value: 37, name: '香川県' },
+      { value: 38, name: '愛媛県' },
+      { value: 39, name: '高知県' },
+      { value: 40, name: '福岡県' },
+      { value: 41, name: '佐賀県' },
+      { value: 42, name: '長崎県' },
+      { value: 43, name: '熊本県' },
+      { value: 44, name: '大分県' },
+      { value: 45, name: '宮崎県' },
+      { value: 46, name: '鹿児島県' },
+      { value: 47, name: '沖縄県' }
+    ];
+
+    const selectElement = document.querySelector('#pref');
+
+    let optionString = '<option value="">選択ください</option>';
+
+    PREF_LIST.forEach((item) => {
+      optionString +=
+      `<option value="${item.value}">${item.name}</option>`
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
