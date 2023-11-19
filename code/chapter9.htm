@@ -82,8 +82,15 @@
   <!-- <input type="color" id="myColor" value0="#ff0000"> -->
 
   <!-- 178.都道府県のプルダウンをJavaScriptから作りたい -->
-  <select id="pref"></select>
-  <p class="log"></p>
+  <!-- <select id="pref"></select>
+  <p class="log"></p> -->
+
+  <!-- 179.フォームの送信時に処理を行いたい -->
+  <form>
+    <label for="myText">テキストを入力ください。</label>
+    <input type="text" name="myText" id="myText">
+    <button>送信する</button>
+  </form>
 
 
 
@@ -410,6 +417,7 @@
     // 利用シーン: 都道府県の入力フォームを作りたい時
     //           プルダウンを動的に制御したい時
 
+    /***
     // JISコードに対応した都道府県の連想配列
     const PREF_LIST = [
       { value: 1, name: '北海道' },
@@ -468,13 +476,35 @@
     PREF_LIST.forEach((item) => {
       optionString +=
       `<option value="${item.value}">${item.name}</option>`
+    });
+
+    selectElement.innerHTML = optionString;
+
+    selectElement.addEventListener('change', (event)=> {
+      const value = event.target.value;
+
+      const message =
+        value === ''?'選択されていません' : `選択されているのは${value}です`;
+
+      document.querySelector('.log').innerHTML = message;
     })
+    ***/
 
 
+    /*** 179.フォームの送信時に処理を行いたい
+    **********************************************/
+    // 利用シーン: フォームの送信前になんらかの処理を加えたい時
+    //           フォームの送信前にユーザーへ再確認を促す時
+    // 【構文①】
+    // イベント名 ： submit
+    // 意味 ： フォームの送信時のイベント
 
+    const formElement = document.querySelector('form');
+    formElement.addEventListener('submit',handleSubmit);
 
+    function handleSubmit(event) {
 
-
+    }
 
 
 
