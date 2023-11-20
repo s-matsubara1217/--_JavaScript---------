@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter10.アニメーションの作成</title>
+
+  <link rel="stylesheet" href="/sample/samples/c10/181/style.css">
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+
+  <style>
+  </style>
+</head>
+<body>
+
+  <!-- 181.CSS Transitionsの終了時に処理を行いたい -->
+  <main class="centering">
+    <div class="rect"></div>
+
+    <div class="ui">
+    <label>
+      <input type="checkbox" id="checkbox"/>
+      トランジションを確認する
+    </label>
+
+    <div class="log">ログ表示エリア</div>
+  </div>
+
+
+  </main>
+
+  <script>
+
+    /*** 180.JavaScriptからCSS Transitions・CSS Animationsを使いたい
+    **********************************************/
+    // 利用シーン: CSSのアニメーションのタイミングに合わせて処理したい時
+
+
+    /*** 181.CSS Transitionsの終了時に処理を行いたい
+    **********************************************/
+    // 利用シーン: モーション実行後に処理をフックさせたい時
+    // 要素の class 指定の切り替え
+    document.querySelector('#checkbox').addEventListener('change', (event) => {
+      const element = document.querySelector('.rect');
+      if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+      } else {
+        element.classList.add('state-show');
+      }
+    });
+
+    const element = document.querySelector('.rect');
+    element.addEventListener('transitionend', (event) => {
+      document.querySelector('.log').innerHTML = 'transitionend 発生 : ' + new Date().toLocaleTimeString();
+    });
+
+
+
+  </script>
+</body>
+</html>
