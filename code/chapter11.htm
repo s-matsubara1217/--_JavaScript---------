@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter11.画像・音声・動画の取り扱い</title>
+
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+  <link rel="stylesheet" href="/sample/samples/c11/202/style.css">
+
+  <style>
+  </style>
+</head>
+<body>
+
+  <!-- 191.画像をスクリプトで読み込みたい -->
+  <!-- <img id="myImageA" />
+  <img id="myImageB" /> -->
+
+  <!-- 192.画像の読み込み完了時に処理を行いたい -->
+  <!-- <img id="myImage" width="640" height="426"> -->
+
+  <!-- 193.ウェブページ内の画像を遅延読み込みさせる -->
+  <!-- <main class="centering">
+    <p>
+      <img data-src="../sample/samples/c11/193/images/photo_a.jpg"
+           width="320"
+           height="214"/>
+      <img data-src="../sample/samples/c11/193/images/photo_b.jpg"
+           width="320"
+           height="214"/>
+    </p>
+    <button class="btn">読み込む</button>
+  </main> -->
+
+  <!-- 195.スクリプトからimg要素を追加したい -->
+  <!-- <div class="container"></div> -->
+
+  <!-- 196.音声を使いたい -->
+  <!-- <audio src="../sample/samples/c11/196/music.mp3" controls></audio>
+  <audio src="../sample/samples/c11/196/music.mp3" controls loop></audio>
+  <audio src="../sample/samples/c11/196/music.mp3" controls preload="none"></audio> -->
+
+  <!-- 197.音声をスクリプトで制御したい -->
+  <!-- <div>
+    <audio id="myAudio" src="../sample/samples/c11/196/music.mp3" controls></audio>
+  </div>
+  <div>
+    <button id="btnPlay">再生</button>
+    <button id="btnPause">停止</button>
+  </div> -->
+
+  <!-- 198.音声の再生位置を変更したい -->
+  <!-- <div>
+    <audio id="myAudio" src="../sample/samples/c11/196/music.mp3" controls></audio>
+  </div> -->
+
+  <!-- 201.動画を読み込みたい -->
+  <!-- <main class="centering">
+    <p>
+      <video src="../sample/samples/c11/201/sample.mp4" poster="https://placehold.jp/150x150.png" controls autoplay loop></video>
+
+      <video src="../sample/samples/c11/201/sample.mp4" autoplay playsinline muted></video>
+    </p>
+  </main> -->
+
+  <!-- 202.動画をスクリプトで制御したい -->
+  <!-- <main class="centering">
+    <video id="myVideo" src="../sample/samples/c11/201/sample.mp4" controls loop></video>
+
+    <div>
+      <button id="btnPlay">再生</button>
+      <button id="btnPause">停止</button>
+    </div>
+  </main> -->
+
+  <!-- 203.カメラを使いたい -->
+  <main class="centering">
+    <button onclick="loadAndPlay()">再生する</button>
+    <button onclick="stop()">停止する</button>
+
+    <video id="myVideo" width="640" height="480" autoplay></video>
+  </main>
+
+
+  <script>
+
+    /*** 191.画像をスクリプトで読み込みたい
+    **********************************************/
+    // 利用シーン: 画像の読み込み中にローディングを表示したい時
+    //           画像読み込み後、画像データにアクセスする時
+    // 【構文①】
+    // プロパティ ： src
+    // 意味 ： リソースを指定する
+    // 型 ： 文字列
+    /***
+    const imgA = document.querySelector('#myImageA');
+    imgA.src = 'https://placehold.jp/150x150.png'
+    const imgB = document.querySelector('#myImageB');
+    imgB.src = 'https://placehold.jp/300x150.png'
+    ***/
+
+
+    /*** 192.画像の読み込み完了時に処理を行いたい
+    **********************************************/
+    // 利用シーン: 画像の読み込み中にローディングを表示したい時
+    //           画像読み込み後、画像データにアクセスする時
+    // 【構文①】
+    // 構文 ： onload
+    // 意味 ： 読み込み完了時の処理を指定する
+    /***
+    const img = document.querySelector('#myImage');
+    img.onload = () => {
+      // 画像の読み込み完了後の処理
+      img.classList.remove('loading');
+    }
+    img.src = 'https://placehold.jp/150x150.png';
+    img.classList.add('loading')
+    ***/
+
+
+    /*** 193.ウェブページ内の画像を遅延読み込みさせる
+    **********************************************/
+    // 利用シーン: 画像の読み込み中にローディングを表示したい時
+    //           画像読み込み後、画像データにアクセスする時
+    /***
+    const srcMap = new Map();
+
+    window.addEventListener('DOMContentLoaded', () => {
+
+      const imgs = document.querySelectorAll('img');
+      imgs.forEach((img) => {
+        // 各img要素のdata-src属性をMapに保存
+        srcMap.set(img,img.dataset.src);
+        // 遅延読み込みのため空にしておく
+        img.removeAttribute('src');
+      });
+
+      const btn = document.querySelector('.btn');
+      btn.addEventListener('click', ()=> {
+        const imgs = document.querySelectorAll('img');
+        imgs.forEach((img) => {
+          const source = srcMap.get(img);
+          img.src = source;
+        })
+      })
+
+    })
+    ***/
+
+
+    /*** 194.Base64の画像を表示する
+    **********************************************/
+    // 利用シーン: プログラムで生成した画像データを表示したいとき
+
+
+    /*** 195.スクリプトからimg要素を追加したい
+    **********************************************/
+    // 利用シーン: 動的に画像を配置したいとき
+    //           大量の画像を効率よく配置したいとき
+    // 【構文①】
+    // メソッド ： new Image()
+    // 意味 ： img要素のインスタンスを生成する
+    // 戻り値 ： img要素
+    /***
+    const container = document.querySelector('.container');
+    for(let i=0; i<10; i++) {
+      const img = new Image();
+      img.src = `../sample/samples/c11/195/images/photo-${i}.jpg`;
+      container.appendChild(img);
+    }
+    ***/
+
+
+    /*** 196.音声を使いたい
+    **********************************************/
+    // 利用シーン: 音声をHTMLタグで扱いたいとき
+    //           音声をループ再生させたいとき
+    //           音声コントロールのUIを表示させたいとき
+    // 【構文①】
+    // プロパティ ： src
+    // 意味 ： リソースを指定
+    // 型 ： 文字列
+    // 【構文②】
+    // プロパティ ： controls
+    // 意味 ： コントロールバーを表示
+    // 型 ： なし
+    // 【構文③】
+    // プロパティ ： loop
+    // 意味 ： ループを指定
+    // 型 ： なし
+    // 【構文④】
+    // プロパティ ： preload
+    // 意味 ： プリロードの種類を指定
+    // 型 ： 文字列
+
+
+    /*** 197.音声をスクリプトで制御したい
+    **********************************************/
+    // 利用シーン: スクリプトで音声の再生状態を管理したいとき
+    // 【構文①】
+    // メソッド ： play()
+    // 意味 ： 再生
+    // 戻り値 ： Promise
+    // 【構文②】
+    // メソッド ： pause()
+    // 意味 ： 一時停止
+    // 戻り値 ： なし
+
+    /***
+    const audio = document.querySelector('#myAudio');
+    audio.addEventListener('loadedmetadata', () => {
+      console.log(audio.duration);
+    })
+
+    document.querySelector('#btnPlay').addEventListener('click', () => {
+      audio.play();
+    })
+    document.querySelector('#btnPause').addEventListener('click', () => {
+      audio.pause();
+    })
+    ***/
+
+
+    /*** 198.音声の再生位置を変更したい
+    **********************************************/
+    // 利用シーン: 音声の再生位置をジャンプさせたいとき
+    // 【構文①】
+    // プロパティ ： currentTime
+    // 意味 ： 再生ヘッドの値（秒）。読み書きに対応
+    // 型 ： 数値
+    // 【構文②】
+    // メソッド ： duration
+    // 意味 ： 音声の長さ（秒）。読み取り専用
+    // 型 ： 数値
+
+    /***
+    const audio = document.querySelector('#myAudio');
+    audio.currentTime = 30.0;
+
+    audio.addEventListener('loadedmetadata', () => {
+      console.log(audio.duration);
+    })
+    ***/
+
+
+    /*** 199.音声のボリュームを変更したい
+    **********************************************/
+    // 利用シーン: 音声の再生音量をスクリプトで変更させたいとき
+    //           ミュートにさせたいとき
+    // 【構文①】
+    // プロパティ ： volume
+    // 意味 ： ボリュームの値
+    // 型 ： 数値
+    // 【構文②】
+    // メソッド ： muted
+    // 意味 ： ミュートであるかの状態
+    // 型 ： 真偽値
+
+    /***
+    const audio = document.querySelector('#myAudio');
+    audio.volume = 1;
+    audio.muted = true;
+    ***/
+
+
+    /*** 200.音声を読み込みたい（Web Audio API）
+    **********************************************/
+    // 利用シーン: モバイルのウェブサイトで同時に複数の音を再生したいとき
+    //           オーディオ波形を取得し、サウンドビジュアライザーを作りたいとき
+    //           オーディオデータを取得し、サーバーに送信したいとき
+
+
+    /*** 201.動画を読み込みたい
+    **********************************************/
+    // 利用シーン: ウェブサイト内に動画を読み込むとき
+    //           ウェブサイトの演出として動画を配置したいとき
+
+
+    /*** 202.動画をスクリプトで制御したい
+    **********************************************/
+    // 利用シーン: 動画の再生状態を管理したいとき
+    // 【構文①】
+    // メソッド ： play()
+    // 意味 ： 再生
+    // 戻り値 ： Promise
+    // 【構文②】
+    // メソッド ： pause()
+    // 意味 ： 一時停止
+    // 戻り値 ： なし
+
+    /***
+    const video = document.querySelector('#myVideo');
+    const btnPlay = document.querySelector('#btnPlay');
+    const btnPause = document.querySelector('#btnPause');
+
+    btnPlay.addEventListener('click', (event) => {
+      video.play();
+    })
+    btnPause.addEventListener('click', (event) => {
+      video.pause();
+    })
+    ***/
+
+
+    /*** 203.カメラを使いたい
+    **********************************************/
+    // 利用シーン: ウェブカメラでサイト内にユーザーのカメラを表示したいとき
+
+    /***
+    let stream;
+
+    async function loadAndPlay() {
+      const video = document.getElementById('myVideo');
+      stream = await getDeviceStream({
+        video: { width: 640, height: 320 },
+        audio: false,
+      });
+      video.srcObject = stream;
+    }
+
+    function stop() {
+      const video = document.getElementById('myVideo');
+      const tracks = stream.getTracks();
+
+      tracks.forEach((track) => {
+        track.stop();
+      });
+
+      video.srcObject = null;
+    }
+
+    function getDeviceStream(option) {
+      if('getUserMedia' in navigator.mediaDevices) {
+        return navigator.mediaDevices.getUserMedia(option);
+      } else {
+        return new Promise(function(resolve, reject) {
+
+          navigator.getUserMedia(option, resolve, reject);
+        });
+      }
+    }
+    ***/
+
+
+
+  </script>
+</body>
+</html>

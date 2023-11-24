@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter12.SVGやcanvas要素を取り扱う</title>
+
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+  <link rel="stylesheet" href="/sample/samples/c11/202/style.css">
+
+  <style>
+  </style>
+</head>
+<body>
+
+  <!-- 205.SVGで要素を動的に追加したい -->
+  <svg
+    viewBox = "0 0 200 200"
+    width="200" height="200"
+    id="mySvg"
+  >
+  </svg>
+
+  <script>
+
+    /*** 204.SVGを使いたい
+    **********************************************/
+    // 利用シーン: 拡大・縮小で荒れないグラフィックを使いたいとき
+    //           さまざまなスマートフォンにレスポンシブ対応できるグラフィックを使いたいとき
+
+
+    /*** 205.SVGで要素を動的に追加したい
+    **********************************************/
+    // 利用シーン: JavaScriptで外部のデータをもとにグラフィックを描きたいとき
+    // 【構文①】
+    // メソッド ： document.createElementNS('http://www.w3.org/2000/svg',SVG要素名)
+    // 意味 ： SVG要素を生成する
+    // 戻り値 ： SVG要素
+
+    /***
+    const myCircle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+
+    myCircle.setAttribute('cx','100');
+    myCircle.setAttribute('cy','100');
+    myCircle.setAttribute('r','100');
+    myCircle.setAttribute('fill','#ffff8d');
+
+    const mySvg = document.querySelector('#mySvg');
+    mySvg.appendChild(myCircle);
+    ***/
+
+
+    /*** 206.SVG要素のスタイルを変更したい
+    **********************************************/
+    // 利用シーン: ユーザーのインタラクションによってグラフィックを変化させるとき
+    // 【構文①】
+    // メソッド ： 要素.setAttribute(属性名,値)
+    // 意味 ： 要素の属性を設定する
+    // 戻り値 ： なし
+
+
+
+
+
+
+  </script>
+</body>
+</html>
