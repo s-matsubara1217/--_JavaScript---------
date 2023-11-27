@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter13.処理の実行タイミングを制御する</title>
+
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+  <link rel="stylesheet" href="/sample/samples/c11/202/style.css">
+
+  <style>
+  </style>
+</head>
+<body>
+
+
+  <script>
+
+    /*** 219.一定時間後に処理を行いたい
+    **********************************************/
+    // 利用シーン: 遅延して処理を行いたいとき
+    //           とある要素を非表示にしておき、数秒後に表示させたいとき
+    // 【構文①】
+    // メソッド ： setTimeout(関数,ミリ秒)
+    // 意味 ： 指定時間に関数を呼び出す
+    // 戻り値 ：数値
+
+
+    /*** 220.一定時間後の処理を解除したい
+    **********************************************/
+    // 利用シーン: setTimeout()メソッドで仕込んだ処理をキャンセルしたいとき
+    // 【構文①】
+    // メソッド ： clearTimeout(タイマーID)
+    // 意味 ： setTimeout()メソッドで登録した呼び出しをキャンセルする
+    // 戻り値 なし
+
+    /***
+    const timerId = setTimeout(timer1, 1000);
+    function timer1() {
+      console.log('aaa');
+    }
+    clearTimeout(timerId);
+    ***/
+
+  </script>
+</body>
+</html>
