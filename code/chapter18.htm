@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter18.関数やクラスについて詳しく知る</title>
+
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+  <!-- <link rel="stylesheet" href="/sample/samples/c14/202/style.css"> -->
+
+  <style>
+  </style>
+</head>
+<body>
+
+
+
+
+  <script>
+
+    /*** 259.関数内で使う定数や変数の影響範囲（スコープ）について知りたい
+    **********************************************/
+    // 利用シーン: 処理をひとかたまりごとに分割したいとき
+    //           変数・定数の有効範囲を狭めたいとき
+    // 【構文①】
+    // 構文 ： {}
+    // 意味 ： ブロックスコープ
+
+    /***
+    {
+      const a = 20;
+    }
+    {
+      console.log(a);
+    }
+    ***/
+
+
+    /*** 260.クラスを定義したい
+    **********************************************/
+    // 利用シーン: ある機能をひとまとめにしたクラスを作成したいとき
+    //           オブジェクト指向プログラミングをJavaScriptで実践したいとき
+    // 【構文①】
+    // 構文 ： class クラス名{}
+    // 意味 ： クラスを宣言する
+
+    /***
+    class MyClass{}
+
+    class MyClass {
+      constructor() {
+        console.log('クラスが初期化された');
+      }
+    }
+
+    class MyClass {
+      constructor(value1, value2) {
+        console.log(`${value1}`);
+        console.log(`${value2}`);
+      }
+    }
+    new MyClass('田中', 24);
+
+    class MyClass {
+      constructor() {
+        this.myField = '松原';
+      }
+
+      myMethod() {
+        console.log(this.myField);
+      }
+    }
+    ***/
+
+
+    /*** 261.クラスを使いたい（インスタンス化）
+    **********************************************/
+    // 利用シーン: クラスをインスタンス化したいとき
+    //           作成したクラスを使用したいとき
+    // 【構文①】
+    // 構文 ： new クラス名{}
+    // 意味 ： クラスをインスタンス化する
+
+    /***
+    class MyClass {
+      constructor() {
+        this.classField = 12;
+      }
+
+      method() {
+        console.log('メソッドが実行されました');
+      }
+    }
+
+    const myInstance = new MyClass();
+
+    console.log(myInstance.classField);
+    myInstance.method();
+    ***/
+
+
+    /*** 262.クラスで変数を使いたい
+    **********************************************/
+    // 利用シーン: クラスに変数を保持したいとき
+    //           APIの通信結果を保持するクラスを作りたいとき
+    // 【構文①】
+    // 構文 ： this.変数名 = 値
+    // 意味 ： メンバー変数を定義する
+
+    /***
+    class MyClass {
+      constructor() {
+        this.myField1 = 100;
+        this.myField2 = 'スズキ';
+      }
+    }
+
+    class MyClass {
+      constructor() {
+        this.myField = 'スズキ';
+      }
+    }
+
+    class MyClass {
+      constructor() {
+        this.myField1 = 100;
+        this.myField2 = 'スズキ';
+      }
+    }
+
+    const myInstance = new MyClass();
+    console.log(myInstance);
+
+    class ApiResultData {
+      constructor() {
+        this.result;
+        this.errorMessage;
+        this.userName;
+        this.age;
+      }
+    }
+
+    // レスポンスデータのパース（ApiResultDataへの変換）を想定した関数
+    function parseData(response) {
+      const apiResultData = new ApiResultData();
+
+      apiResultData.result = response.result;
+      apiResultData.errorMessage = response.error_message;
+      apiResultData.userName = response.user_name;
+      apiResultData.age = response.age;
+
+      console.log(`${apiResultData.userName} / ${apiResultData.age}`);
+    }
+
+    const apiResponse = {
+      result: true,
+      user_name: 'スズキ',
+      age: 24
+    };
+
+    parseData(apiResponse);
+    ***/
+
+
+    /*** 263.クラスでメソッドを使いたい
+    **********************************************/
+    // 利用シーン: クラスにメソッドを定義したいとき
+    // 【構文①】
+    // 構文 ： メソッド名() {処理内容}
+    // 意味 ： メンバー関数を定義する
+
+    /***
+    class MyClass {
+      constructor() {
+
+      }
+      myMethod() {
+        return 'Hello World';
+      }
+    }
+
+    class MyClass {
+      myMethod1() {
+        return 'Hello World';
+      }
+      myMethod2() {
+        return 100;
+      }
+    }
+
+    const myInstance = new MyClass();
+    console.log(myInstance.myMethod1());
+
+    class MyClass {
+      constructor() {
+        this.myField = 'スズキ';
+      }
+
+      myMethod() {
+        console.log(this.myField);
+      }
+    }
+    const myInstance = new MyClass();
+    console.log(myInstance.myMethod());
+    ***/
+
+
+    /*** 264.インスタンスを作らずに呼び出せる静的なメソッドを使いたい
+    **********************************************/
+    // 利用シーン: クラスをインスタンス化することなくメソッドを呼び出したいとき
+    // 【構文①】
+    // 構文 ： static メソッド名() {処理内容}
+    // 意味 ： 静的メソッドを定義する
+
+    /***
+    class MyClass {
+      static method() {
+        console.log('staticなメソッドです');
+      }
+    }
+    MyClass.method();
+
+    class StringUtil {
+      static createFullName(firstName, familyName) {
+        return `${familyName} ${firstName}`;
+      }
+    }
+    const myFullName = StringUtil.createFullName('一郎', '鈴木');
+    console.log(myFullName);
+    ***/
+
+
+    /*** 265.クラスを継承したい
+    **********************************************/
+    // 利用シーン: あるクラスの機能を拡張したクラスを作りたいとき
+    //           ビルトインオブジェクトを継承したいとき
+    // 【構文①】
+    // 構文 ： class クラス名 extends 親クラス名{}
+    // 意味 ： 親クラスを継承して新しいクラスを宣言する
+
+    /***
+    class MyParent {
+      parentMethod() {
+        console.log('MyParentクラスのメソッドです');
+      }
+    }
+
+    class MyChild extends MyParent {
+      constructor() {
+        super();
+      }
+
+      childMethod() {
+        console.log('MyChildクラスのメソッドです');
+      }
+    }
+
+    const myChild = new MyChild();
+    console.log(myChild);
+    myChild.parentMethod();
+    ***/
+
+
+    /*** 266.クラスで値を設定・取得するためのsetter・getterを使いたい
+    **********************************************/
+    // 利用シーン: クラスのフィールドのような振る舞いをする関数を使いたいとき
+    // 【構文①】
+    // 構文 ： set プロパティ名（値） {}
+    // 意味 ： setterを定義する
+    // 【構文②】
+    // 構文 ： get プロパティ名
+    // 意味 ： getterを定義する
+
+    class MyClass {
+      set customField(value) {
+        this._customField = value;
+      }
+
+      get customField() {
+        return this._customField;
+      }
+
+      constructor(value) {
+        this._customField = value;
+      }
+    }
+
+    const myInstance = new MyClass();
+
+    myInstance.customField = 20;
+
+    console.log(myInstance.customField);
+
+
+
+  </script>
+</body>
+</html>

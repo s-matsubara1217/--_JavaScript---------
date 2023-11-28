@@ -14,7 +14,11 @@
 <body>
 
   <!-- 236.fetch()メソッドでバイナリを読み込みたい -->
-  <button>読み込む</button>
+  <!-- <button>読み込む</button> -->
+
+  243. プッシュ通知を実行させたい
+  <button>ボタン</button>
+
 
 
   <script>
@@ -223,8 +227,25 @@
     // 利用シーン: ブラウザーからOSのプッシュ通知枠を使って通知させたいとき
     // 【構文①】
     // プロパティ ： Notification.permission
-    // 意味 ：
-    // 戻り値 ：
+    // 意味 ： ブラウザーが通知を許可しているか
+    // 戻り値 ： 文字列
+
+    const btn = document.querySelector('button');
+    btn.addEventListener('click', notify);
+
+    function notify() {
+      switch (Notification.permission) {
+        case 'default':
+          Notification.requestPermission();
+          break;
+        case 'granted':
+          new Notification('こんにちは');
+          break;
+        case 'denied':
+          alert('通知が拒否されています');
+          break;
+      }
+    }
 
 
 
