@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter10.アニメーションの作成</title>
+
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+  <link rel="stylesheet" href="/sample/samples/c10/190/style.css">
+
+  <style>
+  </style>
+</head>
+<body class="chapter-10">
+
+  <!-- 181.CSS Transitionsの終了時に処理を行いたい -->
+  <!-- <main class="centering">
+    <div class="rect"></div>
+
+    <div class="ui">
+    <label>
+      <input type="checkbox" id="checkbox"/>
+      トランジションを確認する
+    </label>
+
+    <div class="log">ログ表示エリア</div>
+  </div>
+
+
+  </main> -->
+
+  <!-- 182.CSS Animationsの終了時に処理を行いたい -->
+  <!-- <main class="centering">
+    <div class="rect">
+    </div>
+
+    <div class="ui">
+      <label>
+        <input type="checkbox" id="checkbox"/>
+        アニメーションを確認する
+      </label>
+
+      <div class="log">ログ表示エリア</div>
+    </div>
+  </main> -->
+
+  <!-- 183.アニメーションのための「Web Animations API」を使いたい -->
+  <!-- <div class="container">
+    <div class="rect"></div>
+  </div> -->
+
+  <!-- 190.requestAnimationFrame()でHTML要素を動かしたい -->
+  <div class="stoker">
+    👻
+  </div>
+
+  <script>
+
+    /*** 180.JavaScriptからCSS Transitions・CSS Animationsを使いたい
+    **********************************************/
+    // 利用シーン: CSSのアニメーションのタイミングに合わせて処理したい時
+
+
+    /*** 181.CSS Transitionsの終了時に処理を行いたい
+    **********************************************/
+    // 利用シーン: モーション実行後に処理をフックさせたい時
+    // 要素の class 指定の切り替え
+
+    /***
+    document.querySelector('#checkbox').addEventListener('change', (event) => {
+      const element = document.querySelector('.rect');
+      if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+      } else {
+        element.classList.add('state-show');
+      }
+    });
+
+    const element = document.querySelector('.rect');
+    element.addEventListener('transitionend', (event) => {
+      document.querySelector('.log').innerHTML = 'transitionend 発生 : ' + new Date().toLocaleTimeString();
+    });
+    ***/
+
+
+    /*** 182.CSS Animationsの終了時に処理を行いたい
+    **********************************************/
+    // 利用シーン: モーション実行後に処理をフックさせたい時
+    // 【構文①】
+    // イベント名 ： animationstart
+    // 意味 ： アニメーションが開始した時のイベント
+    // 【構文②】
+    // イベント名 ： animationiteration
+    // 意味 ： アニメーションで繰り返しが発生した時のイベント
+    // 【構文③】
+    // イベント名 ： animationend
+    // 意味 ： アニメーションが完了した時のイベント
+
+    /***
+    document.querySelector('#checkbox').addEventListener('change', (event)=> {
+      const element = document.querySelector('.rect');
+      if (element.classList.contains('state-show') === true) {
+        element.classList.remove('.state-show');
+      } else {
+        element.classList.add('state-show');
+      }
+    });
+
+    const targetEl = document.querySelector('.rect');
+    const logEl = document.querySelector('.log')
+
+    targetEl.addEventListener('animationstart', (event)=> {
+      logEl.innerHTML = 'animationstart 発生 : ' + new Date().toLocaleTimeString();
+    })
+    targetEl.addEventListener('animationiteration', (event)=> {
+      // アニメーションで繰り返しが発生した時のイベント
+      logEl.innerHTML = 'animationiteration 発生 : ' + new Date().toLocaleTimeString();
+    })
+    targetEl.addEventListener('animationend', (event)=> {
+      // アニメーションが完了した時のイベント
+      logEl.innerHTML = 'animationend 発生 : ' + new Date().toLocaleTimeString();
+    })
+    ***/
+
+
+    /*** 183.アニメーションのための「Web Animations API」を使いたい
+    **********************************************/
+    // 利用シーン: 自由度の高いモーションを作りたい時
+    //           JavaScriptメインでモーションを作りたい時
+    // 【構文①】
+    // メソッド ： 要素.animate(オブジェクト, オブジェクト)
+    // 意味 ： アニメーションする
+    // 戻り値 ： なし
+    // 第一引数 ： 開始値と終了値を含むオブジェクト
+    // 第二引数 ： アニメーションの属性を含むオブジェクト
+
+    /***
+    const element = document.querySelector('.rect');
+    element.animate(
+      {
+        transform: [
+          'translateX(0px) rotate(0deg)', //開始値
+          'translateX(800px) rotate(360deg)', //終了値
+        ]
+      },
+      {
+        duration: 3000,
+        iterations: Infinity,
+        direction: 'normal',
+        easing: 'ease'
+      }
+    );
+    ***/
+
+
+    /*** 184.要素の大きさを変えたい
+    **********************************************/
+    // 利用シーン: ボタンのホバー時のインタラクションを作りたい時
+    //           注目させたい要素をアニメーションさせたい時
+
+
+    /*** 185.要素を移動させたい
+    **********************************************/
+    // 利用シーン: 移動モーションによって注意喚起を示したい時
+
+
+    /*** 186.要素の透明度を変化させたい
+    **********************************************/
+    // 利用シーン: 非表示になる要素を演出したい時
+
+
+    /*** 187.要素の明度を変化させたい
+    **********************************************/
+    // 利用シーン: 明るさを変えることで目立たせたい時
+    //           フォーカスが当たっていることを示すのに役立てたい時
+
+
+    /*** 188.要素の彩度を変化させたい
+    **********************************************/
+    // 利用シーン: モノクロームの表示を適用したい時
+
+
+    /*** 189.requestAnimationFrame()を使いたい
+    **********************************************/
+    // 利用シーン: WebGLやHTML Canvasでアニメーション処理を作りたい時
+    //           プログラミングアート、3Dの演出を作りたい時
+
+    // 【構文①】
+    // メソッド ： requestAnimationFrame(関数)
+    // 意味 ： 時間経過で呼び出したい関数を登録する
+    // 戻り値 ： 数値
+
+
+    /*** 190.requestAnimationFrame()でHTML要素を動かしたい
+    **********************************************/
+    // 利用シーン: マウスストーカーなど演出を作る時
+
+    const el = document.querySelector('.stoker');
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+    document.body.addEventListener('mousemove', (event)=> {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+    });
+
+    tick();
+    function tick() {
+      requestAnimationFrame(tick);
+
+      currentX += (mouseX - currentX) * 0.1;
+      currentY += (mouseY - currentY) * 0.1;
+
+      el.style.transform = `translate(${currentX}px, ${currentY}px)`
+    }
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

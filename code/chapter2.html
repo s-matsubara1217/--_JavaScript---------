@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter2.真偽値や数値や文字の取り扱い</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- <button class="button">カラー変更</button>
+  <div class="rectangle"></div> -->
+
+  <!-- <div class="character"></div> -->
+
+  <!-- <textarea class="textarea"></textarea>
+  <p>現在<span class="string_num">0</span>文字入力中です。</p> -->
+
+  <!-- <header>
+    <label>県名の最初の一文字を入力してください <input id="search-word-input" maxlength="1" type="text"></label>
+  </header>
+  <div id="prefecture-list">
+    <button data-name="北海道" data-phonetic="ほっかいどう">北海道</button>
+    <button data-name="青森" data-phonetic="あおもり">青森</button>
+    <button data-name="岩手" data-phonetic="いわて">岩手</button>
+    <button data-name="宮城" data-phonetic="みやぎ">宮城</button>
+    <button data-name="秋田" data-phonetic="あきた">秋田</button>
+    <button data-name="山形" data-phonetic="やまがた">山形</button>
+    <button data-name="福島" data-phonetic="ふくしま">福島</button>
+    <button data-name="茨城" data-phonetic="いばらき">茨城</button>
+    <button data-name="栃木" data-phonetic="とちぎ">栃木</button>
+    <button data-name="群馬" data-phonetic="ぐんま">群馬</button>
+    <button data-name="埼玉" data-phonetic="さいたま">埼玉</button>
+    <button data-name="千葉" data-phonetic="ちば">千葉</button>
+    <button data-name="東京" data-phonetic="とうきょうと">東京</button>
+    <button data-name="神奈川" data-phonetic="かながわ">神奈川</button>
+    <button data-name="新潟" data-phonetic="にいがた">新潟</button>
+    <button data-name="富山" data-phonetic="とやま">富山</button>
+    <button data-name="石川" data-phonetic="いしかわ">石川</button>
+    <button data-name="福井" data-phonetic="ふくい">福井</button>
+    <button data-name="山梨" data-phonetic="やまなし">山梨</button>
+    <button data-name="長野" data-phonetic="ながの">長野</button>
+    <button data-name="岐阜" data-phonetic="ぎふ">岐阜</button>
+    <button data-name="静岡" data-phonetic="しずおか">静岡</button>
+    <button data-name="愛知" data-phonetic="あいち">愛知</button>
+    <button data-name="三重" data-phonetic="みえ">三重</button>
+    <button data-name="滋賀" data-phonetic="しが">滋賀</button>
+    <button data-name="京都" data-phonetic="きょうと">京都</button>
+    <button data-name="大阪" data-phonetic="おおさか">大阪</button>
+    <button data-name="兵庫" data-phonetic="ひょうご">兵庫</button>
+    <button data-name="奈良" data-phonetic="なら">奈良</button>
+    <button data-name="和歌山" data-phonetic="わかやま">和歌山</button>
+    <button data-name="鳥取" data-phonetic="とっとり">鳥取</button>
+    <button data-name="島根" data-phonetic="しまね">島根</button>
+    <button data-name="岡山" data-phonetic="おかやま">岡山</button>
+    <button data-name="広島" data-phonetic="ひろしま">広島</button>
+    <button data-name="山口" data-phonetic="やまぐち">山口</button>
+    <button data-name="徳島" data-phonetic="とくしま">徳島</button>
+    <button data-name="香川" data-phonetic="かがわ">香川</button>
+    <button data-name="愛媛" data-phonetic="えひめ">愛媛</button>
+    <button data-name="高知" data-phonetic="こうち">高知</button>
+    <button data-name="福岡" data-phonetic="ふくおか">福岡</button>
+    <button data-name="佐賀" data-phonetic="さが">佐賀</button>
+    <button data-name="長崎" data-phonetic="ながさき">長崎</button>
+    <button data-name="熊本" data-phonetic="くまもと">熊本</button>
+    <button data-name="大分" data-phonetic="おおいた">大分</button>
+    <button data-name="宮崎" data-phonetic="みやぎ">宮崎</button>
+    <button data-name="鹿児島" data-phonetic="かごしま">鹿児島</button>
+    <button data-name="沖縄" data-phonetic="おきなわ">沖縄</button>
+  </div> -->
+
+  <!-- <input type="tel" id="phoneNumberText" placeholder="電話番号">
+  <p class="caption"><small>実際にデータは送信されません</small></p>
+  <button id="submitButton" type="submit">送信する</button> -->
+
+  <!-- <h1>URLに?id=(ID)&amp;name=(名前)&amp;age=(年齢)を<br>付与してアクセスしてください。</h1>
+  <table>
+    <tr><th>ID</th><td class="id"></td></tr>
+    <tr><th>name</th><td class="name"></td></tr>
+    <tr><th>age</th><td class="age"></td></tr>
+  </table> -->
+
+  <!-- 36.文字列を結合したい  -->
+  <!-- <div class="name_container">
+    <label>姓<input type="text" class="text" id="familyNameText"></label>
+    <label>名<input type="text" class="text" id="firstNameText"></label>
+  </div>
+  <p id="fullName"></p> -->
+
+  <!-- 37.文字列を大文字・小文字に変換したい -->
+  <!-- <input type="text" class="name-input">
+  <p class="warning-message"></p> -->
+
+  <!-- 40.特定の文字が含まれているか、正規表現で調べたい -->
+  <!-- <h2>電話番号を入力してください</h2>
+  <input type="tel" id="phoneNumberText" placeholder="電話番号">
+  <p id="warningMessage"></p> -->
+
+  <!-- 41.数値の桁数を指定して小数点表示したい -->
+  <!-- <div class="timer">
+    <div class="second"></div>
+  </div> -->
+
+  <!-- 42.文字列を指定の長さになるよう繰り返したい -->
+  <!-- <span class="hour"></span>
+  : <span class="minute"></span>
+  : <span class="second"></span> -->
+
+  <!-- 43.文字列をURIエスケープしたい -->
+  <h1>つぶやきたい文字列を入力してください</h1>
+  <textarea id="tweetTextArea"></textarea>
+  <button id="tweetButton">ツイートする</button>
+
+
+
+  <script>
+
+  /*********************************************
+    20.真偽値を取り扱いたい
+  **********************************************/
+  // 利用シーン: 古いブラウザーからのアクセスであれば警告を出す時
+  //           入力フォームでユーザーが必要項目を記入していなければ送信ボタンを無効化したい時
+  /***
+  const a = 10;
+  const b = 20;
+  console.log(a<b);
+  console.log(a>b);
+  const isIOs = navigator.userAgent.includes('iPhone');
+  if(isIOs) {}
+
+  const userName = '鈴木';
+  if(userName) {
+    alert(`こんにちは${userName}さん`);
+  }
+  const address = '';
+  if(address) {
+    alert(`あなたは${address}に住んでいますね？`);
+  }
+  const flg = 'JavaScript'.includes('a');
+  console.log(!flg);
+  console.log(!!'鈴木');
+  ***/
+
+
+  /*********************************************
+    21.数値を取り扱いたい
+  **********************************************/
+  // 利用シーン: JavaScriptで数値計算をしたい時
+
+
+  /*********************************************
+    22.四捨五入、切り捨て、切り上げをしたい
+  **********************************************/
+  // 利用シーン: 税込金額の計算時、小数点を切り捨てる時
+  //           要素の幅や高さをJavaScriptから指定する時、整数扱いにしたい時
+  /***
+  console.log(Math.round(6.24));
+  console.log(Math.floor(6.24));
+  console.log(Math.ceil(6.24));
+  console.log(Math.trunc(6.24));
+  ***/
+
+
+  /*********************************************
+    23.ランダムな数を使いたい
+  **********************************************/
+  // 利用シーン: ランダムな確率で処理を行いたい時
+  //           アニメーションにランダム性を加えたい時
+  /***
+  console.log(Math.random());
+  console.log(Math.floor(Math.random()*100));
+  console.log(10 + Math.floor(Math.random()*10));
+
+  const rectangle = document.querySelector('.rectangle');
+  document.querySelector('.button').addEventListener('click', onClickButton);
+  function onClickButton() {
+    const randomHue = Math.trunc(Math.random()*360);
+    const randomColorStart = `hsl(${randomHue}, 100%, 50%)`;
+    const randomColorEnd = `hsl(${randomHue + 40}, 100%, 50%)`;
+
+    rectangle.style.setProperty('--start', randomColorStart)
+    rectangle.style.setProperty('--end', randomColorEnd)
+  }
+  ***/
+
+  // 安全な乱数を使いたいならcrypto.getRandomValues()を使う
+  /***
+  const randomArray1 = crypto.getRandomValues(new Uint16Array(10));
+  console.log(randomArray1);
+  randomArray1.join('');
+  console.log(randomArray1.join(''));
+  crypto.getRandomValues(new Uint32Array(10).join(''));
+  ***/
+
+
+  /*********************************************
+    24.数学的な計算を行いたい
+  **********************************************/
+  // 利用シーン: 数値の絶対値を扱いたい時
+  //           数値のべき乗を扱いたい時
+  //           数値の対数を扱いたい時
+  /***
+  console.log(Math.abs(-10));
+  console.log(Math.pow(2,10));
+  console.log(Math.sign(2));
+  console.log(Math.sign(-2));
+  console.log(Math.sqrt(16));
+  console.log(Math.log(Math.E));
+  ***/
+
+
+  /*********************************************
+    25.三角関数を使いたい
+  **********************************************/
+  // 利用シーン: 三角関数で数値計算したい時
+  //           座標から角度を求めたい時
+  //           円弧に沿って要素をアニメーションさせたい時
+  /***
+  console.log(Math.PI);
+
+  let degree = 0;
+  const rotation = (degree * Math.PI) / 180;
+  const targetX = 100 * Math.cos(rotation);
+  const targetY = 100 * Math.sin(rotation);
+
+  const character = document.querySelector('.character');
+  let degree = 0;
+  loop();
+
+  function loop() {
+    const rotation = (degree * Math.PI) / 180;
+    const targetX = window.innerWidth / 2 + 100 * Math.cos(rotation) - 50;
+    const targetY = window.innerHeight / 2 + 100 * Math.sin(rotation) - 50;
+    character.style.left = `${targetX}px`;
+    character.style.top = `${targetY}px`;
+    degree += 1;
+    requestAnimationFrame(loop);
+  }
+  ***/
+
+
+  /*********************************************
+    26.文字列を取り扱いたい
+  **********************************************/
+  // 利用シーン: 文字列の長さを取得する時
+  //           文字列を検索する時
+  //           文字列を取り出す時
+  //           文字列を置き換える時
+  //           文字列を分割する時
+  //           文字列を結合する時
+
+
+  /*********************************************
+    27.文字列の長さを取得したい
+  **********************************************/
+  // 利用シーン: 入力フォームで文字数をカウントしたい時
+  /***
+  let textarea = document.querySelector(".textarea");
+  let string_num = document.querySelector('.string_num');
+
+  textarea.addEventListener('keyup',onKeyUp);
+
+  function onKeyUp() {
+    const inputText = textarea.value;
+    string_num.innerText = inputText.length
+  }
+  ***/
+
+
+  /*********************************************
+    28.文字列の両端の空白を取り除きたい
+  **********************************************/
+  // 利用シーン: 文字列両端の空白を取り除きたい時
+  /***
+  const targetString1 = ' こんにちは ';
+  const trimmedString1 = targetString1.trim();
+  console.log(targetString1);
+  console.log(trimmedString1);
+  ***/
+
+
+  /*********************************************
+    29.文字列を検索したい①（インデックスを調べる）
+  **********************************************/
+  // 利用シーン: 文字列がどの位置にあるか調べたい時
+  /***
+  const myString = 'JavaScriptを覚えよう';
+
+  const a1 = myString.indexOf('JavaScript');
+  console.log(a1);
+
+  const a2 = myString.indexOf('覚えよう');
+  console.log(a2);
+
+  const a3 = myString.lastIndexOf('a');
+  console.log(a3);
+
+  const myString = 'JavaScriptを覚えよう';
+
+  const s1 = myString.search(/JavaScript/);
+  console.log(s1);
+
+  const s2 = myString.search(/HTML/);
+  console.log(s2);
+  ***/
+
+
+  /*********************************************
+    30.文字列を検索したい②（含まれているかを調べる）
+  **********************************************/
+  // 利用シーン: 文字列が含まれているか調べたい時
+  //           入力フォームで不適切な語が含まれていないか調べる時
+  // includes()
+  // startsWith()
+  // endsWith()
+  /***
+  const myString = 'JavaScriptを覚えよう';
+  const a1 = myString.includes('JavaScript');
+  console.log(a1);
+  const a2 = myString.startsWith('覚えよう');
+  console.log(a2);
+  const a3 = myString.endsWith('覚えよう');
+  console.log(a3);
+  ***/
+
+
+  /*********************************************
+    31.文字列を取り出したい
+  **********************************************/
+  // 利用シーン: 指定した場所の文字列を取り出す時
+  // charAt()
+  /***
+  console.log('JavaScript'.charAt(3));
+  console.log('JavaScript'.charAt());
+
+  const searchWordText = document.querySelector('#search-word-input');
+  const prefectureList = document.querySelectorAll('#prefecture-list button');
+
+  searchWordText.addEventListener('keyup', () => {
+    const searchWord = searchWordText.value;
+
+    // 県名リスト ループ
+    prefectureList.forEach((element) => {
+
+      // 検索語がなければ、すべての要素を表示する
+      if(!searchWord || searchWord==='') {
+        element.classList.remove('hide');
+        return;
+      }
+
+      // 県名を取得
+      const prefectureName = element.dataset.name
+      // ふりがなを取得
+      const phonetic = element.dataset.phonetic;
+
+      // 検索語の最初の一文字が一致するかどうかで、hideクラスの付与を決定する
+      // hideクラスが付与された要素は、画面上から削除される
+      if (
+        searchWord.charAt(0) === prefectureName.charAt(0) ||
+        searchWord.charAt(0) === phonetic.charAt(0)
+      ) {
+        // 検索語の最初の一文字が一致する場合、「hide」クラスを除去
+        element.classList.remove('hide');
+      } else {
+        // 検索語の最初の一文字が一致しない場合、「hide」クラスを追加
+        element.classList.add('hide');
+      }
+    });
+  });
+  ***/
+
+
+  /*********************************************
+    32.○文字目〜○文字目までの文字列を取り出したい
+  **********************************************/
+  // 利用シーン: ○文字目〜○文字目までの文字列を取り出したい時
+  //           ○文字目以降をすべて取り出したい時
+  // slice();
+  // substring();
+  /***
+  console.log('JavaScript'.slice(0,4));
+  console.log('JavaScript'.slice(0));
+  console.log('JavaScript'.substring(0,4));
+  console.log('JavaScript'.substring(0));
+  console.log('まつばらしょうまつばらしょう'.slice(3,-4));
+  console.log('まつばらしょうまつばらしょう'.substring(3,-4));
+  ***/
+
+
+  /*********************************************
+    33.○文字目から○文字目だけ取り出したい
+  **********************************************/
+  // 利用シーン: ○文字目から○文字目だけ取り出したいとき
+  // substr();
+  // 4を開始インデックスにして6文字取り出す
+  /***
+  console.log('JavaScript'.substr(4,6));
+  ***/
+
+
+  /*********************************************
+    34.文字列を別の文字列に置き換えたい
+  **********************************************/
+  // 利用シーン: 文字列を別の文字列に置換したい時
+  //           文字列内の不要な改行コードをbrに置き換えたい時
+  //           スペースを削除したい時
+  // replace();
+  /***
+  const imageName = 'image1.png';
+  const imageName2 = imageName.replace('1.png','2.png');
+  console.log(imageName2);
+
+  let phoneNumber = '090-1234-5678';
+  console.log(phoneNumber.replace(/-/g, ''));
+
+  document.querySelector('#submitButton').addEventListener('click', (event) => {
+    const phoneNumber = document.querySelector('#phoneNumberText').value;
+    const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+    alert(`電話番号は${trimmedPhoneNumber}です`);
+
+    event.preventDefault();
+  })
+  ***/
+
+
+  /*********************************************
+    35.文字列を分割したい
+  **********************************************/
+  // 利用シーン: URLのハッシュ値から値を取り出す時
+  //           スペースごとに文字列を分割する時
+  // split();
+  /***
+  const myUrl = 'http://example.com/?id=123456&name=Matsubara&age26';
+  console.log(myUrl.split('&'));
+  console.log(myUrl.split(/&|\?/));
+  console.log('JavaScript'.split(''));
+
+  // ハッシュを格納するためのオブジェクト
+  const hashes = {};
+  // URLの?hoge=fuga...部分を配列として取得する
+  const parameters = location.search.split(/&|\?/).filter((value) => {
+    return value.includes('=');
+  })
+  // hashes[key]=valueの形でオブジェクトに格納する
+  parameters.forEach((parameter) => {
+    //hoge=fugaを['hoge','fuga']の配列にする
+    const parameterList = parameter.split('=');
+    const key = parameterList[0];
+    // valueをデコードする
+    const value = decodeURIComponent(parameterList[1])
+    hashes[key] = value;
+  })
+  // 取得したパラメータを反映
+  // hashesにidが含まれていればそれを反映
+  if(hashes['id'] != null) {
+    document.querySelector('.id').innerHTML = hashes['id'];
+  }
+  if(hashes['name'] != null) {
+    document.querySelector('.name').innerHTML = hashes['name'];
+  }
+  if(hashes['age'] != null) {
+    document.querySelector('.age').innerHTML = hashes['age'];
+  }
+  ***/
+
+
+  /*********************************************
+    36.文字列を結合したい
+  **********************************************/
+  // 利用シーン: 姓と名を結合して姓名の文字列にするとき
+  //           フォルダ名と画像ファイル名を結合して画像パスの文字列にしたい時
+  /***
+  const country = 'アメリカ';
+  const states = '合衆国';
+  console.log(country + states);
+
+  const familyNameText = document.querySelector('#familyNameText');
+  const firstNameText = document.querySelector('#firstNameText');
+  const fullName = document.querySelector('#fullName');
+
+  firstNameText.addEventListener('keyup',onKeyUp);
+  familyNameText.addEventListener('keyup',onKeyUp);
+
+  function onKeyUp() {
+    const familyName = familyNameText.value;
+    const firstName = firstNameText.value;
+    fullName.innerHTML = familyName + ' ' + firstName;
+  }
+  ***/
+
+
+  /*********************************************
+    37.文字列を大文字・小文字に変換したい
+  **********************************************/
+  // 利用シーン: 小文字のアルファベット表記を大文字表記に変更する時
+  //           サーバーから大文字のあたいが帰ってきた場合、小文字に変換する時
+  // toLowerCase();
+  // toUpperCase();
+  /***
+  console.log('TEST'.toLowerCase());
+  console.log('sho matsubara'.toUpperCase());
+
+  const nameInput = document.querySelector('.name-input');
+  const warningMessage = document.querySelector('.warning-message');
+
+  // .name-inputに文字を入力するたびに処理をする
+  nameInput.addEventListener('input', () => {
+    // 入力された文字を取得する
+    const inputStr = nameInput.value;
+    const normalStr = inputStr.toLowerCase();
+    // 文字に「test」が含まれていれば警告を表示する
+    if(normalStr.includes('test')===true) {
+      warningMessage.textContent = '「test」が含まれています';
+    } else {
+      warningMessage.textContent = '';
+    }
+  })
+  ***/
+
+
+  /*********************************************
+    38.複数行の文字列や文字列内の式を簡易に使いたい
+  **********************************************/
+  // 利用シーン: 複数行の文字列を扱いたい時
+  //           文字列内で変数を扱いたい時
+
+
+  /*********************************************
+    39.正規表現を使いたい
+  **********************************************/
+  // 利用シーン: 条件にマッチする文字列を検索する時
+  //           大量の文字列をパターンに沿って一括置換する時
+  /***
+  if(/iPhone|iPod|iPad/.test(navigator.userAgent)) {
+    alert('アクセスしているブラウザはiOS端末です');
+  } else if (/Mac/.test(navigator.userAgent)) {
+    alert('アクセスしているブラウザはMacです');
+  }
+  ***/
+
+
+  /*********************************************
+    40.特定の文字が含まれているか、正規表現で調べたい
+  **********************************************/
+  // 利用シーン: 条件にマッチする文字列を検索する時
+  // 【構文】
+  // メソッド：/パターン/.test(文字列);
+  // 意味：文字列がパターンにマッチするかどうか
+  // 戻り値：真偽値
+
+  /***
+  const phoneNumberText = document.querySelector('#phoneNumberText');
+  const warningMessage = document.querySelector('#warningMessage');
+
+  // 文字が入力されるたびに内容のチェックを行う
+  phoneNumberText.addEventListener('keyup', () => {
+    const phoneNumber = phoneNumberText.value;
+    const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+
+    // 0から始まる10桁か11桁の数字かどうかをチェック
+    if(/^[0][0-9]{9,10}$/.test(trimmedPhoneNumber) === false) {
+      warningMessage.innerText = '電話番号を正しく入力してください';
+    } else {
+      warningMessage.innerText = '';
+    }
+  });
+  ***/
+
+
+  /*********************************************
+    41.数値の桁数を指定して小数点表示したい
+  **********************************************/
+  // 利用シーン: 数値3.145159265を'3.14'という文字列にする時
+  //           数値10を'10.00'という文字列に変換する時
+  // 【構文①】
+  // メソッド： 数値.toFixed([桁数])
+  // 意味： 小数点以下を指定桁数にする
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： 数値.toPrecision([桁数])
+  // 意味： 指定桁数の精度にする
+  // 戻り値： 文字列
+
+  /***
+  console.log(0.33333333.toFixed(2));
+
+  const secondElement = document.querySelector('.second');
+  const goalTime = new Date().getTime() + 15 * 1000;
+  update();
+
+  function update() {
+    // 現在時刻
+    const currentTime = new Date().getTime();
+    // 目標時刻までの残り時間
+    const leftTime = goalTime - currentTime;
+    // 残り時間が0秒未満だったら、タイマーを停止する
+    if(leftTime <= 0) {
+      secondElement.innerText = '15秒経ちました';
+      return;
+    }
+    // 秒の表示
+    secondElement.innerText = (leftTime / 1000).toFixed(2);
+    // 次のフレームで再度update()を実行する
+    requestAnimationFrame(update);
+  }
+  ***/
+
+
+  /*********************************************
+    42.文字列を指定の長さになるよう繰り返したい
+  **********************************************/
+  // 利用シーン: 10未満の数値を表示する際、頭に0を付与したいとき
+  // 【構文①】
+  // メソッド： 文字列.padStart(繰り返しの長さ,[追加する文字列]);
+  // 意味： 文字列の冒頭に指定の数だけ文字列を追加する
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： 文字列.padEnd(繰り返しの長さ,[追加する文字列]);
+  // 意味： 文字列の末尾に指定の数だけ文字列を追加する
+  // 戻り値： 文字列
+
+  /***
+  console.log('5'.padStart(2,'0'));
+  console.log('ff'.padEnd(6,'0'));
+
+  const hourElement = document.querySelector('.hour');
+  const minuteElement = document.querySelector('.minute');
+  const secondElement = document.querySelector('.second');
+  update();
+
+  //現在時間を表示する処理
+  function update() {
+    const currentTime = new Date();
+
+    // 時間の表示
+    const hour = currentTime.getHours();
+    hourElement.innerText = addZeroPadding(hour);
+    // 分の表示
+    const minute = currentTime.getMinutes();
+    minuteElement.innerText = addZeroPadding(minute);
+    // 秒の表示
+    const second = currentTime.getSeconds();
+    secondElement.innerText = addZeroPadding(second);
+
+    // 次のフレームで再度update()を実行する
+    requestAnimationFrame(update);
+  }
+
+  // 2桁の表示になるよう、文字列冒頭に0をつける関数
+  function addZeroPadding(num) {
+    return String(num).padStart(2, '0');
+  }
+  ***/
+
+
+  /*********************************************
+    43.文字列をURIエスケープしたい
+  **********************************************/
+  // 利用シーン: URIの日本語をエンコードする時
+  //           SNSで日本語の文言をシェアする際、エンコードしてURLを発行する時
+  // 【構文①】
+  // メソッド： encodeURI(文字列);
+  // 意味： 文字列をエンコードする
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： encodeURIComponent(文字列);
+  // 意味： 文字列をエンコードする
+  // 戻り値： 文字列
+
+  /***
+  console.log(encodeURI('http://example.com/可愛い猫の ページ.html'));
+  console.log(encodeURIComponent('http://example.com/可愛い猫の ページ.html'));
+
+  document.querySelector('#tweetButton').addEventListener('click', () => {
+    // ツイートの内容を表示
+    let tweetText = document.querySelector('#tweetTextArea').value;
+    // 半角スペースと#JavaScriptをツイート文言に追加する
+    tweetText += ' #JavaScript';
+    // エンコードする
+    const encodedText = encodeURIComponent(tweetText);
+    // ツイート用リンクを作成する
+    const tweetURL = `https://twitter.com/intent/tweet?text=${encodedText}`;
+    // ツイート用リンクを開く
+    window.open(tweetURL);
+  })
+  ***/
+
+
+  /*********************************************
+    44.文字列をURLデコードしたい
+  **********************************************/
+  // 利用シーン: エンコードされたURI文字列をデコードしたい時
+  // 【構文①】
+  // メソッド： decodeURI(文字列);
+  // 意味： 文字列をデコードする
+  // 戻り値： 文字列
+  // 【構文②】
+  // メソッド： decodeURIComponent(文字列);
+  // 意味： 文字列をデコードする
+  // 戻り値： 文字列
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

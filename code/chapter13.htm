@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter13.処理の実行タイミングを制御する</title>
+
+  <link rel="stylesheet" href="/sample/samples/common/css/style.css">
+  <link rel="stylesheet" href="/sample/samples/c11/202/style.css">
+
+  <style>
+  </style>
+</head>
+<body>
+
+
+  <script>
+
+    /*** 219.一定時間後に処理を行いたい
+    **********************************************/
+    // 利用シーン: 遅延して処理を行いたいとき
+    //           とある要素を非表示にしておき、数秒後に表示させたいとき
+    // 【構文①】
+    // メソッド ： setTimeout(関数,ミリ秒)
+    // 意味 ： 指定時間に関数を呼び出す
+    // 戻り値 ：数値
+
+
+    /*** 220.一定時間後の処理を解除したい
+    **********************************************/
+    // 利用シーン: setTimeout()メソッドで仕込んだ処理をキャンセルしたいとき
+    // 【構文①】
+    // メソッド ： clearTimeout(タイマーID)
+    // 意味 ： setTimeout()メソッドで登録した呼び出しをキャンセルする
+    // 戻り値 なし
+
+    /***
+    const timerId = setTimeout(timer1, 1000);
+    function timer1() {
+      console.log('aaa');
+    }
+    clearTimeout(timerId);
+    ***/
+
+
+    /*** 221.一定時間ごとに処理を行いたい
+    **********************************************/
+    // 利用シーン: 周期的に処理を行いたいとき
+    //           アニメーション用途に関数を呼び出したいとき
+    // 【構文①】
+    // メソッド ： setInterval(関数, ミリ秒)
+    // 意味 ： 指定時間間隔で連続で関数を呼び出す
+    // 戻り値 ： 数値
+
+    /***
+    console.log('起動時の時刻',new Date().toLocaleTimeString());
+
+    setInterval(() => {
+      console.log('setIntervalの時刻',new Date().toLocaleTimeString());
+    }, 1000);
+    ***/
+
+
+    /*** 222.一定時間ごとの処理を削除したい
+    **********************************************/
+    // 利用シーン: setInterval()メソッドで仕込んだ処理をキャンセルしたいとき
+    // 【構文①】
+    // メソッド ： clearInterval(インターバルID)
+    // 意味 ： setInterval()メソッドで登録した呼び出しをキャンセルする
+    // 戻り値 ： なし
+
+    /***
+    const intervalId = setInterval(timer1, 1000);
+    let count = 0;
+    function timer1() {
+      count += 1;
+      console.log(count, new Date().toLocaleTimeString());
+      if(count === 3) {
+        clearInterval(intervalId);
+      }
+    }
+    ***/
+
+
+    /*** 223.非同期処理を行えるPromiseを使いたい
+    **********************************************/
+    // 利用シーン: 非同期処理を扱いたいとき
+    // 【構文①】
+    // メソッド ： new Promise(関数)
+    // 意味 ： プロミスを作成する
+    // 戻り値 ： Promiseインスタンス
+    // 【構文②】
+    // メソッド ： Promiseインスタンス.then(関数)
+    // 意味 ： 成功したときのコールバック関数を呼び出す
+    // 戻り値 ： Promise
+
+    /***
+    const promise = new Promise((resolve)=> {
+      setTimeout(() => {
+        // resolve()を呼び出すとPromiseの処理が完了
+        resolve('orange');
+      }, 1000);
+    });
+
+    promise.then((value) => {
+      console.log(value);
+    })
+    ***/
+
+
+    /*** 224.Promiseで処理の成功時・失敗時の処理を行いたい
+    **********************************************/
+    // 利用シーン: 失敗する可能性のある非同期処理を扱いたいとき
+    // 【構文①】
+    // メソッド ： Promiseインスタンス.catch(関数)
+    // 意味 ： 失敗したときのコールバック関数を呼び出す
+    // 戻り値 ： Promise
+
+    /***
+    let flag = false;
+
+    const promise = new Promise((resolve,reject) => {
+      if(flag === true) {
+        resolve('orange');
+      } else {
+        reject('apple');
+      }
+    });
+
+    promise.then((value) => {
+      console.log(value);
+    })
+
+    promise.catch((value) => {
+      console.log(value);
+    })
+    ***/
+
+
+    /*** 225.Promiseで並列処理をしたい
+    **********************************************/
+    // 利用シーン: 非同期処理を一斉に開始し、すべての完了を待ってから処理したいとき
+    // 【構文①】
+    // メソッド ： Promise.all(配列)
+    // 意味 ： 複数のPromiseを並列に実行する
+    // 戻り値 ： Promise
+
+    /***
+    const arrFunc = [];
+    for(let i=0; i<5; i++) {
+      const func = (resolve) => {
+        console.log(`処理${i}を開始`, new Date().toLocaleTimeString());
+        const delayMsec = 2000 * Math.random();
+
+        // 遅延処理
+        setTimeout(() => {
+          console.log(`処理${i}が完了`, new Date().toLocaleTimeString());
+          resolve();
+        }, delayMsec);
+      };
+      // 配列に保存
+      arrFunc.push(func);
+    }
+
+    console.log(arrFunc);
+
+    // 関数を含めた配列を、Promiseの配列に変換
+    const arrPromise = arrFunc.map((func) => new Promise(func));
+
+    console.log(arrPromise);
+
+    // 並列処理を実行
+    Promise.all(arrPromise).then(() => {
+      console.log('すべての処理が完了しました');
+    })
+    ***/
+
+
+    /*** 226.Promiseで直列処理をしたい
+    **********************************************/
+    // 利用シーン: 外部データを取得して後続処理につなげたいとき
+    // 【構文①】
+    // メソッド ： Promise.all(配列)
+    // 意味 ： 複数のPromiseを並列に実行する
+    // 戻り値 ： Promise
+
+    /***
+    // Promiseのみで実装する方法
+    Promise.resolve()
+      .then(
+        () =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              console.log('1つめのPromise', new Date().toLocaleTimeString());
+              resolve();
+            }, 1000);
+          })
+      )
+      .then(
+        () =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              console.log('2つめのPromise', new Date().toLocaleTimeString());
+              resolve();
+            }, 1000);
+          })
+      );
+    ***/
+
+    /***
+    // await・asyncを使った記述方法
+    start();
+
+    async function start() {
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('1つめのPromise', new Date().toLocaleTimeString());
+          resolve();
+        }, 1000);
+      });
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('2つめのPromise', new Date().toLocaleTimeString());
+          resolve();
+        }, 1000);
+      });
+    }
+    ***/
+
+
+    /*** 227.Promiseで動的に直列処理をしたい
+    **********************************************/
+    // 利用シーン: 複数の非同期処理を順番に開始し、すべての完了を待ちたいとき
+
+    // 配列を作成
+    const listFunctions = [];
+
+    // 動的に関数を追加
+    for(let i=0; i<5; i++) {
+      // 1秒後に処理をする非同期関数を作成
+      const func = (resolve) => {
+        // setTimeoutで遅延処理
+        setTimeout(() => {
+          console.log(`関数${i}が完了しました`, new Date().toLocaleTimeString());
+          resolve();
+        }, 1000);
+      };
+      // 配列に保存
+      listFunctions.push(func);
+    }
+    // 配列の中身を出力
+    console.log(listFunctions);
+
+    execute();
+
+    async function execute() {
+      // 非同期処理を順番に実行
+      for(let i=0; i<listFunctions.length; i++) {
+        const func = listFunctions[i];
+        await new Promise(func);
+      }
+    }
+
+
+
+
+  </script>
+</body>
+</html>

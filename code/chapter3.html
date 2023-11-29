@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter3.複数データの取り扱い</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 47.配列の各要素に対して処理を行いたい① -->
+  <!-- <h1>ユーザー一覧</h1>
+  <div class="container"></div> -->
+
+  <!-- 56.配列から条件を満たす要素を取得したい -->
+  <!-- <div class="search-word-wrapper">
+    <label>ユーザーID<input id="search-id-input" type="text"></label>
+  </div>
+  <p id="search-result">該当者なし</p> -->
+
+  <!-- 59.オブジェクトを含む配列をソートしたい -->
+  <!-- <div class="button-wrapper">
+    <button class="ascending">昇順</button>
+    <button class="descending">降順</button>
+  </div>
+  <ul class="user_list"></ul> -->
+
+  <!-- 62.ある配列から条件を満たす別の配列を作りたい -->
+  <!-- <div class="button-wrapper">
+    <button class="button" data-age="20">20歳以上</button>
+    <button class="button" data-age="30">30歳以上</button>
+    <button class="button" data-age="40">40歳以上</button>
+  </div>
+  <ul class="user_list"></ul> -->
+
+  <script>
+
+  /*********************************************
+    45.配列を定義したい
+  **********************************************/
+  // 利用シーン: 配列を定義したい時
+  //           配列内の値を取得したい時
+  // 【構文①】
+  // []
+  // 意味： 配列を定義する
+  // 【構文②】
+  // 配列[インデックス]
+  // 意味： 配列内の値を取得する
+
+  /***
+  const array1 = [];
+  const array2 = [0, 2, 8];
+  const array3 = ['鈴木', '高橋'];
+  ***/
+
+
+  /*********************************************
+    46.配列の長さを取得したい
+  **********************************************/
+  // 利用シーン: 配列の数を数える時
+  //           JSONデータの特定の要素の数を数える時
+  // 【構文①】
+  // プロパティ：配列.length
+  // 意味： 配列の長さを取得する
+  // 型：数値
+
+
+  /*********************************************
+    47.配列の各要素に対して処理を行いたい①
+  **********************************************/
+  // 利用シーン: 配列の各要素について処理をする時
+  // 【構文①】
+  // 配列.forEach(コールバック関数)
+  // 意味： 配列の各要素についてコールバックを行う
+  // ▼ コールバック関数
+  // ([要素],[インデックス],[元配列]) => {}
+  // 意味： 要素、インデックス、元配列を用いて処理する
+
+  /***
+  const array = ['いちご','みかん','りんご'];
+  array.forEach((value,index) => {
+    console.log(index,value);
+  })
+
+  const array2 = [1,2,3,4,5,6,7,8];
+  array2calculated = array2.filter((value) => value%2 === 0);
+  array2calculated.forEach((value) => {
+    console.log(value);
+  })
+
+  // APIなどから出力するユーザーデータの配列
+  const userList = [
+    {id:1, name:'田中', address:'東京'},
+    {id:2, name:'鈴木', address:'宮城'},
+    {id:3, name:'高橋', address:'福岡'},
+  ];
+
+  // コンテナー
+  const container = document.querySelector('.container');
+
+  // userListの配列の各要素についてループ
+  userList.forEach((userData) => {
+    // 各要素を書き出す
+    container.innerHTML += `
+      <div class = "card">
+        <h2>${userData.name}</h2>
+        <p>出身地：${userData.address}<p>
+      </div>
+    `;
+  });
+  ***/
+
+
+  /*********************************************
+    48.配列の各要素に対して処理を行いたい②
+  **********************************************/
+  // 利用シーン: 配列の各要素について処理をしたい時
+  //           配列のループ処理で、要素のインデックスが不要な時
+  // 【構文①】
+  // for(const 要素 of 配列){}
+  // 意味： for...ofでループ
+
+  /***
+  const array = ['いちご','みかん','りんご'];
+  // 配列の各要素についてループ
+  for(const value of array) {
+    console.log(value);
+  }
+  ***/
+
+
+  /*********************************************
+    49.配列の各要素に対して処理を行いたい③
+  **********************************************/
+  // 利用シーン: 配列の各要素について処理をしたい時
+  //           配列のループ処理で、要素のインデックスが不要な時
+  // 【構文①】
+  // for(let i=0; i<配列の長さ; i++)
+  // 意味： forでループ
+
+  /***
+  const array = ['いちご','みかん','りんご'];
+  const arrayLength = array.length;
+
+  for(let i=0; i<arrayLength; i++) {
+    console.log(array[i]);
+  }
+  ***/
+
+
+  /*********************************************
+    50.要素を追加したい
+  **********************************************/
+  // 利用シーン: 配列に要素を追加したい時
+  //           要素を先頭か末尾のどちらかから追加したい時
+  // 【構文①】
+  // メソッド： 配列.unshift(要素1,要素2,...)
+  // 意味： 先頭に要素を追加する
+  // 戻り値： 追加後の個数
+  // 【構文①】
+  // メソッド： 配列.push(要素1,要素2,...)
+  // 意味： 末尾に要素を追加する
+  // 戻り値： 追加後の個数
+
+  /***
+  const array1 = ['りんご','みかん'];
+  array1.unshift('バナナ');
+  console.log(array1);
+
+  const array2 = ['りんご','みかん'];
+  array2.push('いちご','バナナ');
+  console.log(array2);
+  ***/
+
+
+  /*********************************************
+    51.要素を削除したい
+  **********************************************/
+  // 利用シーン: 配列の要素を削除したい時
+  // 【構文①】
+  // メソッド： 配列.shift()
+  // 意味： 先頭の要素を取り除く
+  // 戻り値： 取り除かれた要素
+  // 【構文①】
+  // メソッド： 配列.pop()
+  // 意味： 末尾の要素を取り除く
+  // 戻り値： 取り除かれた要素
+
+  /***
+  const array1 = ['りんご','ばなな','みかん'];
+  const shiftedValue = array1.shift();
+  console.log(shiftedValue);
+  console.log(array1);
+
+  const array2 = ['りんご','ばなな','みかん'];
+  const poppedValue = array2.pop();
+  console.log(poppedValue);
+  console.log(array2);
+  ***/
+
+
+  /*********************************************
+    52.要素の一部を置き換えたい
+  **********************************************/
+  // 利用シーン: 配列内の要素を別の要素に置き換える時
+  // 【構文①】
+  // メソッド： 配列.splice(追加位置,取り出す数,要素1,要素2,...)
+  // 意味： 指定位置から要素を取り出しつつ、要素を追加する
+  // 戻り値： 配列
+
+  /***
+  const array3 = ['りんご','みかん'];
+  array3.splice(1,0,'バナナ'); // インデックス1の位置で、0個取り除きつつバナナを追加
+  console.log(array3);
+
+  const array4 = ['りんご','みかん'];
+  array4.splice(1,1,'バナナ','いちご')
+  console.log(array4);
+  ***/
+
+
+  /*********************************************
+    53.配列を連結したい
+  **********************************************/
+  // 利用シーン: 複数の配列をひとつに結合する時
+  // 【構文①】
+  // メソッド： 配列1.concat(配列2,配列3,...)
+  // 意味： 配列1に配列2、配列3を結合する
+  // 【構文②】
+  // メソッド： [...配列1, ...配列2, ...配列3];
+  // 意味： 配列1に配列2、配列3を結合する
+
+  /***
+  const array1 = ['鈴木','佐藤'];
+  const array2 = ['田中'];
+  const array3 = array1.concat(array2);
+  console.log(array3);
+
+  const array5 = ['鈴木','佐藤'];
+  const array6 = ['田中'];
+  const array7 = [...array5, ...array6];
+  console.log(array7);
+  ***/
+
+
+  /*********************************************
+    54.配列の要素を結合して文字列にしたい
+  **********************************************/
+  // 利用シーン: 配列内の文字要素を結合して表示する時
+  // 【構文①】
+  // メソッド： 配列.join([結合文字列]);
+  // 意味： 配列の各要素を結合して文字列にする
+  // 戻り値： 文字列
+
+  /***
+  const array1 = [2,4,10];
+  console.log(array1.join());
+  const array2 = ['a','b','c'];
+  console.log(array2.join(''));
+  ***/
+
+
+  /*********************************************
+    55.要素を検索したい
+  **********************************************/
+  // 利用シーン: 配列データの中に特定の要素があるかどうかを調べる時
+  // 【構文①】
+  // メソッド： 配列.indexOf(検索したい要素,[検索開始位置]);
+  // 意味： 要素のインデックスを調べる
+  // 戻り値： 数値
+  // 【構文②】
+  // メソッド： 配列.lastIndexOf(検索したい要素,[検索開始位置]);
+  // 意味： 要素の末尾からのインデックス
+  // 戻り値： 数値
+  // 【構文③】
+  // メソッド： 配列.includes(検索したい要素,[検索開始位置]);
+  // 意味： 要素が含まれているかどうかを調べる
+  // 戻り値： 真偽値
+
+  /***
+  console.log(['りんご','バナナ','みかん'].indexOf('バナナ'));
+  console.log([0,2,4,6,4,2,0].indexOf(2));
+  console.log([0,2,4,6,4,2,0].lastIndexOf(4));
+  console.log(['りんご','バナナ','みかん'].includes('バナナ'));
+  ***/
+
+
+  /*********************************************
+    56.配列から条件を満たす要素を取得したい
+  **********************************************/
+  // 利用シーン: ユーザー情報の配列内からIDを元に特定のユーザー情報を取得したい時
+  // 【構文①】
+  // メソッド： 配列.find(コールバック関数)
+  // 意味： コールバック関数に合格する最初の要素
+  // 戻り値： 要素
+  // 【構文②】
+  // メソッド： 配列.findIndex(テスト関数)
+  // 意味： コールバック関数に合格する最初の要素のインデックス
+  // 戻り値： 数値
+  // 【コールバック関数】
+  // ([要素],[インデックス],[元配列]) => 真偽値
+  // 意味： 要素を受け取って真偽値を返す
+
+  /***
+  const myArray = ['鈴木','田中','高橋','後藤'];
+  const targetUser = myArray.find((element)=> element === '田中');
+  console.log(targetUser);
+  ***/
+
+  /***
+  // idキーとnameキーを持つユーザーデータの配列
+  const userDataList = [
+    { id: 123, name: '高橋' },
+    { id: 1021, name: '鈴木' },
+    { id: 6021, name: '後藤' },
+  ]
+
+  // 検索IDを入力するinput要素
+  const searchIdInput = document.querySelector('#search-id-input');
+  // 検索結果を表示する要素
+  const searchResult = document.querySelector('#search-result');
+
+  // 文字が入力される度に内容のチェックを行う
+  searchIdInput.addEventListener('keyup', () => {
+    // 検索IDを取得する
+    const searchId = Number(event.target.value);
+    findUser(searchId);
+  });
+
+  // ユーザーを検索する
+  function findUser(searchId) {
+    // 該当データを取得する
+    const targetData = userDataList.find((data)=> data.id === searchId);
+    // 該当データが存在しなかったら、「該当者なし」と表示して終了
+    if(targetData==null) {
+      searchResult.textContent = '該当者なし';
+      return;
+    }
+    // 該当データの名前を表示する
+    searchResult.textContent = targetData.name;
+  }
+  ***/
+
+  /***
+  const myArray = ['鈴木','田中','高橋','後藤'];
+  // 配列から「田中」を取得
+  const targetIndex = myArray.findIndex((element) => element == '鈴木');
+  console.log(targetIndex);
+  ***/
+
+
+  /*********************************************
+    57.配列の並び順を逆順にしたい
+  **********************************************/
+  // 利用シーン: 配列の並び順を逆順にしたい時
+  // 【構文①】
+  // メソッド： 配列.reverse()
+  // 意味： 配列の並び順を反転する
+  // 戻り値： 配列
+
+  /***
+  const array2 = [1,3,5];
+  array2.reverse();
+  console.log(array2);
+  ***/
+
+
+  /*********************************************
+    58.配列をソートしたい
+  **********************************************/
+  // 利用シーン: 配列の要素の順番を昇順・降順に並び替えたい時
+  // 【構文①】
+  // メソッド： 配列.sort([比較関数])
+  // 意味： 配列を比較関数にしたがってソートする
+  // 戻り値： 配列
+
+  /***
+  const array1 = [1,2,3,4,5];
+  array1.sort((a,b) => {
+    // aがbより小さいならば、a,bの順に並べる
+    if(a<b) {
+      return 1;
+    }
+
+    // aとbが等しければ、そのまま
+    if(a===b) {
+      return 0;
+    }
+
+    // aがbより大きければ、b,aの順に並べる
+    if(a>b) {
+      return -1;
+    }
+
+  });
+  console.log(array1);
+  ***/
+
+
+  /*********************************************
+    59.オブジェクトを含む配列をソートしたい
+  **********************************************/
+  // 利用シーン: 配列の要素の順番を昇順・降順に並び替えたい時
+
+
+  /***
+  // データ
+  const userDataList = [
+    {id:2, name:'鈴木'},
+    {id:10, name:'田中'},
+    {id:4, name:'佐藤'},
+    {id:29, name:'高橋'},
+    {id:101, name:'小笠原'},
+  ]
+
+  // 表示を更新する
+  function updateList() {
+    let listHtml = '';
+    for(const data of userDataList) {
+      listHtml += `<li>${data.id}:${data.name}</li>`;
+    }
+    document.querySelector('.user_list').innerHTML = listHtml;
+  }
+
+  // 昇順にソート
+  function sortByAscending() {
+    userDataList.sort((a,b) => {
+      return a.id - b.id;
+    });
+
+    updateList();
+  }
+
+  // 降順にソート
+  function sortByDescending() {
+    userDataList.sort((a,b) => {
+      return b.id - a.id;
+    });
+
+    updateList();
+  }
+
+  // 昇順ボタンをクリックした時の処理
+  document.querySelector('.ascending').addEventListener('click', (event) => {
+    sortByAscending();
+  })
+
+  // 降順ボタンをクリックした時の処理
+  document.querySelector('.descending').addEventListener('click', () => {
+    sortByDescending();
+  });
+
+  // 最初に昇順に並べる
+  sortByAscending();
+  ***/
+
+
+  /*********************************************
+    60.文字列の順番で配列をソートしたい
+  **********************************************/
+  // 利用シーン: アルファベットも大文字・小文字を無視してソートしたい時
+  // 【構文①】
+  // メソッド： 文字列1.localCompare(文字列2)
+  // 意味： 文字列1と文字列2を比較する
+  // 戻り値： 数値
+
+  /***
+  const arr2 = ['grape','Orange','apple'];
+  arr2.sort((a,b) => a.localeCompare(b));
+  console.log(arr2);
+  ***/
+
+
+  /*********************************************
+    61.ある配列から別の配列を作りたい
+  **********************************************/
+  // 利用シーン: 演算して新しい配列を作りたい時
+  //           配列要素全てに対して処理を適用したい時
+  //           IDと名前を持つオブジェクトの配列からIDだけの配列を作成する時
+  // 【構文①】
+  // メソッド： 配列.map(コールバック関数)
+  // 意味： コールバック関数によって新しい配列を生成する
+  // 戻り値： 配列
+  // 【コールバック関数】
+  // ([要素],[インデックス],[元配列]) => 変更後の要素
+  // 意味： 要素を受け取って、変更後の要素を返す
+
+  /***
+  const idList = [4,10,20];
+  const userIdList = idList.map((value) => `userid_${value}`);
+  console.log(userIdList);
+
+  const idList = [3,8,12];
+  const userIdList = idList.map((value,index) => `userid_${index + 1}_${value}`);
+  console.log(userIdList);
+
+  const apiResponseData = [
+    {id: 10, name: '鈴木'},
+    {id: 21, name: '田中'},
+    {id: 31, name: '高橋'},
+  ]
+  const idList = apiResponseData.map((value) => value.id);
+  console.log(idList);
+  const nameList = apiResponseData.map((value) => value.name);
+  console.log(nameList);
+  ***/
+
+
+  /*********************************************
+    62.ある配列から条件を満たす別の配列を作りたい
+  **********************************************/
+  // 利用シーン: ユーザー情報の配列から、年齢が18歳以上のユーザーだけの配列を生成する時
+  // 【構文①】
+  // メソッド： 配列.filter(コールバック関数)
+  // 意味： コールバック関数に合格した配列を生成する
+  // 戻り値： 配列
+  // 【コールバック関数】
+  // ([要素],[インデックス],[元配列]) => 真偽値
+  // 意味： 要素を受け取って、真偽値を返す
+
+  /***
+  const array = [10,20,30,40];
+  const newArray = array.filter((value) => value>= 30);
+  console.log(newArray);
+
+  const userDataList = [
+    {name: '鈴木', age: 18},
+    {name: '田中', age: 27},
+    {name: '佐藤', age: 32},
+    {name: '高橋', age: 41},
+    {name: '小笠原', age: 56},
+  ];
+
+  // .button要素についてイベント設定
+  document.querySelectorAll('.button').forEach((element) => {
+    element.addEventListener('click', (event) => {
+      onClickButton(event);
+    });
+  });
+
+  // ボタンがクリックされた時の処理
+  function onClickButton(event) {
+    const button = event.target;
+    const targetAge = button.dataset.age;
+    const filterdList = userDataList.filter((data) => data.age >= targetAge);
+    updateList(filterdList);
+  }
+
+  // ユーザー配列を出力する
+  function updateList(filterdList) {
+    let listHtml = '';
+
+    for(const data of filterdList) {
+      listHtml += `<li>${data.name}：${data.age}歳</li>`
+    }
+
+    document.querySelector('.user_list').innerHTML = listHtml;
+  }
+  ***/
+
+
+  /*********************************************
+    63.各要素から単一の値を作りたい
+  **********************************************/
+  // 利用シーン: ユーザー情報の配列から、年齢が18歳以上のユーザーだけの配列を生成する時
+  // 【構文①】
+  // メソッド： 配列.reduce(コールバック関数, [初期値])
+  // 意味： 各要素を左から右に処理して単一の値を生成する
+  // 戻り値： 任意
+  // 【構文②】
+  // メソッド： 配列.reduceRight(コールバック関数, [初期値])
+  // 意味： 各要素を右から左に処理して単一の値を生成する
+  // 戻り値： 任意
+  // 【コールバック関数】
+  // ((前の要素,現在の要素,インデックス,元の配列) => {/*処理*/})
+  // 意味：任意の処理
+
+  /***
+  const priceList = [100,500,900];
+  const sum = priceList.reduce((previous,current) => {
+    return previous + current;
+  });
+  console.log(sum);
+
+  const array = [['バナナ','りんご','いちご'],['みかん','ブドウ']];
+
+  const flattenedArray = array.reduce((previousValue,currentValue) => {
+    return previousValue.concat(currentValue);
+  });
+  console.log(flattenedArray);
+
+  const array = ['鈴木','田中','後藤'];
+  const members1 = array.reduce((previous,current) => {
+    return `${previous}と${current}`;
+  })
+  console.log(members1);
+  const members2 = array.reduceRight((previous,current) => {
+    return `${previous}と${current}`;
+  })
+  console.log(members2);
+  ***/
+
+
+  /*********************************************
+    64.配列に似たオブジェクトを配列に変換したい
+  **********************************************/
+  // 利用シーン: 文字列や配列のようなオブジェクト（ArrayLike）を配列に変換する
+  //           反復可能（Iterable）なオブジェクトを配列に変換する
+  // 【構文①】
+  // メソッド： [...変換対象]
+  // 意味： 配列に変換する
+
+  /***
+  const myString = 'こんにちは';
+  // console.log([...myString]);
+  const newArray = [...myString].map((character) => `${character}!`);
+  console.log(newArray);
+  ***/
+
+
+  /*********************************************
+    65.複数の値をまとめて代入したい（分割代入）
+  **********************************************/
+  // 利用シーン: 配列内の要素を入れ替える時
+  // 【構文①】
+  // [変数1,変数2,変数3] = [値1,値2,値3]
+  // 意味： 各変数に値を代入する
+
+  /***
+  let a;
+  let b;
+  let c;
+  [a,b,c] = [1,2,3];
+  console.log(a,b,c);
+
+  const array = ['鈴木','田中'];
+  [array[0],array[1]] = [array[1],array[0]];
+  console.log(array);
+  ***/
+
+
+  /*********************************************
+    66.配列をシャッフルしたい
+  **********************************************/
+  // 利用シーン: ゲームで複数の要素をシャッフルする
+
+  /***
+  const array = [1,2,3,4,5];
+  const arrayLength = array.length;
+
+  // Fisher-Yatesのアルゴリズム
+  for(let i=arrayLength-1; i>=0; i--) {
+    const randomIndex = Math.floor(Math.random()*(i+1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+  }
+  console.log(array);
+
+  const array1 = [1,2,3,4,5,6,7,8,9,10];
+  const shuffled1 = shuffleArray(array1);
+  console.log(shuffled1);
+
+  const array2 = ['田中','鈴木','吉田','後藤','辻'];
+  const shuffled2 = shuffleArray(array2);
+  console.log(shuffled2);
+
+  //  * 配列をシャッフルする
+  //  * 元の配列は変更せず、新しい配列を返す
+  //  * @param sourceArr 元の配列
+  //  * @returns シャッフルされた配列
+  function shuffleArray(sourceArr) {
+    // 元の配列の複製
+    const array = sourceArr.concat();
+    // Fisher-Yatesのアルゴリズム
+    const arrayLength = array.length;
+    for(let i=arrayLength-1; i>=0; i--) {
+      console.log(Math.random());
+      const randomIndex = Math.floor(Math.random() * (i+1));
+      [array[i],array[randomIndex]] = [array[randomIndex],array[i]];
+    }
+    return array;
+  }
+  ***/
+
+
+  /*********************************************
+    67.複数のデータを保持できるオブジェクト型を使いたい
+  **********************************************/
+  // 利用シーン: さまざまなデータを一つのオブジェクトにまとめたい
+  //           連想配列を利用したい
+
+
+  /*********************************************
+    68.オブジェクトの定義、値の取得、値の更新を行いたい
+  **********************************************/
+  // 利用シーン: オブジェクトのプロパティを更新したい
+
+
+  /*********************************************
+    69.オブジェクトを複製したい
+  **********************************************/
+  // 利用シーン： データを複製したい時
+  // 【構文①】
+  // {...コピー元オブジェクト}
+  // 意味： オブジェクトの各要素を分割代入する（コピー）
+  // 【構文②】
+  // メソッド：Object.assign({},コピー元オブジェクト)
+  // 意味：オブジェクトをコピーする
+  // 戻り値：オブジェクト
+
+  /***
+  const object1 = {
+    result: true,
+    members: [
+      {id:1, name:'鈴木'},
+      {id:1, name:'田中'},
+      {id:1, name:'高橋'},
+    ]
+  };
+
+  // オブジェクトのコピー
+  const copiedObject1 = Object.assign({},object1);
+  console.log(copiedObject1);
+
+  const object2 = {
+    result: true,
+    members: [
+      {id:1, name:'鈴木'},
+      {id:1, name:'田中'},
+      {id:1, name:'高橋'},
+    ]
+  };
+
+  // オブジェクトのコピー
+  const copiedObject2 = {...object2};
+  console.log(copiedObject2);
+
+  // コピー元のオブジェクト
+  const object3 = {
+    id: 1,
+    members: ['鈴木','田中','高橋']
+  };
+
+  // オブジェクトのコピー
+  const copiedObject3 = {...object3};
+
+  // 元オブジェクトのmembersプロパティー内の配列を更新
+  object3.members[0] = 'John';
+
+  console.log(copiedObject3.members[0]);
+  ***/
+
+
+  /*********************************************
+    70.オブジェクトのプロパティがあるかどうかを調べたい
+  **********************************************/
+  // 利用シーン： APIのレスポンス内に特定のデータが入っているかを調べる時
+  //            オブジェクトの指定の値が存在しないときは処理をキャンセルするとき
+  // 【構文①】
+  // メソッド： オブジェクト.hasOwnProperty(キー名)
+  // 意味： 値があるかどうか
+  // 戻り値： 真偽値
+  // 【構文②】
+  // キー名 in オブジェクト
+  // 意味： 値があるかどうかを返す
+
+  /***
+  const userData = {
+    id: 1,
+    name: '田中',
+    age:26
+  };
+
+  console.log(userData.hasOwnProperty("id"));
+  console.log(userData.hasOwnProperty("address"));
+  console.log("id" in userData);
+  console.log(userData.id != null);
+  ***/
+
+
+  /*********************************************
+    71.オブジェクトの各値について処理をしたい
+  **********************************************/
+  // 利用シーン： APIのレスポンス内に特定のデータが入っているかを調べるとき
+  // 【構文①】
+  // メソッド： Object.keys(オブジェクト)
+  // 意味： オブジェクトの各キーの配列
+  // 戻り値： 配列
+  // 【構文②】
+  // メソッド： Object.values(オブジェクト)
+  // 意味： オブジェクトの各値の配列
+  // 戻り値： 配列
+  // 【構文③】
+  // メソッド： Object.entries(オブジェクト)
+  // 意味： オブジェクトの各プロパティーの配列
+  // 戻り値： 配列
+
+  /***
+  const userData = {
+    id: 1,
+    name: '田中',
+    age: 26
+  };
+
+  // キーごとにループ
+  console.log(Object.keys(userData));
+  // 値ごとにループ
+  console.log(Object.values(userData));
+  // プロパティーごとにループ
+  console.log(Object.entries(userData));
+  ***/
+
+
+  /*********************************************
+    72.複数の変数にまとめて値を代入したい（分割代入）
+  **********************************************/
+  // 利用シーン： オブジェクトからまとめて値を代入したいとき
+  //            一部の値だけオブジェクトから取り出して使いたいとき
+  // 【構文①】
+  // {変数1, 変数2, ...} = オブジェクト
+  // 意味： オブジェクトの値を変数に展開する
+
+  /***
+  const userData1 = {
+    id: 1,
+    name: '田中',
+    age: 26
+  };
+
+  const {id,name,age} = userData1;
+  console.log(id);
+  console.log(name);
+  console.log(age);
+
+  const userData2 = {
+    id: 1,
+    name: '田中',
+  };
+
+  const { name: myName } = userData2
+  console.log(myName);
+  ***/
+
+
+  /*********************************************
+    73.オブジェクトを編集不可能にしたい
+  **********************************************/
+  // 利用シーン： オブジェクトを深い階層まで編集不可能にするとき
+  // 【構文①】
+  // メソッド： Object.freeze(オブジェクト)
+  // 意味： オブジェクトを変更不可能にする
+  // 戻り値： オブジェクト
+  // 【構文①】
+  // メソッド： Object.isFrozen(オブジェクト)
+  // 意味： オブジェクトを変更不可能かどうか
+  // 戻り値： 真偽値
+
+  /***
+  const object1 = { id: 10, name: '田中'};
+  object1.id = 12;
+  object1.address = '東京';
+  console.log(object1);
+
+  'use strict';
+
+  const object2 = {id:10, name:'田中'};
+  Object.freeze(object2);
+
+  console.log(Object.isFrozen(object2));
+  ***/
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
