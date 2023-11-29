@@ -6,14 +6,20 @@
   <title>Chapter18.関数やクラスについて詳しく知る</title>
 
   <link rel="stylesheet" href="/sample/samples/common/css/style.css">
-  <!-- <link rel="stylesheet" href="/sample/samples/c14/202/style.css"> -->
+  <link rel="stylesheet" href="/sample/samples/c18/267/style.css">
 
   <style>
   </style>
 </head>
 <body>
 
-
+  <!-- 267.thisが参照するものを固定したい（アロー関数） -->
+  <div class="likeComponent">
+    <div class="balloon">
+      <p class="clickedCountText">0</p>
+    </div>
+    <button class="button">クリック！</button>
+  </div>
 
 
   <script>
@@ -271,6 +277,7 @@
     // 構文 ： get プロパティ名
     // 意味 ： getterを定義する
 
+    /***
     class MyClass {
       set customField(value) {
         this._customField = value;
@@ -290,6 +297,33 @@
     myInstance.customField = 20;
 
     console.log(myInstance.customField);
+    ***/
+
+
+    /*** 267.thisが参照するものを固定したい（アロー関数）
+    **********************************************/
+    // 利用シーン: クラスのメンバー変数をメソッド内やイベントリスナー内で参照したいとき
+    // 【構文①】
+    // 構文 ： ()=> {}
+    // 意味 ： アロー関数を定義する
+
+    class LikeCounter {
+      constructor() {
+        this.clickedCount = 0;
+
+        const button = document.querySelector('.button');
+        const clickedCountText = document.querySelector('.clickedCountText');
+
+        button.addEventListener('click', () => {
+          this.clickedCount += 1;
+          clickedCountText.textContent = this.clickedCount;
+        });
+      }
+    }
+
+    new LikeCounter();
+
+
 
 
 
